@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ELLES — Home of Appliances</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --cream: #F5F0E8;
+    --charcoal: #1A1A18;
+    --copper: #B87333;
+    --copper-light: #D4914A;
+    --warm-gray: #8A8678;
+    --ivory: #FAF7F2;
+    --dark-bg: #111110;
+    --card-bg: #1E1E1C;
+    --border: rgba(184,115,51,0.2);
+    --glow: rgba(184,115,51,0.15);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--dark-bg);
+    color: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 0; opacity: 0.5;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 1.2rem 3rem;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(17,17,16,0.9);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem; font-weight: 700;
+    color: var(--cream); letter-spacing: 0.08em;
+    text-decoration: none; line-height: 1.1;
+  }
+  .nav-logo span { color: var(--copper); }
+  .nav-logo small {
+    display: block; font-size: 0.55rem; font-family: 'Space Mono', monospace;
+    letter-spacing: 0.25em; color: var(--warm-gray); font-weight: 400;
+  }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    color: var(--warm-gray); text-decoration: none;
+    font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--copper); }
+  .nav-cta {
+    background: var(--copper); color: var(--charcoal); border: none; cursor: pointer;
+    padding: 0.65rem 1.5rem;
+    font-family: 'DM Sans', sans-serif; font-size: 0.8rem; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase; transition: all 0.3s;
+  }
+  .nav-cta:hover { background: var(--copper-light); transform: translateY(-1px); }
+
+  /* PROMO BANNER */
+  .promo-banner {
+    background: linear-gradient(90deg, var(--copper), var(--copper-light), var(--copper));
+    color: var(--charcoal); text-align: center;
+    padding: 0.55rem 1rem;
+    font-family: 'Space Mono', monospace; font-size: 0.72rem;
+    letter-spacing: 0.12em; font-weight: 700;
+    position: fixed; top: 0; left: 0; right: 0; z-index: 101;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid; grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 9rem 3rem 4rem;
+    position: relative; overflow: hidden;
+  }
+  .hero::after {
+    content: '';
+    position: absolute; right: -10%; top: 50%; transform: translateY(-50%);
+    width: 55%; height: 80%;
+    background: radial-gradient(ellipse, rgba(184,115,51,0.1) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-text { position: relative; z-index: 1; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    border: 1px solid var(--copper); color: var(--copper);
+    font-family: 'Space Mono', monospace; font-size: 0.68rem;
+    letter-spacing: 0.15em; padding: 0.4rem 0.9rem; margin-bottom: 2rem;
+    animation: fadeUp 0.8s ease forwards; opacity: 0;
+  }
+  .hero-badge::before { content: '★'; font-size: 0.7rem; }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 5.5vw, 5rem);
+    font-weight: 300; line-height: 1.05; margin-bottom: 1.5rem;
+    animation: fadeUp 0.8s 0.15s ease forwards; opacity: 0;
+  }
+  .hero h1 em { font-style: italic; color: var(--copper); }
+  .hero-sub {
+    color: var(--warm-gray); font-size: 0.95rem; line-height: 1.7;
+    max-width: 420px; margin-bottom: 2rem;
+    animation: fadeUp 0.8s 0.3s ease forwards; opacity: 0;
+  }
+  .hero-price-note {
+    display: inline-block; background: var(--card-bg);
+    border: 1px solid var(--border); padding: 0.7rem 1.2rem;
+    font-family: 'Space Mono', monospace; font-size: 0.72rem;
+    color: var(--copper); letter-spacing: 0.08em; margin-bottom: 2rem;
+    animation: fadeUp 0.8s 0.38s ease forwards; opacity: 0;
+  }
+  .hero-actions {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    animation: fadeUp 0.8s 0.45s ease forwards; opacity: 0;
+  }
+  .btn-primary {
+    background: var(--copper); color: var(--charcoal); border: none; cursor: pointer;
+    padding: 1rem 2.2rem; font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+    transition: all 0.3s;
+  }
+  .btn-primary:hover { background: var(--copper-light); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(184,115,51,0.3); }
+  .btn-outline {
+    background: transparent; color: var(--cream); border: 1px solid rgba(245,240,232,0.3); cursor: pointer;
+    padding: 1rem 2.2rem; font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase;
+    transition: all 0.3s;
+  }
+  .btn-outline:hover { border-color: var(--copper); color: var(--copper); }
+
+  /* HERO VISUAL — Samsung S26 Pre-order cards */
+  .hero-visual {
+    padding-left: 3rem; z-index: 1;
+    animation: fadeRight 1s 0.3s ease forwards; opacity: 0;
+  }
+  .hero-preorder-label {
+    font-family: 'Space Mono', monospace; font-size: 0.65rem;
+    color: var(--copper); letter-spacing: 0.2em; text-transform: uppercase;
+    margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;
+  }
+  .hero-preorder-label::before, .hero-preorder-label::after {
+    content: ''; flex: 1; height: 1px; background: var(--border);
+  }
+  .s26-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+  .s26-card {
+    background: var(--card-bg); border: 1px solid var(--border);
+    padding: 1.3rem; cursor: pointer; transition: all 0.3s; position: relative; overflow: hidden;
+  }
+  .s26-card:hover { border-color: var(--copper); transform: translateY(-3px); }
+  .s26-card::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, var(--glow), transparent);
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .s26-card:hover::before { opacity: 1; }
+  .s26-img {
+    width: 100%; height: 110px;
+    margin-bottom: 0.7rem;
+    background: #1a1a18;
+    position: relative; overflow: hidden;
+  }
+  .s26-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+  .s26-card:hover .s26-img img { transform: scale(1.07); }
+  .s26-model { font-size: 0.65rem; color: var(--warm-gray); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.2rem; }
+  .s26-name { font-family: 'Cormorant Garamond', serif; font-size: 0.95rem; margin-bottom: 0.4rem; line-height: 1.2; }
+  .s26-price { font-family: 'Space Mono', monospace; font-size: 0.82rem; color: var(--copper); }
+  .s26-badge {
+    position: absolute; top: 0.5rem; right: 0.5rem;
+    background: var(--copper); color: var(--charcoal);
+    font-size: 0.55rem; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; padding: 0.2rem 0.5rem;
+  }
+
+  /* STATS */
+  .stats-bar {
+    background: var(--card-bg); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    padding: 1.8rem 3rem; display: flex; justify-content: space-around; align-items: center;
+    position: relative; z-index: 1;
+  }
+  .stat { text-align: center; }
+  .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 700; color: var(--copper); line-height: 1; }
+  .stat-label { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--warm-gray); margin-top: 0.3rem; }
+  .stat-divider { width: 1px; height: 40px; background: var(--border); }
+
+  /* SECTION COMMON */
+  section { position: relative; z-index: 1; }
+  .section-label { font-family: 'Space Mono', monospace; font-size: 0.66rem; color: var(--copper); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 0.8rem; }
+  .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 300; line-height: 1.15; margin-bottom: 1rem; }
+  .section-sub { color: var(--warm-gray); font-size: 0.9rem; line-height: 1.7; max-width: 480px; }
+
+  /* CATEGORIES */
+  .categories { padding: 6rem 3rem; }
+  .categories-header { margin-bottom: 3rem; }
+  .cat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 1rem; }
+  .cat-card {
+    background: var(--card-bg); border: 1px solid var(--border);
+    padding: 1.8rem 1.2rem; text-align: center; cursor: pointer;
+    transition: all 0.3s; position: relative; overflow: hidden;
+  }
+  .cat-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: var(--copper); transform: scaleX(0); transition: transform 0.3s; }
+  .cat-card:hover { border-color: var(--copper); transform: translateY(-4px); }
+  .cat-card:hover::after { transform: scaleX(1); }
+  .cat-icon { font-size: 2.5rem; margin-bottom: 0.8rem; }
+  .cat-name { font-family: 'Cormorant Garamond', serif; font-size: 1rem; margin-bottom: 0.25rem; }
+  .cat-count { font-size: 0.7rem; color: var(--warm-gray); }
+
+  /* FEATURED */
+  .featured { padding: 6rem 3rem; background: rgba(30,30,28,0.5); }
+  .featured-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 3rem; flex-wrap: wrap; gap: 1rem; }
+  .filter-tabs { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+  .tab {
+    background: transparent; border: 1px solid var(--border); color: var(--warm-gray); cursor: pointer;
+    padding: 0.45rem 1rem; font-family: 'DM Sans', sans-serif; font-size: 0.75rem;
+    letter-spacing: 0.08em; text-transform: uppercase; transition: all 0.3s;
+  }
+  .tab.active, .tab:hover { background: var(--copper); border-color: var(--copper); color: var(--charcoal); }
+  .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.5rem; }
+
+  /* PRODUCT CARD */
+  .product-card {
+    background: var(--card-bg); border: 1px solid var(--border);
+    overflow: hidden; cursor: pointer; transition: all 0.3s; position: relative;
+  }
+  .product-card:hover { border-color: var(--copper); transform: translateY(-5px); box-shadow: 0 20px 50px rgba(0,0,0,0.4); }
+  .product-img {
+    height: 200px; display: flex; align-items: center; justify-content: center;
+    background: #1a1a18;
+    position: relative; overflow: hidden;
+  }
+  .product-img img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.4s ease;
+    display: block;
+  }
+  .product-card:hover .product-img img { transform: scale(1.06); }
+  .product-img .img-fallback { font-size: 4rem; }
+  .product-img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 50%, rgba(17,17,16,0.5) 100%); pointer-events: none; }
+  .product-badge { position: absolute; top: 0.8rem; left: 0.8rem; background: var(--copper); color: var(--charcoal); font-size: 0.6rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.2rem 0.55rem; }
+  .product-badge.new { background: #4CAF50; }
+  .product-badge.sale { background: #E74C3C; }
+  .product-badge.preorder { background: #3498DB; }
+  .product-body { padding: 1.3rem; }
+  .product-cat { font-size: 0.65rem; color: var(--copper); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.35rem; }
+  .product-name { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; margin-bottom: 0.4rem; line-height: 1.3; }
+  .product-desc { font-size: 0.78rem; color: var(--warm-gray); margin-bottom: 1rem; line-height: 1.55; }
+  .product-footer { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; flex-wrap: wrap; }
+  .product-price { font-family: 'Space Mono', monospace; font-size: 0.95rem; color: var(--cream); }
+  .product-price .old { font-size: 0.72rem; color: var(--warm-gray); text-decoration: line-through; display: block; }
+  .product-price .currency { font-size: 0.72rem; color: var(--warm-gray); }
+  .add-btn {
+    background: var(--copper); border: none; cursor: pointer;
+    padding: 0.55rem 1rem; color: var(--charcoal);
+    font-family: 'DM Sans', sans-serif; font-size: 0.72rem; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase; transition: all 0.2s; white-space: nowrap;
+  }
+  .add-btn:hover { background: var(--copper-light); }
+
+  /* FREEDOM SALES SECTION */
+  .freedom-sale {
+    padding: 5rem 3rem;
+    background: linear-gradient(135deg, #1a1208, #111110);
+    border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    position: relative; overflow: hidden;
+  }
+  .freedom-sale::before {
+    content: 'FREEDOM SALE';
+    position: absolute; right: -2%; top: 50%; transform: translateY(-50%) rotate(90deg);
+    font-family: 'Cormorant Garamond', serif; font-size: 8rem; font-weight: 700;
+    color: rgba(184,115,51,0.05); letter-spacing: 0.1em; white-space: nowrap; pointer-events: none;
+  }
+  .freedom-header { margin-bottom: 3rem; }
+  .freedom-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1rem; }
+  .sale-card {
+    background: var(--card-bg); border: 1px solid var(--border);
+    padding: 1.5rem; display: flex; gap: 1rem; align-items: flex-start;
+    transition: all 0.3s; cursor: pointer;
+  }
+  .sale-card:hover { border-color: var(--copper); }
+  .sale-emoji {
+    width: 90px; height: 90px; flex-shrink: 0;
+    overflow: hidden; background: #1a1a18;
+  }
+  .sale-emoji img { width: 100%; height: 100%; object-fit: cover; }
+  .sale-info {}
+  .sale-name { font-family: 'Cormorant Garamond', serif; font-size: 1rem; margin-bottom: 0.4rem; line-height: 1.3; }
+  .sale-prices { display: flex; gap: 0.8rem; align-items: center; }
+  .sale-old { font-size: 0.72rem; color: var(--warm-gray); text-decoration: line-through; }
+  .sale-new { font-family: 'Space Mono', monospace; font-size: 0.9rem; color: var(--copper); font-weight: 700; }
+  .sale-discount {
+    display: inline-block; background: #E74C3C; color: #fff;
+    font-size: 0.6rem; font-weight: 700; padding: 0.15rem 0.4rem;
+    letter-spacing: 0.05em; margin-top: 0.4rem;
+  }
+
+  /* BRANDS */
+  .brands { padding: 3.5rem 3rem; background: var(--card-bg); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .brands-label { text-align: center; font-size: 0.65rem; color: var(--warm-gray); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 2rem; }
+  .brands-row { display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; gap: 2rem; }
+  .brand-name { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 600; color: rgba(245,240,232,0.2); letter-spacing: 0.1em; transition: color 0.3s; cursor: pointer; }
+  .brand-name:hover { color: var(--copper); }
+
+  /* RECOMMENDATIONS */
+  .reco { padding: 6rem 3rem; }
+  .reco-header { margin-bottom: 3rem; }
+  .reco-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .reco-card {
+    background: var(--card-bg); border: 1px solid var(--border);
+    padding: 1.8rem; display: flex; gap: 1.2rem; align-items: flex-start;
+    transition: all 0.3s; cursor: pointer;
+  }
+  .reco-card:hover { border-color: var(--copper); }
+  .reco-icon {
+    width: 80px; height: 80px; flex-shrink: 0;
+    overflow: hidden; background: #1a1a18;
+  }
+  .reco-icon img { width: 100%; height: 100%; object-fit: cover; }
+  .reco-label { font-size: 0.65rem; color: var(--copper); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.35rem; }
+  .reco-name { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; margin-bottom: 0.5rem; }
+  .reco-reason { font-size: 0.8rem; color: var(--warm-gray); line-height: 1.6; margin-bottom: 0.8rem; }
+  .reco-price { font-family: 'Space Mono', monospace; font-size: 0.9rem; color: var(--copper); }
+  .reco-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: 0.5rem; }
+  .tag { border: 1px solid var(--border); color: var(--warm-gray); font-size: 0.63rem; letter-spacing: 0.06em; padding: 0.2rem 0.5rem; text-transform: uppercase; }
+
+  /* TESTIMONIALS */
+  .testimonials { padding: 6rem 3rem; }
+  .test-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+  .test-card { background: var(--card-bg); border: 1px solid var(--border); padding: 2rem; position: relative; }
+  .test-card::before { content: '"'; font-family: 'Cormorant Garamond', serif; font-size: 5rem; color: var(--copper); opacity: 0.15; position: absolute; top: 0.5rem; left: 1.2rem; line-height: 1; }
+  .test-text { font-size: 0.85rem; color: var(--warm-gray); line-height: 1.7; margin-bottom: 1.5rem; padding-top: 1rem; }
+  .test-author { display: flex; align-items: center; gap: 0.8rem; }
+  .test-avatar { width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(135deg, var(--copper), var(--copper-light)); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; color: var(--charcoal); flex-shrink: 0; }
+  .test-name { font-size: 0.85rem; font-weight: 500; }
+  .test-meta { font-size: 0.68rem; color: var(--warm-gray); }
+
+  /* FOOTER */
+  footer { background: var(--card-bg); border-top: 1px solid var(--border); padding: 4rem 3rem 2rem; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+  .footer-brand .nav-logo { display: inline-block; margin-bottom: 1rem; }
+  .footer-desc { font-size: 0.8rem; color: var(--warm-gray); line-height: 1.7; margin-bottom: 1.5rem; }
+  .footer-social { display: flex; gap: 0.7rem; }
+  .social-btn { width: 34px; height: 34px; border: 1px solid var(--border); background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; transition: all 0.3s; color: var(--warm-gray); }
+  .social-btn:hover { border-color: var(--copper); color: var(--copper); }
+  .footer-col h4 { font-family: 'Cormorant Garamond', serif; font-size: 1rem; margin-bottom: 1.2rem; }
+  .footer-col ul { list-style: none; }
+  .footer-col li { margin-bottom: 0.65rem; }
+  .footer-col a { color: var(--warm-gray); text-decoration: none; font-size: 0.8rem; transition: color 0.3s; }
+  .footer-col a:hover { color: var(--copper); }
+  .footer-bottom { border-top: 1px solid var(--border); padding-top: 2rem; display: flex; align-items: center; justify-content: space-between; }
+  .footer-bottom p { font-size: 0.72rem; color: var(--warm-gray); }
+
+  /* CHAT WIDGET */
+  .chat-toggle {
+    position: fixed; bottom: 2rem; right: 2rem;
+    width: 60px; height: 60px; background: var(--copper); border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: center; font-size: 1.6rem;
+    z-index: 200; box-shadow: 0 8px 30px rgba(184,115,51,0.4); transition: all 0.3s;
+  }
+  .chat-toggle:hover { background: var(--copper-light); transform: scale(1.08); }
+  .chat-pulse { position: absolute; top: -4px; right: -4px; width: 14px; height: 14px; background: #4CAF50; border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.3); opacity: 0.7; } }
+
+  .chat-window {
+    position: fixed; bottom: 6rem; right: 2rem; width: 380px;
+    background: var(--dark-bg); border: 1px solid var(--border); z-index: 200;
+    display: none; flex-direction: column; box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+    max-height: 530px; animation: slideUp 0.3s ease;
+  }
+  .chat-window.open { display: flex; }
+  @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  .chat-header { background: var(--card-bg); border-bottom: 1px solid var(--border); padding: 1.1rem 1.4rem; display: flex; align-items: center; justify-content: space-between; }
+  .chat-header-left { display: flex; align-items: center; gap: 0.8rem; }
+  .chat-avatar { width: 36px; height: 36px; background: linear-gradient(135deg, var(--copper), var(--copper-light)); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
+  .chat-name { font-size: 0.88rem; font-weight: 500; }
+  .chat-status { font-size: 0.65rem; color: #4CAF50; letter-spacing: 0.08em; }
+  .close-btn { background: transparent; border: none; cursor: pointer; color: var(--warm-gray); font-size: 1.1rem; padding: 0.2rem; transition: color 0.2s; }
+  .close-btn:hover { color: var(--cream); }
+  .chat-messages { flex: 1; overflow-y: auto; padding: 1.1rem; display: flex; flex-direction: column; gap: 0.9rem; scrollbar-width: thin; scrollbar-color: var(--border) transparent; }
+  .msg { max-width: 82%; animation: msgIn 0.3s ease; }
+  @keyframes msgIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  .msg.bot { align-self: flex-start; }
+  .msg.user { align-self: flex-end; }
+  .msg-bubble { padding: 0.75rem 0.95rem; font-size: 0.8rem; line-height: 1.6; }
+  .bot .msg-bubble { background: var(--card-bg); border: 1px solid var(--border); color: var(--cream); border-radius: 0 8px 8px 8px; }
+  .user .msg-bubble { background: var(--copper); color: var(--charcoal); font-weight: 500; border-radius: 8px 8px 0 8px; }
+  .msg-time { font-size: 0.6rem; color: var(--warm-gray); margin-top: 0.25rem; }
+  .bot .msg-time { text-align: left; }
+  .user .msg-time { text-align: right; }
+  .chat-suggestions { padding: 0.4rem 1rem; display: flex; gap: 0.4rem; flex-wrap: wrap; }
+  .suggestion { background: transparent; border: 1px solid var(--border); color: var(--warm-gray); cursor: pointer; font-size: 0.67rem; padding: 0.28rem 0.65rem; font-family: 'DM Sans', sans-serif; transition: all 0.2s; white-space: nowrap; }
+  .suggestion:hover { border-color: var(--copper); color: var(--copper); }
+  .chat-input-area { border-top: 1px solid var(--border); padding: 0.9rem; display: flex; gap: 0.7rem; align-items: flex-end; }
+  .chat-input { flex: 1; background: var(--card-bg); border: 1px solid var(--border); color: var(--cream); padding: 0.65rem 0.9rem; font-family: 'DM Sans', sans-serif; font-size: 0.8rem; resize: none; outline: none; transition: border-color 0.3s; max-height: 100px; }
+  .chat-input:focus { border-color: var(--copper); }
+  .chat-input::placeholder { color: var(--warm-gray); }
+  .send-btn { background: var(--copper); border: none; cursor: pointer; width: 38px; height: 38px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; transition: all 0.2s; color: var(--charcoal); }
+  .send-btn:hover { background: var(--copper-light); }
+  .send-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+  .typing { display: flex; gap: 4px; align-items: center; padding: 0.75rem 0.95rem; background: var(--card-bg); border: 1px solid var(--border); width: fit-content; border-radius: 0 8px 8px 8px; }
+  .typing span { width: 6px; height: 6px; border-radius: 50%; background: var(--copper); animation: bounce 1.2s infinite; }
+  .typing span:nth-child(2) { animation-delay: 0.2s; }
+  .typing span:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes bounce { 0%, 60%, 100% { transform: translateY(0); } 30% { transform: translateY(-6px); } }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeRight { from { opacity: 0; transform: translateX(30px); } to { opacity: 1; transform: translateX(0); } }
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; padding: 8rem 1.5rem 3rem; }
+    .hero-visual { padding-left: 0; margin-top: 2rem; }
+    .reco-grid, .test-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .stats-bar { flex-wrap: wrap; gap: 1.5rem; padding: 1.5rem; }
+    .stat-divider { display: none; }
+    .categories, .featured, .reco, .testimonials, .freedom-sale { padding: 4rem 1.5rem; }
+    .chat-window { width: calc(100vw - 2rem); right: 1rem; bottom: 5rem; }
+    nav { top: 28px; }
+    .promo-banner { font-size: 0.62rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- PROMO BANNER -->
+<div class="promo-banner">📱 Samsung Galaxy S26 Series Pre-Order — Limited Offer: 26th Feb – 15th March 2025</div>
+
+<!-- NAV -->
+<nav style="top:30px;">
+  <a href="#" class="nav-logo">
+    ELLES
+    <small>HOME OF APPLIANCES</small>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#categories">Categories</a></li>
+    <li><a href="#featured">Products</a></li>
+    <li><a href="#freedom-sale">Freedom Sale</a></li>
+    <li><a href="#recommendations">AI Picks</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+  </ul>
+  <button class="nav-cta" onclick="openChat()">Ask AI Assistant</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <div class="hero-badge">New Arrivals & Pre-Orders Live</div>
+    <h1>Your Home Deserves<br>Only the <em>Best</em></h1>
+    <p class="hero-sub">Premium electronics, home appliances, laptops & smart gadgets — all under one roof. Trusted by thousands across Ghana.</p>
+    <div class="hero-price-note">💰 Prices in GH₵ · Fast Delivery · Genuine Warranty</div>
+    <div class="hero-actions">
+      <button class="btn-primary" onclick="document.getElementById('featured').scrollIntoView({behavior:'smooth'})">Shop Now</button>
+      <button class="btn-outline" onclick="openChat()">Talk to AI Assistant</button>
+    </div>
+  </div>
+
+  <!-- Samsung S26 Pre-order showcase -->
+  <div class="hero-visual">
+    <div class="hero-preorder-label">Samsung Galaxy S26 — Pre-Order Now</div>
+    <div class="s26-grid">
+      <div class="s26-card">
+        <div class="s26-img"><img src="https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=300&q=80" alt="Samsung Galaxy S26" loading="lazy"/></div>
+        <span class="s26-badge" style="background:#3498DB;">Pre-Order</span>
+        <div class="s26-model">SM-S942B/DS</div>
+        <div class="s26-name">Galaxy S26 256GB 12GB RAM</div>
+        <div class="s26-price">GH₵11,099</div>
+      </div>
+      <div class="s26-card">
+        <div class="s26-img"><img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=300&q=80" alt="Samsung Galaxy S26 Plus" loading="lazy"/></div>
+        <span class="s26-badge" style="background:#3498DB;">Pre-Order</span>
+        <div class="s26-model">SM-S947B/DS</div>
+        <div class="s26-name">Galaxy S26 Plus</div>
+        <div class="s26-price">GH₵13,099</div>
+      </div>
+      <div class="s26-card">
+        <div class="s26-img"><img src="https://images.unsplash.com/photo-1567581935884-3349723552ca?w=300&q=80" alt="Samsung Galaxy S26 Ultra" loading="lazy"/></div>
+        <span class="s26-badge">HOT</span>
+        <div class="s26-model">SM-S948B/DS</div>
+        <div class="s26-name">Galaxy S26 Ultra</div>
+        <div class="s26-price">GH₵15,599</div>
+      </div>
+      <div class="s26-card">
+        <div class="s26-img"><img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=300&q=80" alt="Samsung Galaxy S26 Ultra 1TB" loading="lazy"/></div>
+        <span class="s26-badge">PREMIUM</span>
+        <div class="s26-model">SM-S948B/DS 1TB</div>
+        <div class="s26-name">Galaxy S26 Ultra 1TB 12GB</div>
+        <div class="s26-price">GH₵21,999</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">5,000+</div><div class="stat-label">Products In Stock</div></div>
+  <div class="stat-divider"></div>
+  <div class="stat"><div class="stat-num">48h</div><div class="stat-label">Express Delivery</div></div>
+  <div class="stat-divider"></div>
+  <div class="stat"><div class="stat-num">50+</div><div class="stat-label">Premium Brands</div></div>
+  <div class="stat-divider"></div>
+  <div class="stat"><div class="stat-num">12yr</div><div class="stat-label">In Business</div></div>
+  <div class="stat-divider"></div>
+  <div class="stat"><div class="stat-num">24/7</div><div class="stat-label">AI Support</div></div>
+</div>
+
+<!-- CATEGORIES -->
+<section class="categories" id="categories">
+  <div class="categories-header reveal">
+    <div class="section-label">Browse by Type</div>
+    <h2 class="section-title">Every Room, Every Need</h2>
+  </div>
+  <div class="cat-grid">
+    <div class="cat-card reveal" onclick="filterProducts('Smartphones')"><div class="cat-icon">📱</div><div class="cat-name">Smartphones</div><div class="cat-count">Samsung, Xiaomi & more</div></div>
+    <div class="cat-card reveal" onclick="filterProducts('Laptops')"><div class="cat-icon">💻</div><div class="cat-name">Laptops</div><div class="cat-count">HP, Dell, Lenovo</div></div>
+    <div class="cat-card reveal" onclick="filterProducts('TVs')"><div class="cat-icon">📺</div><div class="cat-name">TVs</div><div class="cat-count">LG Smart 4K</div></div>
+    <div class="cat-card reveal" onclick="filterProducts('Home Appliances')"><div class="cat-icon">🏠</div><div class="cat-name">Home Appliances</div><div class="cat-count">Fridges, A/C & more</div></div>
+    <div class="cat-card reveal" onclick="filterProducts('Audio')"><div class="cat-icon">🔊</div><div class="cat-name">Audio & Theatre</div><div class="cat-count">LG, JBL</div></div>
+    <div class="cat-card reveal" onclick="filterProducts('Small Appliances')"><div class="cat-icon">🍳</div><div class="cat-name">Small Appliances</div><div class="cat-count">Sencor & more</div></div>
+    <div class="cat-card reveal" onclick="filterProducts('Monitors')"><div class="cat-icon">🖥️</div><div class="cat-name">Monitors</div><div class="cat-count">Samsung FHD</div></div>
+    <div class="cat-card reveal" onclick="filterProducts('UPS')"><div class="cat-icon">🔋</div><div class="cat-name">UPS & Power</div><div class="cat-count">APC Series</div></div>
+  </div>
+</section>
+
+<!-- FEATURED PRODUCTS -->
+<section class="featured" id="featured">
+  <div class="featured-header reveal">
+    <div>
+      <div class="section-label">Our Selection</div>
+      <h2 class="section-title">Featured Products</h2>
+    </div>
+    <div class="filter-tabs">
+      <button class="tab active" onclick="filterTab(this,'All')">All</button>
+      <button class="tab" onclick="filterTab(this,'Smartphones')">Phones</button>
+      <button class="tab" onclick="filterTab(this,'Laptops')">Laptops</button>
+      <button class="tab" onclick="filterTab(this,'TVs')">TVs</button>
+      <button class="tab" onclick="filterTab(this,'Home Appliances')">Appliances</button>
+      <button class="tab" onclick="filterTab(this,'Audio')">Audio</button>
+    </div>
+  </div>
+  <div class="products-grid" id="products-grid"></div>
+</section>
+
+<!-- FREEDOM SALES -->
+<section class="freedom-sale" id="freedom-sale">
+  <div class="freedom-header reveal">
+    <div class="section-label">🎉 Freedom Sales — Celebrate &amp; Elevate</div>
+    <h2 class="section-title">Independence Day<br><em>Special Offers</em></h2>
+    <p class="section-sub">Exclusive discounts to celebrate your independence and elevate your lifestyle.</p>
+  </div>
+  <div class="freedom-grid">
+    <div class="sale-card reveal">
+      <div class="sale-emoji"><img src="https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?w=180&q=80" alt="LG Refrigerator" loading="lazy"/></div>
+      <div class="sale-info">
+        <div class="sale-name">LG 187L GN-B202SQBB Top Freezer Refrigerator — Silver</div>
+        <div class="sale-prices">
+          <span class="sale-old">GH₵6,599</span>
+          <span class="sale-new">GH₵4,399</span>
+        </div>
+        <span class="sale-discount">SAVE GH₵2,200</span>
+      </div>
+    </div>
+    <div class="sale-card reveal">
+      <div class="sale-emoji"><img src="https://images.unsplash.com/photo-1593640408182-31c228f8d6bb?w=180&q=80" alt="Samsung Monitor 27 inch" loading="lazy"/></div>
+      <div class="sale-info">
+        <div class="sale-name">Samsung LED 27" Essential FHD Monitor</div>
+        <div class="sale-prices">
+          <span class="sale-old">GH₵1,999</span>
+          <span class="sale-new">GH₵1,499</span>
+        </div>
+        <span class="sale-discount">SAVE GH₵500</span>
+      </div>
+    </div>
+    <div class="sale-card reveal">
+      <div class="sale-emoji"><img src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=180&q=80" alt="Samsung Monitor 24 inch" loading="lazy"/></div>
+      <div class="sale-info">
+        <div class="sale-name">Samsung LED 24" Essential FHD Monitor</div>
+        <div class="sale-prices">
+          <span class="sale-old">GH₵1,699</span>
+          <span class="sale-new">GH₵1,299</span>
+        </div>
+        <span class="sale-discount">SAVE GH₵400</span>
+      </div>
+    </div>
+    <div class="sale-card reveal">
+      <div class="sale-emoji"><img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=180&q=80" alt="Lenovo Laptop" loading="lazy"/></div>
+      <div class="sale-info">
+        <div class="sale-name">Lenovo V15 G2 IJL N4500 8GB 256GB SSD + Free Bag, Mouse & Headset</div>
+        <div class="sale-prices">
+          <span class="sale-old">GH₵4,799</span>
+          <span class="sale-new">GH₵3,899</span>
+        </div>
+        <span class="sale-discount">SAVE GH₵900</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BRANDS -->
+<div class="brands">
+  <div class="brands-label">Trusted Brands We Carry</div>
+  <div class="brands-row">
+    <div class="brand-name">Samsung</div>
+    <div class="brand-name">LG</div>
+    <div class="brand-name">HP</div>
+    <div class="brand-name">Dell</div>
+    <div class="brand-name">Lenovo</div>
+    <div class="brand-name">JBL</div>
+    <div class="brand-name">Xiaomi</div>
+    <div class="brand-name">APC</div>
+    <div class="brand-name">Sencor</div>
+    <div class="brand-name">Sigma</div>
+  </div>
+</div>
+
+<!-- RECOMMENDATIONS -->
+<section class="reco" id="recommendations">
+  <div class="reco-header reveal">
+    <div class="section-label">AI Curated</div>
+    <h2 class="section-title">Expert Picks For You</h2>
+    <p class="section-sub">Our AI assistant matches your budget and needs to the best products in our catalogue.</p>
+  </div>
+  <div class="reco-grid">
+    <div class="reco-card reveal">
+      <div class="reco-icon"><img src="https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=160&q=80" alt="Samsung Galaxy S26 Ultra"/></div>
+      <div>
+        <div class="reco-label">Best Flagship Value</div>
+        <div class="reco-name">Samsung Galaxy S26 Ultra</div>
+        <div class="reco-reason">Top-tier camera, massive display, and AI-powered features. Pre-order now before stock runs out — best flagship in Ghana right now.</div>
+        <div class="reco-price">From GH₵15,599</div>
+        <div class="reco-tags"><span class="tag">Pre-Order</span><span class="tag">AI Camera</span><span class="tag">5G</span></div>
+      </div>
+    </div>
+    <div class="reco-card reveal">
+      <div class="reco-icon"><img src="https://images.unsplash.com/photo-1461151304267-38535e780c79?w=160&q=80" alt="LG 4K TV"/></div>
+      <div>
+        <div class="reco-label">Best TV Deal Right Now</div>
+        <div class="reco-name">LG 55" UHD Smart 4K TV</div>
+        <div class="reco-reason">Massive 55-inch 4K display with satellite tuner and smart OS. Down from GH₵9,599 — exceptional value for the size and features.</div>
+        <div class="reco-price">GH₵6,499 <span style="font-size:0.7rem;color:var(--warm-gray);text-decoration:line-through;margin-left:0.4rem;">GH₵9,599</span></div>
+        <div class="reco-tags"><span class="tag">4K UHD</span><span class="tag">Smart TV</span><span class="tag">Satellite</span></div>
+      </div>
+    </div>
+    <div class="reco-card reveal">
+      <div class="reco-icon"><img src="https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=160&q=80" alt="HP Laptop"/></div>
+      <div>
+        <div class="reco-label">Best Budget Laptop</div>
+        <div class="reco-name">HP 250R G10 Core3 512GB</div>
+        <div class="reco-reason">Free laptop bag, wireless mouse & Bluetooth headset included. Core 3 processor handles everyday tasks and more. Great student/work pick.</div>
+        <div class="reco-price">GH₵6,999 <span style="font-size:0.7rem;color:var(--warm-gray);text-decoration:line-through;margin-left:0.4rem;">GH₵9,299</span></div>
+        <div class="reco-tags"><span class="tag">Free Accessories</span><span class="tag">512GB SSD</span><span class="tag">15.6"</span></div>
+      </div>
+    </div>
+    <div class="reco-card reveal">
+      <div class="reco-icon"><img src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=160&q=80" alt="Air Conditioner"/></div>
+      <div>
+        <div class="reco-label">Best A/C Value</div>
+        <div class="reco-name">Sigma Luxe 2.5HP Inverter R32 A/C</div>
+        <div class="reco-reason">R32 eco-friendly refrigerant, inverter technology for energy savings, and a stylish design. Great for medium-sized rooms in Ghana's climate.</div>
+        <div class="reco-price">GH₵6,499 <span style="font-size:0.7rem;color:var(--warm-gray);text-decoration:line-through;margin-left:0.4rem;">GH₵7,999</span></div>
+        <div class="reco-tags"><span class="tag">Inverter</span><span class="tag">Eco R32</span><span class="tag">2.5HP</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="reveal">
+    <div class="section-label">Client Stories</div>
+    <h2 class="section-title">What Our Customers Say</h2>
+  </div>
+  <div class="test-grid">
+    <div class="test-card reveal">
+      <p class="test-text">Ordered the LG 4K TV and it arrived in 2 days. The AI assistant helped me compare models and I got exactly what I needed within my budget. Amazing service!</p>
+      <div class="test-author">
+        <div class="test-avatar">K</div>
+        <div><div class="test-name">Kofi Mensah</div><div class="test-meta">Accra · ⭐⭐⭐⭐⭐</div></div>
+      </div>
+    </div>
+    <div class="test-card reveal">
+      <p class="test-text">Pre-ordered the S26 Ultra and the process was seamless. Elles kept me updated every step. The phone is incredible — worth every pesewa.</p>
+      <div class="test-author">
+        <div class="test-avatar">A</div>
+        <div><div class="test-name">Abena Osei</div><div class="test-meta">Kumasi · ⭐⭐⭐⭐⭐</div></div>
+      </div>
+    </div>
+    <div class="test-card reveal">
+      <p class="test-text">Got the HP laptop with free accessories for my son. The chatbot answered all my technical questions at midnight! Genuine product, great price.</p>
+      <div class="test-author">
+        <div class="test-avatar">E</div>
+        <div><div class="test-name">Emmanuel Darko</div><div class="test-meta">Tema · ⭐⭐⭐⭐⭐</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#" class="nav-logo">ELLES<small>HOME OF APPLIANCES</small></a>
+      <p class="footer-desc">Premium electronics, home appliances, and smart gadgets delivered across Ghana. Your trusted partner for genuine products and expert advice.</p>
+      <div class="footer-social">
+        <button class="social-btn">𝕏</button>
+        <button class="social-btn">f</button>
+        <button class="social-btn">📷</button>
+        <button class="social-btn">▶</button>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Products</h4>
+      <ul>
+        <li><a href="#">Smartphones</a></li>
+        <li><a href="#">Laptops & PCs</a></li>
+        <li><a href="#">TVs & Audio</a></li>
+        <li><a href="#">Home Appliances</a></li>
+        <li><a href="#">Small Appliances</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#">Pre-Order</a></li>
+        <li><a href="#">Delivery & Pickup</a></li>
+        <li><a href="#">Warranty Support</a></li>
+        <li><a href="#">Trade-In Program</a></li>
+        <li><a href="#">Financing</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="#">Call Us: 0XX XXX XXXX</a></li>
+        <li><a href="#"><span class="__cf_email__" data-cfemail="6a020f0606052a0f06060f190205070f44090507">[email&#160;protected]</span></a></li>
+        <li><a href="#">WhatsApp Support</a></li>
+        <li><a href="#">Store Location</a></li>
+        <li><a href="#">Track My Order</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Elles Home of Appliances. All rights reserved.</p>
+    <p>Privacy Policy · Terms · Cookie Settings</p>
+  </div>
+</footer>
+
+<!-- AI CHAT WIDGET -->
+<button class="chat-toggle" onclick="openChat()" id="chatToggle">
+  🤖
+  <span class="chat-pulse"></span>
+</button>
+
+<div class="chat-window" id="chatWindow">
+  <div class="chat-header">
+    <div class="chat-header-left">
+      <div class="chat-avatar">🤖</div>
+      <div>
+        <div class="chat-name">Elles AI Assistant</div>
+        <div class="chat-status">● Online — Ready to help</div>
+      </div>
+    </div>
+    <button class="close-btn" onclick="closeChat()">✕</button>
+  </div>
+  <div class="chat-messages" id="chatMessages">
+    <div class="msg bot">
+      <div class="msg-bubble">👋 Welcome to Elles Home of Appliances! I can help you find the perfect product, compare specs, check the S26 pre-order details, or answer any questions. What are you looking for today?</div>
+      <div class="msg-time">Just now</div>
+    </div>
+  </div>
+  <div class="chat-suggestions">
+    <button class="suggestion" onclick="sendSuggestion(this)">S26 pre-order details</button>
+    <button class="suggestion" onclick="sendSuggestion(this)">Best laptop under GH₵5,000</button>
+    <button class="suggestion" onclick="sendSuggestion(this)">LG TV recommendations</button>
+    <button class="suggestion" onclick="sendSuggestion(this)">Freedom Sale deals</button>
+  </div>
+  <div class="chat-input-area">
+    <textarea class="chat-input" id="chatInput" placeholder="Ask about any product..." rows="1" onkeydown="handleKey(event)" oninput="autoResize(this)"></textarea>
+    <button class="send-btn" id="sendBtn" onclick="sendMessage()">➤</button>
+  </div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// ── PRODUCT DATA (real from store) ──
+const products = [
+  // Smartphones
+  { id:1,  name:'Samsung Galaxy S26 Ultra', cat:'Smartphones', desc:'SM-S948B/DS — Flagship camera, AI features, large display. Pre-order available now.', price:'GH₵15,599', img:'https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=400&q=80', badge:'preorder', rating:'⭐⭐⭐⭐⭐' },
+  { id:2,  name:'Samsung Galaxy S26 Plus', cat:'Smartphones', desc:'SM-S947B/DS — Bigger battery and screen, all the S26 power. Pre-order only.', price:'GH₵13,099', img:'https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=400&q=80', badge:'preorder', rating:'⭐⭐⭐⭐⭐' },
+  { id:3,  name:'Samsung Galaxy S26 256GB', cat:'Smartphones', desc:'SM-S942B/DS 256GB 12GB RAM — The essential S26 experience at the best entry price.', price:'GH₵11,099', img:'https://images.unsplash.com/photo-1567581935884-3349723552ca?w=400&q=80', badge:'preorder', rating:'⭐⭐⭐⭐⭐' },
+  { id:4,  name:'Samsung Galaxy A17 128GB', cat:'Smartphones', desc:'A175F/DS + Free phone cover, screen protector & earbud. Great everyday phone.', price:'GH₵1,899', img:'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400&q=80', badge:'new', rating:'⭐⭐⭐⭐' },
+  { id:5,  name:'Samsung Galaxy A07 64GB', cat:'Smartphones', desc:'A075F/DS 64GB 4GB RAM + Free phone cover & screen protector included.', price:'GH₵1,159', img:'https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?w=400&q=80', badge:'', rating:'⭐⭐⭐⭐' },
+  { id:6,  name:'Xiaomi Redmi 15C 256GB', cat:'Smartphones', desc:'8GB RAM, large battery, smooth performance. Excellent value for money.', price:'GH₵1,629', img:'https://images.unsplash.com/photo-1607936854279-55e8a4c64888?w=400&q=80', badge:'new', rating:'⭐⭐⭐⭐' },
+  // Laptops
+  { id:7,  name:'Dell Pro 16 Plus Ultra5 235U', cat:'Laptops', desc:'16GB RAM, 1TB SSD, 16" display, vPro certified. Professional powerhouse.', price:'GH₵20,999', oldPrice:'GH₵23,799', img:'https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=400&q=80', badge:'sale', rating:'⭐⭐⭐⭐⭐' },
+  { id:8,  name:'HP 240R G10 Core5 512GB', cat:'Laptops', desc:'Core 5 120U, 8GB RAM, 512GB SSD, 14" + Free Bag, Mouse & Bluetooth Headset.', price:'GH₵8,999', oldPrice:'GH₵11,699', img:'https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=400&q=80', badge:'sale', rating:'⭐⭐⭐⭐⭐' },
+  { id:9,  name:'HP 250R G10 Core3 512GB', cat:'Laptops', desc:'Core 3 100U, 8GB RAM, 512GB SSD, 15.6" + Free Bag, Mouse & Bluetooth Headset.', price:'GH₵6,999', oldPrice:'GH₵9,299', img:'https://images.unsplash.com/photo-1484788984921-03950022c9ef?w=400&q=80', badge:'sale', rating:'⭐⭐⭐⭐' },
+  { id:10, name:'Lenovo V15 G2 CEL N4500', cat:'Laptops', desc:'8GB RAM, 256GB SSD, 15.6" + Free Laptop Bag, Wireless Mouse & BT Headset.', price:'GH₵3,899', oldPrice:'GH₵4,799', img:'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400&q=80', badge:'sale', rating:'⭐⭐⭐⭐' },
+  // TVs
+  { id:11, name:'LG 55" UHD Smart 4K TV', cat:'TVs', desc:'LED UHD Smart Satellite 4K Television. Stunning visuals, smart platform built-in.', price:'GH₵6,499', oldPrice:'GH₵9,599', img:'https://images.unsplash.com/photo-1461151304267-38535e780c79?w=400&q=80', badge:'sale', rating:'⭐⭐⭐⭐⭐' },
+  { id:12, name:'LG 43" UHD Smart 4K TV', cat:'TVs', desc:'43UR73006LA LED UHD Smart Satellite 4K Television — compact 4K power.', price:'GH₵4,599', oldPrice:'GH₵7,099', img:'https://images.unsplash.com/photo-1593359677879-a4bb92f4834a?w=400&q=80', badge:'sale', rating:'⭐⭐⭐⭐⭐' },
+  { id:13, name:'LG 50" UHD 4K AI ThinQ TV', cat:'TVs', desc:'50UA85006LA Smart Satellite 4K AI ThinQ with voice control and smart features.', price:'GH₵5,999', oldPrice:'GH₵8,099', img:'https://images.unsplash.com/photo-1567690187548-f07b1d7bf5a9?w=400&q=80', badge:'sale', rating:'⭐⭐⭐⭐⭐' },
+  { id:14, name:'LG 43" HD Smart TV', cat:'TVs', desc:'43LR60006LA LED HD Smart Television — reliable, vibrant, and internet-connected.', price:'GH₵3,999', oldPrice:'GH₵5,599', img:'https://images.unsplash.com/photo-1509281373149-e957c6296406?w=400&q=80', badge:'sale', rating:'⭐⭐⭐⭐' },
+  // Home Appliances
+  { id:15, name:'LG 187L Top Freezer Fridge', cat:'Home Appliances', desc:'GN-B202SQBB Silver finish. Efficient cooling, spacious layout, great for families.', price:'GH₵4,399', oldPrice:'GH₵6,599', img:'https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?w=400&q=80', badge:'sale', rating:'⭐⭐⭐⭐' },
+  { id:16, name:'Sigma Luxe 2.5HP Inverter A/C', cat:'Home Appliances', desc:'SAC-T24LXIV R32 Eco inverter. Powerful cooling, energy efficient, stylish design.', price:'GH₵6,499', oldPrice:'GH₵7,999', img:'https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=400&q=80', badge:'sale', rating:'⭐⭐⭐⭐⭐' },
+  { id:17, name:'Samsung 27" FHD Monitor', cat:'Monitors', desc:'Essential FHD LED Monitor, 27 inch. Crisp display for work, study and entertainment.', price:'GH₵1,499', oldPrice:'GH₵1,999', img:'https://images.unsplash.com/photo-1593640408182-31c228f8d6bb?w=400&q=80', badge:'sale', rating:'⭐⭐⭐⭐' },
+  { id:18, name:'Samsung 24" FHD Monitor', cat:'Monitors', desc:'Essential FHD LED Monitor, 24 inch. Compact, sharp and easy on the eyes.', price:'GH₵1,299', oldPrice:'GH₵1,699', img:'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=400&q=80', badge:'sale', rating:'⭐⭐⭐⭐' },
+  // Audio
+  { id:19, name:'LG LHD655BT DVD Home Theatre', cat:'Audio', desc:'5.1 Channel surround sound, DVD compatible, Bluetooth streaming. Room-filling audio.', price:'GH₵3,499', oldPrice:'GH₵4,699', img:'https://images.unsplash.com/photo-1545454675-3531b543be5d?w=400&q=80', badge:'sale', rating:'⭐⭐⭐⭐⭐' },
+  { id:20, name:'LG LHD457B DVD Home Theatre', cat:'Audio', desc:'Powerful home theatre system with DVD playback and Bluetooth connectivity.', price:'GH₵2,899', oldPrice:'GH₵4,399', img:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80', badge:'sale', rating:'⭐⭐⭐⭐' },
+  { id:21, name:'JBL PartyBox Encore2', cat:'Audio', desc:'Portable speaker with 2 microphones included. Party-ready, powerful bass, LED lights.', price:'GH₵5,099', oldPrice:'GH₵5,599', img:'https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=400&q=80', badge:'sale', rating:'⭐⭐⭐⭐⭐' },
+  { id:22, name:'JBL PartyBox Encore Essential2', cat:'Audio', desc:'Portable JBL speaker. Concert-quality sound wherever you go. Built-in light show.', price:'GH₵4,199', img:'https://images.unsplash.com/photo-1589003077984-894e133dabab?w=400&q=80', badge:'new', rating:'⭐⭐⭐⭐⭐' },
+  // Small Appliances
+  { id:23, name:'Sencor Vacuum Sealer SVS 4010SS', cat:'Small Appliances', desc:'Keep food fresh longer with professional vacuum sealing. Sleek stainless steel design.', price:'GH₵1,399', oldPrice:'GH₵1,859', img:'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&q=80', badge:'sale', rating:'⭐⭐⭐⭐' },
+  { id:24, name:'Sencor Garment Steamer SSI 0880BZ', cat:'Small Appliances', desc:'Remove wrinkles fast without ironing. Compact, heats up quickly, safe for all fabrics.', price:'GH₵549', oldPrice:'GH₵759', img:'https://images.unsplash.com/photo-1582735689369-4fe89db7114c?w=400&q=80', badge:'sale', rating:'⭐⭐⭐⭐' },
+  { id:25, name:'Sencor Pasta Maker', cat:'Small Appliances', desc:'Make fresh homemade pasta effortlessly. Multiple shape attachments included.', price:'GH₵649', oldPrice:'GH₵899', img:'https://images.unsplash.com/photo-1565299715199-866c917206bb?w=400&q=80', badge:'sale', rating:'⭐⭐⭐⭐' },
+  { id:26, name:'Sencor Electric Toaster', cat:'Small Appliances', desc:'Sleek electric toaster with multiple browning settings. Perfect for every morning.', price:'GH₵849', oldPrice:'GH₵1,149', img:'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=400&q=80', badge:'sale', rating:'⭐⭐⭐⭐' },
+  // UPS
+  { id:27, name:'APC 3000VA SRV3KI UPS', cat:'UPS', desc:'Professional-grade UPS for servers and critical equipment. Pure sine wave output.', price:'GH₵13,299', img:'https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&q=80', badge:'new', rating:'⭐⭐⭐⭐⭐' },
+  { id:28, name:'APC 750VA SMV750I-MS UPS', cat:'UPS', desc:'Reliable power protection for workstations and network equipment. Compact form.', price:'GH₵3,299', img:'https://images.unsplash.com/photo-1563770660941-10a63df8e898?w=400&q=80', badge:'new', rating:'⭐⭐⭐⭐⭐' },
+];
+
+let activeFilter = 'All';
+
+function renderProducts(filter) {
+  const grid = document.getElementById('products-grid');
+  const filtered = filter === 'All' ? products : products.filter(p => p.cat === filter);
+  grid.innerHTML = filtered.map(p => `
+    <div class="product-card">
+      <div class="product-img">
+        ${p.badge ? `<span class="product-badge ${p.badge}">${p.badge === 'preorder' ? 'Pre-Order' : p.badge.charAt(0).toUpperCase()+p.badge.slice(1)}</span>` : ''}
+        <img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.style.display='none'"/>
+      </div>
+      <div class="product-body">
+        <div class="product-cat">${p.cat}</div>
+        <div class="product-name">${p.name}</div>
+        <div class="product-desc">${p.desc}</div>
+        <div class="product-footer">
+          <div class="product-price">
+            ${p.oldPrice ? `<span class="old">${p.oldPrice}</span>` : ''}
+            <span>${p.price}</span>
+          </div>
+          <div>${p.rating}</div>
+        </div>
+        <br>
+        <button class="add-btn" onclick="addToCart('${p.name.replace(/'/g,"\\'")}', '${p.price}')">Add to Cart</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function filterTab(el, filter) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  renderProducts(filter);
+}
+
+function filterProducts(cat) {
+  document.getElementById('featured').scrollIntoView({ behavior: 'smooth' });
+  setTimeout(() => {
+    document.querySelectorAll('.tab').forEach(t => {
+      if(t.textContent.toLowerCase().includes(cat.toLowerCase().split(' ')[0])) t.classList.add('active');
+      else t.classList.remove('active');
+    });
+    renderProducts(cat);
+  }, 600);
+}
+
+function addToCart(name, price) {
+  sendBotMessage(`🛒 **${name}** (${price}) has been added to your cart!\n\nWould you like help with delivery options, warranty info, or would you like to continue shopping? I can also recommend accessories.`);
+  openChat();
+}
+
+// Scroll reveal
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(r => observer.observe(r));
+
+// CHAT
+function openChat() {
+  document.getElementById('chatWindow').classList.add('open');
+  document.getElementById('chatToggle').style.display = 'none';
+}
+function closeChat() {
+  document.getElementById('chatWindow').classList.remove('open');
+  document.getElementById('chatToggle').style.display = 'flex';
+}
+function autoResize(el) { el.style.height = 'auto'; el.style.height = Math.min(el.scrollHeight, 100) + 'px'; }
+function handleKey(e) { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); } }
+function sendSuggestion(btn) { document.getElementById('chatInput').value = btn.textContent; sendMessage(); }
+function getTime() { return new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }); }
+
+function appendMsg(text, role) {
+  const container = document.getElementById('chatMessages');
+  const div = document.createElement('div');
+  div.className = `msg ${role}`;
+  div.innerHTML = `<div class="msg-bubble">${text.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/\n/g,'<br>')}</div><div class="msg-time">${getTime()}</div>`;
+  container.appendChild(div);
+  container.scrollTop = container.scrollHeight;
+}
+
+function showTyping() {
+  const container = document.getElementById('chatMessages');
+  const div = document.createElement('div');
+  div.className = 'msg bot'; div.id = 'typing-indicator';
+  div.innerHTML = `<div class="typing"><span></span><span></span><span></span></div>`;
+  container.appendChild(div);
+  container.scrollTop = container.scrollHeight;
+}
+function hideTyping() { const t = document.getElementById('typing-indicator'); if (t) t.remove(); }
+
+async function sendBotMessage(userMsg) {
+  showTyping();
+  document.getElementById('sendBtn').disabled = true;
+
+  const systemPrompt = `You are the AI shopping assistant for **Elles Home of Appliances**, a premium electronics and home appliance store in Ghana. Prices are in GH₵ (Ghanaian Cedis).
+
+Key products you carry:
+- Samsung Galaxy S26 (Pre-Order): S26 256GB GH₵11,099 | S26 Plus GH₵13,099 | S26 Ultra GH₵15,599 | S26 Ultra 1TB GH₵21,999
+- Budget phones: Samsung A17 GH₵1,899 | A07 GH₵1,159 | Xiaomi Redmi 15C GH₵1,629
+- Laptops: Dell Pro 16 Plus GH₵20,999 | HP 240R Core5 GH₵8,999 | HP 250R Core3 GH₵6,999 | Lenovo V15 GH₵3,899 (all laptops come with free bag, mouse & headset)
+- LG TVs: 55" 4K GH₵6,499 | 50" AI ThinQ GH₵5,999 | 43" 4K GH₵4,599 | 43" HD GH₵3,999
+- Home appliances: LG 187L Fridge GH₵4,399 | Sigma 2.5HP A/C GH₵6,499
+- Audio: LG Home Theatre 5.1 GH₵3,499 | JBL PartyBox Encore2 GH₵5,099 | JBL PartyBox Essential2 GH₵4,199
+- Small Appliances: Sencor Vacuum Sealer GH₵1,399 | Garment Steamer GH₵549 | Pasta Maker GH₵649 | Toaster GH₵849
+- UPS: APC 3000VA GH₵13,299 | APC 750VA GH₵3,299
+- Monitors: Samsung 27" GH₵1,499 | Samsung 24" GH₵1,299
+
+Freedom Sale is ongoing with discounts on fridges, monitors, and laptops.
+Samsung Galaxy S26 Pre-order runs from 26 Feb – 15 March 2025.
+
+Your role:
+- Help customers pick the right product for their budget and needs
+- Be friendly, concise (2-4 sentences unless detailed comparison needed)
+- Use GH₵ prices
+- Mention ongoing deals when relevant
+- Always suggest a helpful next step`;
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        system: systemPrompt,
+        messages: [{ role: 'user', content: userMsg }]
+      })
+    });
+    const data = await res.json();
+    const reply = data.content?.map(i => i.text || '').join('\n') || "I couldn't process that right now. Please try again!";
+    hideTyping();
+    appendMsg(reply, 'bot');
+  } catch {
+    hideTyping();
+    appendMsg("Having trouble connecting. Please call us or try again shortly! 📞", 'bot');
+  }
+  document.getElementById('sendBtn').disabled = false;
+}
+
+async function sendMessage() {
+  const input = document.getElementById('chatInput');
+  const text 
