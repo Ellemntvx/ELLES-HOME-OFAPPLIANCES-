@@ -1,1 +1,1904 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ELLES — Home of Appliances | Accra, Ghana</title>
+<script src="https://js.paystack.co/v1/inline.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+:root{--white:#ffffff;--off-white:#F8F9FC;--light-gray:#EEF1F7;--border:#DDE3ED;--navy:#0B1D3A;--blue:#1A4DB3;--blue-hover:#2E66D0;--blue-pale:#EBF1FB;--text-dark:#0B1D3A;--text-mid:#3D5175;--text-muted:#6E82A4;--green:#0B8A4E;--red:#D93025;--orange:#E07B1A;--yellow:#FFD166;--shadow:0 2px 16px rgba(11,29,58,0.07);--shadow-lg:0 8px 40px rgba(11,29,58,0.13);}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--off-white);color:var(--text-dark);font-family:'Inter',sans-serif;overflow-x:hidden;}
 
+/* PROMO */
+.promo{background:var(--navy);color:#fff;text-align:center;padding:.55rem 1rem;font-family:'Space Mono',monospace;font-size:.68rem;letter-spacing:.1em;position:fixed;top:0;left:0;right:0;z-index:200;}
+.promo b{color:var(--yellow);}
+
+/* NAV */
+nav{position:fixed;top:34px;left:0;right:0;z-index:100;background:var(--white);border-bottom:1px solid var(--border);box-shadow:var(--shadow);}
+.nav-inner{max-width:1280px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:66px;}
+.logo{text-decoration:none;}
+.logo-main{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--navy);letter-spacing:.04em;}
+.logo-main span{color:var(--blue);}
+.logo-sub{display:block;font-family:'Space Mono',monospace;font-size:.48rem;color:var(--text-muted);letter-spacing:.22em;text-transform:uppercase;}
+.nav-links{display:flex;gap:1.8rem;list-style:none;}
+.nav-links a{color:var(--text-mid);text-decoration:none;font-size:.8rem;font-weight:500;transition:color .2s;}
+.nav-links a:hover{color:var(--blue);}
+.nav-right{display:flex;align-items:center;gap:1rem;}
+.nav-phone{font-family:'Space Mono',monospace;font-size:.68rem;color:var(--blue);font-weight:700;text-decoration:none;}
+.nav-btn{background:var(--blue);color:#fff;border:none;cursor:pointer;padding:.55rem 1.3rem;font-size:.76rem;font-weight:600;border-radius:4px;transition:all .2s;}
+.nav-btn:hover{background:var(--blue-hover);}
+
+/* HERO */
+.hero-wrap{background:var(--white);padding-top:100px;}
+.hero{max-width:1280px;margin:0 auto;padding:3rem 2rem 4rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+.hero-badge{display:inline-flex;align-items:center;gap:.4rem;background:var(--blue-pale);color:var(--blue);border:1px solid #c0d4f7;font-size:.7rem;font-weight:600;letter-spacing:.1em;padding:.4rem 1rem;margin-bottom:1.6rem;border-radius:100px;animation:fadeUp .7s ease forwards;opacity:0;}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.6rem,4.5vw,4.2rem);font-weight:700;line-height:1.1;color:var(--navy);margin-bottom:1.2rem;animation:fadeUp .7s .1s ease forwards;opacity:0;}
+.hero h1 em{font-style:italic;color:var(--blue);}
+.hero-sub{color:var(--text-mid);font-size:.95rem;line-height:1.75;max-width:440px;margin-bottom:1.4rem;animation:fadeUp .7s .2s ease forwards;opacity:0;}
+.hero-chips{display:flex;gap:1.5rem;margin-bottom:2rem;animation:fadeUp .7s .28s ease forwards;opacity:0;flex-wrap:wrap;}
+.chip{display:flex;align-items:center;gap:.4rem;font-size:.75rem;color:var(--text-muted);}
+.chip strong{color:var(--navy);font-weight:600;}
+.hero-btns{display:flex;gap:.8rem;animation:fadeUp .7s .35s ease forwards;opacity:0;}
+.btn-primary{background:var(--blue);color:#fff;border:none;cursor:pointer;padding:.85rem 1.9rem;font-size:.84rem;font-weight:600;border-radius:4px;transition:all .25s;}
+.btn-primary:hover{background:var(--blue-hover);transform:translateY(-2px);box-shadow:0 8px 20px rgba(26,77,179,.28);}
+.btn-outline{background:#fff;color:var(--blue);border:2px solid var(--blue);cursor:pointer;padding:.85rem 1.9rem;font-size:.84rem;font-weight:600;border-radius:4px;transition:all .25s;}
+.btn-outline:hover{background:var(--blue-pale);}
+
+/* S26 HERO CARDS */
+.hero-visual{animation:fadeRight .9s .2s ease forwards;opacity:0;}
+.s26-label{font-family:'Space Mono',monospace;font-size:.6rem;color:var(--blue);letter-spacing:.18em;text-transform:uppercase;margin-bottom:.9rem;display:flex;align-items:center;gap:.5rem;}
+.s26-label::after{content:'';flex:1;height:1px;background:var(--border);}
+.s26-grid{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;}
+.s26-card{background:#fff;border:1.5px solid var(--border);border-radius:8px;overflow:hidden;cursor:pointer;transition:all .25s;box-shadow:var(--shadow);}
+.s26-card:hover{border-color:var(--blue);transform:translateY(-3px);box-shadow:var(--shadow-lg);}
+.s26-img{height:105px;overflow:hidden;background:var(--light-gray);}
+.s26-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s;}
+.s26-card:hover .s26-img img{transform:scale(1.07);}
+.s26-body{padding:.85rem;}
+.pill{display:inline-block;font-size:.55rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.18rem .5rem;border-radius:3px;margin-bottom:.35rem;}
+.pill-blue{background:var(--blue-pale);color:var(--blue);}
+.pill-hot{background:#FFF3E0;color:var(--orange);}
+.pill-navy{background:var(--navy);color:#fff;}
+.pill-red{background:#FDECEC;color:var(--red);}
+.pill-green{background:#E8F5EE;color:var(--green);}
+.s26-name{font-size:.8rem;font-weight:600;color:var(--navy);margin-bottom:.2rem;line-height:1.3;}
+.s26-price{font-family:'Space Mono',monospace;font-size:.78rem;color:var(--blue);font-weight:700;}
+
+/* STATS */
+.stats{background:var(--navy);padding:1.4rem 2rem;}
+.stats-inner{max-width:1280px;margin:0 auto;display:flex;justify-content:space-around;align-items:center;flex-wrap:wrap;gap:1.5rem;}
+.stat-num{font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:700;color:var(--yellow);line-height:1;}
+.stat-lbl{font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:.2rem;}
+.sdiv{width:1px;height:34px;background:rgba(255,255,255,.15);}
+
+/* SECTIONS */
+.sec{padding:4.5rem 2rem;}
+.sec-inner{max-width:1280px;margin:0 auto;}
+.sec-tag{font-family:'Space Mono',monospace;font-size:.62rem;color:var(--blue);letter-spacing:.2em;text-transform:uppercase;margin-bottom:.5rem;}
+.sec-title{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;color:var(--navy);line-height:1.2;margin-bottom:.8rem;}
+.sec-sub{color:var(--text-muted);font-size:.88rem;line-height:1.7;max-width:500px;}
+
+/* CATEGORIES */
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:.9rem;margin-top:2.2rem;}
+.cat-card{background:#fff;border:1.5px solid var(--border);border-radius:8px;padding:1.5rem 1rem;text-align:center;cursor:pointer;transition:all .25s;}
+.cat-card:hover{border-color:var(--blue);background:var(--blue-pale);transform:translateY(-3px);box-shadow:var(--shadow);}
+.cat-icon{font-size:2.1rem;margin-bottom:.6rem;}
+.cat-name{font-size:.82rem;font-weight:600;color:var(--navy);margin-bottom:.2rem;}
+.cat-count{font-size:.68rem;color:var(--text-muted);}
+
+/* PRODUCTS */
+.featured{background:var(--off-white);}
+.feat-hdr{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:1.8rem;}
+.tabs{display:flex;gap:.35rem;flex-wrap:wrap;}
+.tab{background:#fff;border:1.5px solid var(--border);color:var(--text-mid);cursor:pointer;padding:.38rem .9rem;font-family:'Inter',sans-serif;font-size:.72rem;font-weight:500;border-radius:100px;transition:all .2s;}
+.tab.active,.tab:hover{background:var(--blue);border-color:var(--blue);color:#fff;}
+.prod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(235px,1fr));gap:1.1rem;}
+.pcard{background:#fff;border:1px solid var(--border);border-radius:8px;overflow:hidden;cursor:pointer;transition:all .25s;box-shadow:var(--shadow);}
+.pcard:hover{border-color:var(--blue);transform:translateY(-4px);box-shadow:var(--shadow-lg);}
+.pimg{height:180px;overflow:hidden;background:var(--light-gray);position:relative;}
+.pimg img{width:100%;height:100%;object-fit:cover;transition:transform .4s;}
+.pcard:hover .pimg img{transform:scale(1.06);}
+.pbadge{position:absolute;top:.65rem;left:.65rem;font-size:.56rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.2rem .5rem;border-radius:3px;}
+.pbody{padding:1rem;}
+.pcat{font-size:.62rem;color:var(--blue);letter-spacing:.1em;text-transform:uppercase;font-weight:600;margin-bottom:.3rem;}
+.pname{font-family:'Playfair Display',serif;font-size:.96rem;font-weight:600;color:var(--navy);margin-bottom:.28rem;line-height:1.35;}
+.pdesc{font-size:.74rem;color:var(--text-muted);margin-bottom:.85rem;line-height:1.55;}
+.pfooter{display:flex;align-items:center;justify-content:space-between;gap:.4rem;flex-wrap:wrap;}
+.pold{font-size:.68rem;color:var(--text-muted);text-decoration:line-through;display:block;}
+.pnow{font-family:'Space Mono',monospace;font-size:.88rem;color:var(--navy);font-weight:700;}
+.prating{font-size:.7rem;color:var(--orange);}
+.padd{background:var(--blue);color:#fff;border:none;cursor:pointer;padding:.46rem .9rem;font-size:.7rem;font-weight:600;border-radius:3px;transition:all .2s;white-space:nowrap;}
+.padd:hover{background:var(--blue-hover);}
+
+/* FREEDOM SALE */
+.fsale{background:var(--navy);padding:4.5rem 2rem;position:relative;overflow:hidden;}
+.fsale::before{content:'SALE';position:absolute;right:-2%;top:50%;transform:translateY(-50%) rotate(90deg);font-family:'Playfair Display',serif;font-size:10rem;font-weight:700;color:rgba(255,255,255,.03);pointer-events:none;}
+.fsale .sec-title{color:#fff;}
+.fsale .sec-sub{color:rgba(255,255,255,.5);}
+.fsale .sec-tag{color:var(--yellow);}
+.fg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:.9rem;margin-top:2.2rem;}
+.scard{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:1.2rem;display:flex;gap:1rem;align-items:flex-start;cursor:pointer;transition:all .25s;}
+.scard:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.25);}
+.sthumb{width:80px;height:80px;flex-shrink:0;border-radius:6px;overflow:hidden;background:rgba(255,255,255,.08);}
+.sthumb img{width:100%;height:100%;object-fit:cover;}
+.sname{font-size:.82rem;font-weight:600;color:#fff;margin-bottom:.38rem;line-height:1.3;}
+.sprices{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap;}
+.sold{font-size:.7rem;color:rgba(255,255,255,.35);text-decoration:line-through;}
+.snew{font-family:'Space Mono',monospace;font-size:.88rem;color:var(--yellow);font-weight:700;}
+.sdiscount{display:inline-block;background:var(--red);color:#fff;font-size:.57rem;font-weight:700;padding:.15rem .42rem;border-radius:2px;margin-top:.38rem;}
+
+/* BRANDS */
+.brands{background:#fff;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:2.8rem 2rem;}
+.brands-lbl{text-align:center;font-size:.62rem;color:var(--text-muted);letter-spacing:.2em;text-transform:uppercase;margin-bottom:1.6rem;}
+.brands-row{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:2.5rem;max-width:1280px;margin:0 auto;}
+.brand{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--border);transition:color .25s;cursor:pointer;}
+.brand:hover{color:var(--blue);}
+
+/* RECO */
+.reco-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;margin-top:2.2rem;}
+.rcard{background:#fff;border:1.5px solid var(--border);border-radius:8px;padding:1.4rem;display:flex;gap:1.1rem;align-items:flex-start;cursor:pointer;transition:all .25s;box-shadow:var(--shadow);}
+.rcard:hover{border-color:var(--blue);box-shadow:var(--shadow-lg);}
+.rthumb{width:80px;height:80px;border-radius:6px;overflow:hidden;flex-shrink:0;background:var(--light-gray);}
+.rthumb img{width:100%;height:100%;object-fit:cover;}
+.rlabel{font-size:.6rem;color:var(--blue);letter-spacing:.12em;text-transform:uppercase;font-weight:700;margin-bottom:.28rem;}
+.rname{font-family:'Playfair Display',serif;font-size:.98rem;font-weight:700;color:var(--navy);margin-bottom:.38rem;}
+.rreason{font-size:.76rem;color:var(--text-muted);line-height:1.6;margin-bottom:.5rem;}
+.rprice{font-family:'Space Mono',monospace;font-size:.86rem;color:var(--blue);font-weight:700;}
+.rtags{display:flex;gap:.35rem;flex-wrap:wrap;margin-top:.45rem;}
+.rtag{background:var(--blue-pale);color:var(--blue);font-size:.6rem;font-weight:600;padding:.18rem .5rem;border-radius:100px;}
+
+/* TESTIMONIALS */
+.test-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1.1rem;margin-top:2.2rem;}
+.tcard{background:#fff;border:1px solid var(--border);border-radius:8px;padding:1.5rem;box-shadow:var(--shadow);}
+.tstars{color:var(--orange);font-size:.82rem;margin-bottom:.7rem;}
+.ttext{font-size:.82rem;color:var(--text-mid);line-height:1.7;margin-bottom:1.1rem;font-style:italic;}
+.tauthor{display:flex;align-items:center;gap:.7rem;}
+.tavatar{width:38px;height:38px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem;color:#fff;flex-shrink:0;}
+.tname{font-size:.82rem;font-weight:600;color:var(--navy);}
+.tmeta{font-size:.68rem;color:var(--text-muted);}
+
+/* LOCATION */
+.loc-grid{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;margin-top:2.2rem;align-items:start;}
+.map-wrap{border-radius:10px;overflow:hidden;border:2px solid var(--border);height:340px;}
+.map-wrap iframe{width:100%;height:100%;border:0;}
+.contact-stack{display:flex;flex-direction:column;gap:.9rem;}
+.ccard{background:var(--off-white);border:1.5px solid var(--border);border-radius:8px;padding:1.3rem;display:flex;align-items:flex-start;gap:.9rem;transition:all .2s;text-decoration:none;color:inherit;}
+.ccard:hover{border-color:var(--blue);background:var(--blue-pale);}
+.cicon{width:42px;height:42px;background:var(--blue);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;color:#fff;}
+.clabel{font-size:.64rem;color:var(--text-muted);letter-spacing:.1em;text-transform:uppercase;font-weight:600;margin-bottom:.22rem;}
+.cval{font-size:.9rem;font-weight:600;color:var(--navy);}
+.cnote{font-size:.7rem;color:var(--text-muted);margin-top:.18rem;}
+.hours{width:100%;margin-top:.8rem;}
+.hours tr td{font-size:.78rem;padding:.28rem 0;color:var(--text-mid);}
+.hours tr td:first-child{font-weight:600;color:var(--navy);width:120px;}
+.open{color:var(--green)!important;font-weight:700!important;}
+.closed{color:var(--red)!important;}
+
+/* FOOTER */
+footer{background:var(--navy);color:rgba(255,255,255,.65);padding:3.5rem 2rem 2rem;}
+.ft-inner{max-width:1280px;margin:0 auto;}
+.ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.5rem;margin-bottom:2.5rem;}
+.ft-logo{font-family:'Playfair Display',serif;font-size:1.45rem;font-weight:700;color:#fff;display:block;margin-bottom:.25rem;}
+.ft-logo span{color:var(--yellow);}
+.ft-sub{font-family:'Space Mono',monospace;font-size:.46rem;color:rgba(255,255,255,.35);letter-spacing:.2em;display:block;margin-bottom:.9rem;}
+.ft-desc{font-size:.78rem;line-height:1.75;color:rgba(255,255,255,.45);margin-bottom:1.2rem;}
+.ft-social{display:flex;gap:.6rem;}
+.sbtn{width:32px;height:32px;border:1px solid rgba(255,255,255,.2);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.8rem;transition:all .25s;color:rgba(255,255,255,.45);border-radius:4px;}
+.sbtn:hover{border-color:var(--yellow);color:var(--yellow);}
+.ft-col h4{font-family:'Playfair Display',serif;font-size:.92rem;color:#fff;margin-bottom:1rem;}
+.ft-col ul{list-style:none;}
+.ft-col li{margin-bottom:.55rem;}
+.ft-col a{color:rgba(255,255,255,.45);text-decoration:none;font-size:.78rem;transition:color .2s;}
+.ft-col a:hover{color:var(--yellow);}
+.ft-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:1.6rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:.8rem;}
+.ft-bottom p{font-size:.7rem;color:rgba(255,255,255,.28);}
+
+/* CHAT */
+.chat-fab{position:fixed;bottom:1.8rem;right:1.8rem;width:56px;height:56px;background:var(--blue);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.45rem;z-index:300;box-shadow:0 6px 22px rgba(26,77,179,.4);border-radius:50%;transition:all .25s;}
+.chat-fab:hover{background:var(--blue-hover);transform:scale(1.08);}
+.chat-dot{position:absolute;top:-2px;right:-2px;width:13px;height:13px;background:#0B8A4E;border-radius:50%;border:2px solid #fff;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.28);}}
+.chat-win{position:fixed;bottom:5.2rem;right:1.8rem;width:365px;background:#fff;border:1px solid var(--border);border-radius:14px;z-index:300;display:none;flex-direction:column;box-shadow:0 20px 60px rgba(11,29,58,.18);max-height:530px;overflow:hidden;}
+.chat-win.open{display:flex;animation:slideUp .28s ease;}
+@keyframes slideUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+.chat-hdr{background:var(--navy);padding:.95rem 1.25rem;display:flex;align-items:center;justify-content:space-between;border-radius:14px 14px 0 0;}
+.chat-hdr-l{display:flex;align-items:center;gap:.65rem;}
+.chat-av{width:34px;height:34px;background:var(--blue);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.95rem;}
+.chat-nm{font-size:.86rem;font-weight:600;color:#fff;}
+.chat-st{font-size:.6rem;color:#4CD97B;}
+.chat-x{background:transparent;border:none;cursor:pointer;color:rgba(255,255,255,.45);font-size:1rem;transition:color .2s;}
+.chat-x:hover{color:#fff;}
+.chat-msgs{flex:1;overflow-y:auto;padding:.9rem;display:flex;flex-direction:column;gap:.75rem;scrollbar-width:thin;}
+.msg{max-width:84%;animation:msgIn .22s ease;}
+@keyframes msgIn{from{opacity:0;transform:translateY(7px);}to{opacity:1;transform:translateY(0);}}
+.msg.bot{align-self:flex-start;}
+.msg.user{align-self:flex-end;}
+.mbubble{padding:.65rem .88rem;font-size:.78rem;line-height:1.6;border-radius:8px;}
+.bot .mbubble{background:var(--off-white);border:1px solid var(--border);color:var(--text-dark);}
+.user .mbubble{background:var(--blue);color:#fff;}
+.mtime{font-size:.58rem;color:var(--text-muted);margin-top:.2rem;}
+.user .mtime{text-align:right;}
+.chat-suggs{padding:.45rem .9rem;display:flex;gap:.35rem;flex-wrap:wrap;border-top:1px solid var(--border);}
+.sugg{background:#fff;border:1.5px solid var(--border);color:var(--blue);cursor:pointer;font-size:.64rem;font-weight:500;padding:.28rem .65rem;border-radius:100px;font-family:'Inter',sans-serif;transition:all .2s;}
+.sugg:hover{border-color:var(--blue);background:var(--blue-pale);}
+.chat-inp-area{border-top:1px solid var(--border);padding:.75rem;display:flex;gap:.6rem;align-items:flex-end;}
+.chat-inp{flex:1;background:var(--off-white);border:1.5px solid var(--border);color:var(--text-dark);padding:.6rem .85rem;font-family:'Inter',sans-serif;font-size:.78rem;resize:none;outline:none;border-radius:6px;transition:border-color .2s;max-height:100px;}
+.chat-inp:focus{border-color:var(--blue);}
+.chat-inp::placeholder{color:var(--text-muted);}
+.send-btn{background:var(--blue);border:none;cursor:pointer;width:36px;height:36px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.88rem;border-radius:6px;color:#fff;transition:all .2s;}
+.send-btn:hover{background:var(--blue-hover);}
+.send-btn:disabled{opacity:.4;cursor:not-allowed;}
+.typing{display:flex;gap:4px;align-items:center;padding:.65rem .88rem;background:var(--off-white);border:1px solid var(--border);width:fit-content;border-radius:8px;}
+.typing span{width:5px;height:5px;border-radius:50%;background:var(--blue);animation:bounce 1.2s infinite;}
+.typing span:nth-child(2){animation-delay:.2s;}
+.typing span:nth-child(3){animation-delay:.4s;}
+@keyframes bounce{0%,60%,100%{transform:translateY(0);}30%{transform:translateY(-5px);}}
+
+
+/* ===== CART NAV BUTTON ===== */
+.cart-nav-btn{display:flex;align-items:center;gap:.4rem;background:#fff;color:var(--navy);border:2px solid var(--border);cursor:pointer;padding:.5rem 1rem;font-size:.76rem;font-weight:600;border-radius:4px;transition:all .2s;position:relative;}
+.cart-nav-btn:hover{border-color:var(--blue);color:var(--blue);}
+.cart-count-badge{background:var(--blue);color:#fff;border-radius:100px;font-size:.62rem;font-weight:700;padding:.12rem .42rem;min-width:18px;text-align:center;line-height:1.4;}
+
+/* ===== CART OVERLAY & DRAWER ===== */
+.cart-overlay{position:fixed;inset:0;background:rgba(11,29,58,.45);z-index:400;display:none;backdrop-filter:blur(2px);}
+.cart-overlay.open{display:block;animation:fadeIn .25s ease;}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+.cart-drawer{position:fixed;top:0;right:0;bottom:0;width:480px;max-width:100vw;background:#fff;z-index:401;display:flex;flex-direction:column;box-shadow:-8px 0 40px rgba(11,29,58,.15);transform:translateX(100%);transition:transform .32s cubic-bezier(.4,0,.2,1);}
+.cart-drawer.open{transform:translateX(0);}
+.cart-drawer-hdr{background:var(--navy);padding:1.1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
+.cart-drawer-hdr h2{font-family:'Playfair Display',serif;font-size:1.1rem;color:#fff;font-weight:700;}
+.cart-close-btn{background:transparent;border:none;cursor:pointer;color:rgba(255,255,255,.6);font-size:1.2rem;transition:color .2s;}
+.cart-close-btn:hover{color:#fff;}
+
+/* CART TABS */
+.cart-tabs{display:flex;border-bottom:2px solid var(--border);flex-shrink:0;}
+.cart-tab{flex:1;padding:.7rem;text-align:center;font-size:.78rem;font-weight:600;color:var(--text-muted);cursor:pointer;border:none;background:transparent;transition:all .2s;border-bottom:2px solid transparent;margin-bottom:-2px;}
+.cart-tab.active{color:var(--blue);border-bottom-color:var(--blue);}
+
+/* CART ITEMS */
+.cart-body{flex:1;overflow-y:auto;padding:1.2rem 1.5rem;scrollbar-width:thin;}
+.cart-empty{text-align:center;padding:3rem 1rem;color:var(--text-muted);}
+.cart-empty .cart-empty-icon{font-size:3rem;margin-bottom:1rem;display:block;}
+.cart-item{display:flex;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--border);align-items:flex-start;}
+.cart-item:last-child{border-bottom:none;}
+.cart-item-img{width:68px;height:68px;border-radius:6px;overflow:hidden;flex-shrink:0;background:var(--light-gray);}
+.cart-item-img img{width:100%;height:100%;object-fit:cover;}
+.cart-item-info{flex:1;}
+.cart-item-name{font-size:.84rem;font-weight:600;color:var(--navy);margin-bottom:.25rem;line-height:1.35;}
+.cart-item-price{font-family:'Space Mono',monospace;font-size:.82rem;color:var(--blue);font-weight:700;margin-bottom:.5rem;}
+.cart-item-qty{display:flex;align-items:center;gap:.5rem;}
+.qty-btn{width:26px;height:26px;border:1.5px solid var(--border);background:#fff;cursor:pointer;font-size:.9rem;border-radius:4px;display:flex;align-items:center;justify-content:center;font-weight:700;transition:all .2s;}
+.qty-btn:hover{border-color:var(--blue);color:var(--blue);}
+.qty-num{font-size:.82rem;font-weight:600;color:var(--navy);min-width:24px;text-align:center;}
+.cart-item-remove{background:transparent;border:none;cursor:pointer;color:var(--text-muted);font-size:.82rem;margin-left:.5rem;transition:color .2s;}
+.cart-item-remove:hover{color:var(--red);}
+.cart-footer{flex-shrink:0;padding:1.2rem 1.5rem;border-top:1px solid var(--border);background:#fff;}
+.cart-subtotal{display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem;}
+.cart-subtotal-label{font-size:.82rem;color:var(--text-muted);}
+.cart-subtotal-val{font-family:'Space Mono',monospace;font-size:1rem;font-weight:700;color:var(--navy);}
+.cart-total-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.1rem;padding-top:.5rem;border-top:1px solid var(--border);}
+.cart-total-label{font-size:.88rem;font-weight:700;color:var(--navy);}
+.cart-total-val{font-family:'Space Mono',monospace;font-size:1.15rem;font-weight:700;color:var(--blue);}
+.checkout-btn{width:100%;background:var(--blue);color:#fff;border:none;cursor:pointer;padding:.9rem;font-size:.88rem;font-weight:700;border-radius:6px;transition:all .25s;display:flex;align-items:center;justify-content:center;gap:.5rem;}
+.checkout-btn:hover{background:var(--blue-hover);}
+.checkout-btn:disabled{opacity:.5;cursor:not-allowed;}
+.continue-btn{width:100%;background:transparent;color:var(--text-mid);border:1.5px solid var(--border);cursor:pointer;padding:.7rem;font-size:.8rem;font-weight:500;border-radius:6px;margin-top:.6rem;transition:all .2s;}
+.continue-btn:hover{border-color:var(--blue);color:var(--blue);}
+
+/* ===== CHECKOUT FORM ===== */
+.checkout-form{display:flex;flex-direction:column;gap:0;}
+.checkout-section{margin-bottom:1.4rem;}
+.checkout-section-title{font-size:.78rem;font-weight:700;color:var(--navy);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.9rem;padding-bottom:.5rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.5rem;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-bottom:.8rem;}
+.form-row.full{grid-template-columns:1fr;}
+.form-group{display:flex;flex-direction:column;gap:.3rem;}
+.form-group label{font-size:.72rem;font-weight:600;color:var(--text-mid);letter-spacing:.06em;}
+.form-group input,.form-group select,.form-group textarea{background:var(--off-white);border:1.5px solid var(--border);color:var(--text-dark);padding:.6rem .85rem;font-family:'Inter',sans-serif;font-size:.82rem;border-radius:6px;outline:none;transition:border-color .2s;width:100%;}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--blue);background:#fff;}
+.form-group input::placeholder,.form-group textarea::placeholder{color:var(--text-muted);}
+.form-group textarea{resize:none;height:70px;}
+.payment-methods{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:.9rem;}
+.pay-method{border:2px solid var(--border);border-radius:8px;padding:.8rem;cursor:pointer;transition:all .2s;text-align:center;background:#fff;}
+.pay-method:hover{border-color:var(--blue);}
+.pay-method.selected{border-color:var(--blue);background:var(--blue-pale);}
+.pay-method .pay-icon{font-size:1.4rem;margin-bottom:.3rem;display:block;}
+.pay-method .pay-label{font-size:.72rem;font-weight:600;color:var(--navy);}
+.pay-method .pay-sub{font-size:.62rem;color:var(--text-muted);margin-top:.1rem;}
+.order-summary-mini{background:var(--off-white);border-radius:8px;padding:1rem;margin-bottom:1rem;border:1px solid var(--border);}
+.osm-row{display:flex;justify-content:space-between;font-size:.78rem;margin-bottom:.4rem;color:var(--text-mid);}
+.osm-row:last-child{margin-bottom:0;font-weight:700;color:var(--navy);padding-top:.4rem;border-top:1px solid var(--border);}
+.pay-now-btn{width:100%;background:var(--green);color:#fff;border:none;cursor:pointer;padding:1rem;font-size:.9rem;font-weight:700;border-radius:6px;transition:all .25s;display:flex;align-items:center;justify-content:center;gap:.6rem;}
+.pay-now-btn:hover{background:#099141;transform:translateY(-1px);}
+.pay-now-btn:disabled{opacity:.5;cursor:not-allowed;}
+.paystack-logo{font-size:.65rem;color:rgba(255,255,255,.7);display:block;text-align:center;margin-top:.4rem;}
+.back-to-cart-btn{background:transparent;color:var(--text-mid);border:none;cursor:pointer;font-size:.78rem;display:flex;align-items:center;gap:.3rem;margin-bottom:1.2rem;padding:0;transition:color .2s;}
+.back-to-cart-btn:hover{color:var(--blue);}
+.success-screen{text-align:center;padding:2rem 1rem;}
+.success-icon{font-size:4rem;margin-bottom:1rem;display:block;}
+.success-title{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--navy);margin-bottom:.6rem;}
+.success-sub{font-size:.84rem;color:var(--text-muted);line-height:1.65;margin-bottom:1.5rem;}
+.success-ref{background:var(--blue-pale);border:1px solid #c0d4f7;border-radius:6px;padding:.8rem 1rem;font-family:'Space Mono',monospace;font-size:.75rem;color:var(--blue);margin-bottom:1.5rem;}
+
+
+/* ===== PRODUCT MODAL ===== */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:500;display:none;align-items:flex-start;justify-content:center;padding:1rem;overflow-y:auto;backdrop-filter:blur(3px);}
+.modal-overlay.open{display:flex;animation:fadeIn .25s ease;}
+.modal-box{background:#fff;width:100%;max-width:960px;border-radius:12px;overflow:hidden;margin:auto;box-shadow:0 24px 80px rgba(0,0,0,.25);animation:slideUp .3s ease;}
+.modal-header{background:var(--navy);padding:.9rem 1.4rem;display:flex;align-items:center;justify-content:space-between;}
+.modal-header h3{font-family:'Playfair Display',serif;font-size:1rem;color:#fff;font-weight:600;}
+.modal-close{background:transparent;border:none;cursor:pointer;color:rgba(255,255,255,.6);font-size:1.2rem;transition:color .2s;}
+.modal-close:hover{color:#fff;}
+.modal-body{display:grid;grid-template-columns:1fr 1fr;gap:0;}
+
+/* Gallery side */
+.modal-gallery{padding:1.5rem;border-right:1px solid var(--border);background:#fff;}
+.gallery-main{width:100%;height:320px;border-radius:8px;overflow:hidden;background:var(--light-gray);margin-bottom:.8rem;position:relative;}
+.gallery-main img{width:100%;height:100%;object-fit:contain;transition:opacity .3s;}
+.gallery-main .gallery-arrow{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.95);border:1px solid var(--border);width:36px;height:36px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1rem;transition:all .2s;z-index:2;border:none;}
+.gallery-main .gallery-arrow:hover{background:var(--blue);color:#fff;}
+.gallery-main .gallery-arrow.left{left:.6rem;}
+.gallery-main .gallery-arrow.right{right:.6rem;}
+.gallery-thumbs{display:flex;gap:.5rem;overflow-x:auto;scrollbar-width:none;}
+.gallery-thumbs::-webkit-scrollbar{display:none;}
+.gallery-thumb{width:64px;height:64px;border-radius:6px;overflow:hidden;cursor:pointer;border:2px solid transparent;flex-shrink:0;background:var(--light-gray);transition:border-color .2s;}
+.gallery-thumb.active,.gallery-thumb:hover{border-color:var(--blue);}
+.gallery-thumb img{width:100%;height:100%;object-fit:contain;}
+.gallery-badge-row{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.8rem;}
+
+/* Detail side */
+.modal-details{padding:1.5rem;overflow-y:auto;max-height:580px;scrollbar-width:thin;}
+.modal-cat{font-size:.62rem;color:var(--blue);letter-spacing:.12em;text-transform:uppercase;font-weight:700;margin-bottom:.4rem;}
+.modal-name{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:700;color:var(--navy);line-height:1.25;margin-bottom:.7rem;}
+.modal-rating-row{display:flex;align-items:center;gap:.6rem;margin-bottom:.9rem;flex-wrap:wrap;}
+.modal-stars{color:var(--orange);font-size:.9rem;}
+.modal-rev-count{font-size:.72rem;color:var(--text-muted);}
+.modal-price-row{display:flex;align-items:flex-end;gap:.8rem;margin-bottom:.5rem;flex-wrap:wrap;}
+.modal-old-price{font-size:.85rem;color:var(--text-muted);text-decoration:line-through;}
+.modal-new-price{font-family:'Space Mono',monospace;font-size:1.6rem;font-weight:700;color:var(--navy);}
+.modal-save{background:#E8F5EE;color:var(--green);font-size:.72rem;font-weight:700;padding:.2rem .55rem;border-radius:3px;}
+.modal-stock{font-size:.78rem;margin-bottom:1rem;}
+.modal-stock.in{color:var(--green);}
+.modal-stock.out{color:var(--red);}
+.modal-desc{font-size:.84rem;color:var(--text-mid);line-height:1.7;margin-bottom:1.2rem;padding-bottom:1.2rem;border-bottom:1px solid var(--border);}
+.modal-features{margin-bottom:1.2rem;padding-bottom:1.2rem;border-bottom:1px solid var(--border);}
+.modal-features h4{font-size:.75rem;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.6rem;}
+.modal-features ul{list-style:none;display:flex;flex-direction:column;gap:.4rem;}
+.modal-features li{font-size:.8rem;color:var(--text-mid);display:flex;align-items:flex-start;gap:.5rem;}
+.modal-features li::before{content:'✓';color:var(--green);font-weight:700;flex-shrink:0;}
+.modal-specs{margin-bottom:1.2rem;padding-bottom:1.2rem;border-bottom:1px solid var(--border);}
+.modal-specs h4{font-size:.75rem;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.6rem;}
+.specs-table{width:100%;border-collapse:collapse;}
+.specs-table tr{border-bottom:1px solid var(--light-gray);}
+.specs-table tr:last-child{border-bottom:none;}
+.specs-table td{padding:.42rem .3rem;font-size:.78rem;}
+.specs-table td:first-child{color:var(--text-muted);font-weight:600;width:45%;padding-right:.5rem;}
+.specs-table td:last-child{color:var(--navy);}
+.modal-delivery{background:var(--off-white);border-radius:8px;padding:.85rem 1rem;margin-bottom:1rem;font-size:.78rem;color:var(--text-mid);border:1px solid var(--border);}
+.modal-delivery strong{color:var(--navy);display:block;margin-bottom:.2rem;font-size:.8rem;}
+.modal-qty-row{display:flex;align-items:center;gap:.8rem;margin-bottom:1rem;}
+.modal-qty-label{font-size:.78rem;color:var(--text-muted);font-weight:600;}
+.modal-qty-ctrl{display:flex;align-items:center;gap:.4rem;}
+.modal-qty-btn{width:30px;height:30px;border:1.5px solid var(--border);background:#fff;cursor:pointer;border-radius:5px;font-size:1rem;font-weight:700;display:flex;align-items:center;justify-content:center;transition:all .2s;}
+.modal-qty-btn:hover{border-color:var(--blue);color:var(--blue);}
+.modal-qty-num{font-size:.88rem;font-weight:700;color:var(--navy);min-width:32px;text-align:center;}
+.modal-cta-row{display:flex;gap:.6rem;flex-wrap:wrap;}
+.modal-add-cart{flex:1;background:var(--blue);color:#fff;border:none;cursor:pointer;padding:.85rem 1rem;font-size:.84rem;font-weight:700;border-radius:6px;transition:all .2s;}
+.modal-add-cart:hover{background:var(--blue-hover);}
+.modal-buy-now{flex:1;background:var(--navy);color:#fff;border:none;cursor:pointer;padding:.85rem 1rem;font-size:.84rem;font-weight:700;border-radius:6px;transition:all .2s;}
+.modal-buy-now:hover{background:#1a3060;}
+@media(max-width:720px){.modal-body{grid-template-columns:1fr;}.modal-details{max-height:none;}.gallery-main{height:240px;}}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadeRight{from{opacity:0;transform:translateX(28px);}to{opacity:1;transform:translateX(0);}}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;padding:2rem 1.5rem 3rem;gap:2rem;}
+  .hero-visual{order:2;}
+  .reco-grid,.loc-grid,.ft-grid{grid-template-columns:1fr;}
+  .nav-links{display:none;}
+  .nav-inner{padding:0 1.2rem;}
+  .sdiv{display:none;}
+  .sec{padding:3.5rem 1.2rem;}
+  .fsale{padding:3.5rem 1.2rem;}
+  .chat-win{width:calc(100vw - 2rem);right:1rem;}
+}
+</style>
+</head>
+<body>
+
+<div class="promo">📱 <b>Samsung Galaxy S26</b> Pre-Order Open — 26 Feb to 15 Mar &nbsp;·&nbsp; <b>Freedom Sale</b> — Save up to GH₵3,100 on selected products</div>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <span class="logo-main">ELLES<span> APPLIANCES</span></span>
+      <span class="logo-sub">Home of Appliances · Accra, Ghana</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#categories">Categories</a></li>
+      <li><a href="#featured">Products</a></li>
+      <li><a href="#fsale">Sale</a></li>
+      <li><a href="#reco">AI Picks</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#location">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <a class="nav-phone" href="tel:+233551668081">+233 55 166 8081</a>
+      <button class="nav-btn" onclick="openChat()">🤖 AI Assistant</button>
+      <button class="cart-nav-btn" onclick="openCart()" id="cartNavBtn">
+        <span>🛒</span> Cart <span class="cart-count-badge" id="cartCountBadge">0</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div class="hero-wrap">
+  <section class="hero">
+    <div>
+      <div class="hero-badge">⭐ Ghana's Trusted Appliance Store</div>
+      <h1>Your Home Deserves<br>Only the <em>Best</em></h1>
+      <p class="hero-sub">Premium electronics, home appliances, laptops & smart gadgets — curated and delivered across Ghana. Genuine products. Expert support. Best prices.</p>
+      <div class="hero-chips">
+        <div class="chip">📍 <strong>Accra, Ghana</strong></div>
+        <div class="chip">🚚 <strong>Fast Delivery</strong> Nationwide</div>
+        <div class="chip">✅ <strong>Genuine</strong> Warranty</div>
+      </div>
+      <div class="hero-btns">
+        <button class="btn-primary" onclick="document.getElementById('featured').scrollIntoView({behavior:'smooth'})">Shop Now</button>
+        <button class="btn-outline" onclick="openChat()">Talk to AI Assistant</button>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="s26-label">Samsung Galaxy S26 — Pre-Order Now</div>
+      <div class="s26-grid">
+        <div class="s26-card">
+          <div class="s26-img"><img src="https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=300&q=80" alt="S26" loading="lazy"/></div>
+          <div class="s26-body"><span class="pill pill-blue">Pre-Order</span><div class="s26-name">Galaxy S26 256GB 12GB</div><div class="s26-price">GH₵11,099</div></div>
+        </div>
+        <div class="s26-card">
+          <div class="s26-img"><img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=300&q=80" alt="S26 Plus" loading="lazy"/></div>
+          <div class="s26-body"><span class="pill pill-blue">Pre-Order</span><div class="s26-name">Galaxy S26 Plus</div><div class="s26-price">GH₵13,099</div></div>
+        </div>
+        <div class="s26-card">
+          <div class="s26-img"><img src="https://images.unsplash.com/photo-1567581935884-3349723552ca?w=300&q=80" alt="S26 Ultra" loading="lazy"/></div>
+          <div class="s26-body"><span class="pill pill-hot">🔥 Hot</span><div class="s26-name">Galaxy S26 Ultra</div><div class="s26-price">GH₵15,599</div></div>
+        </div>
+        <div class="s26-card">
+          <div class="s26-img"><img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=300&q=80" alt="S26 Ultra 1TB" loading="lazy"/></div>
+          <div class="s26-body"><span class="pill pill-navy">Premium</span><div class="s26-name">Galaxy S26 Ultra 1TB</div><div class="s26-price">GH₵21,999</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat"><div class="stat-num">2,000+</div><div class="stat-lbl">Products</div></div>
+    <div class="sdiv"></div>
+    <div class="stat"><div class="stat-num">48h</div><div class="stat-lbl">Fast Delivery</div></div>
+    <div class="sdiv"></div>
+    <div class="stat"><div class="stat-num">50+</div><div class="stat-lbl">Brands</div></div>
+    <div class="sdiv"></div>
+    <div class="stat"><div class="stat-num">12yr</div><div class="stat-lbl">In Business</div></div>
+    <div class="sdiv"></div>
+    <div class="stat"><div class="stat-num">24/7</div><div class="stat-lbl">AI Support</div></div>
+  </div>
+</div>
+
+<!-- CATEGORIES -->
+<section class="sec" id="categories" style="background:var(--white);">
+  <div class="sec-inner">
+    <div class="reveal"><div class="sec-tag">Browse by Type</div><h2 class="sec-title">Every Room, Every Need</h2></div>
+    <div class="cat-grid">
+      <div class="cat-card reveal" onclick="filterProducts('Smartphones')"><div class="cat-icon">📱</div><div class="cat-name">Smartphones</div><div class="cat-count">Samsung, Xiaomi</div></div>
+      <div class="cat-card reveal" onclick="filterProducts('Laptops')"><div class="cat-icon">💻</div><div class="cat-name">Laptops</div><div class="cat-count">HP, Dell, Lenovo</div></div>
+      <div class="cat-card reveal" onclick="filterProducts('TVs')"><div class="cat-icon">📺</div><div class="cat-name">TVs</div><div class="cat-count">LG, Hisense, Nasco</div></div>
+      <div class="cat-card reveal" onclick="filterProducts('Fridges')"><div class="cat-icon">🧊</div><div class="cat-name">Fridges & Freezers</div><div class="cat-count">LG, Hisense, Roch</div></div>
+      <div class="cat-card reveal" onclick="filterProducts('Washing')"><div class="cat-icon">🫧</div><div class="cat-name">Washing Machines</div><div class="cat-count">Samsung, LG, Nasco</div></div>
+      <div class="cat-card reveal" onclick="filterProducts('Air Conditioners')"><div class="cat-icon">❄️</div><div class="cat-name">Air Conditioners</div><div class="cat-count">Sigma, Hisense, Midea</div></div>
+      <div class="cat-card reveal" onclick="filterProducts('Cookers')"><div class="cat-icon">🍳</div><div class="cat-name">Cookers & Ovens</div><div class="cat-count">Nasco, Bruhm, Sigma</div></div>
+      <div class="cat-card reveal" onclick="filterProducts('Kitchen')"><div class="cat-icon">🧁</div><div class="cat-name">Kitchen Appliances</div><div class="cat-count">Blenders, Microwaves</div></div>
+      <div class="cat-card reveal" onclick="filterProducts('Audio')"><div class="cat-icon">🔊</div><div class="cat-name">Audio & Theatre</div><div class="cat-count">JBL, LG</div></div>
+      <div class="cat-card reveal" onclick="filterProducts('Monitors')"><div class="cat-icon">🖥️</div><div class="cat-name">Monitors</div><div class="cat-count">Samsung, LG</div></div>
+      <div class="cat-card reveal" onclick="filterProducts('Fans')"><div class="cat-icon">💨</div><div class="cat-name">Fans</div><div class="cat-count">Nasco, Century</div></div>
+      <div class="cat-card reveal" onclick="filterProducts('UPS')"><div class="cat-icon">🔋</div><div class="cat-name">UPS & Power</div><div class="cat-count">APC Series</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED -->
+<section class="sec featured" id="featured">
+  <div class="sec-inner">
+    <div class="feat-hdr reveal">
+      <div><div class="sec-tag">Our Selection</div><h2 class="sec-title">Featured Products</h2></div>
+      <div class="tabs">
+        <button class="tab active" onclick="filterTab(this,'All')">All</button>
+        <button class="tab" onclick="filterTab(this,'Smartphones')">Phones</button>
+        <button class="tab" onclick="filterTab(this,'Laptops')">Laptops</button>
+        <button class="tab" onclick="filterTab(this,'TVs')">TVs</button>
+        <button class="tab" onclick="filterTab(this,'Fridges')">Fridges</button>
+        <button class="tab" onclick="filterTab(this,'Washing')">Washing</button>
+        <button class="tab" onclick="filterTab(this,'Air Conditioners')">A/C</button>
+        <button class="tab" onclick="filterTab(this,'Cookers')">Cookers</button>
+        <button class="tab" onclick="filterTab(this,'Kitchen')">Kitchen</button>
+        <button class="tab" onclick="filterTab(this,'Audio')">Audio</button>
+      </div>
+    </div>
+    <div class="prod-grid" id="products-grid"></div>
+  </div>
+</section>
+
+<!-- FREEDOM SALE -->
+<section class="fsale" id="fsale">
+  <div class="sec-inner">
+    <div class="reveal"><div class="sec-tag">🎉 Freedom Sales</div><h2 class="sec-title">Independence Day <em style="font-style:italic;color:var(--yellow);">Special Offers</em></h2><p class="sec-sub">Celebrate your independence — elevate your lifestyle with exclusive discounts.</p></div>
+    <div class="fg-grid">
+      <div class="scard reveal"><div class="sthumb"><img src="https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?w=160&q=80" alt="Fridge" loading="lazy"/></div><div><div class="sname">LG 187L Top Freezer Fridge — Silver</div><div class="sprices"><span class="sold">GH₵6,599</span><span class="snew">GH₵4,399</span></div><span class="sdiscount">SAVE GH₵2,200</span></div></div>
+      <div class="scard reveal"><div class="sthumb"><img src="https://images.unsplash.com/photo-1593640408182-31c228f8d6bb?w=160&q=80" alt="Monitor 27" loading="lazy"/></div><div><div class="sname">Samsung 27" Essential FHD Monitor</div><div class="sprices"><span class="sold">GH₵1,999</span><span class="snew">GH₵1,499</span></div><span class="sdiscount">SAVE GH₵500</span></div></div>
+      <div class="scard reveal"><div class="sthumb"><img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=160&q=80" alt="Lenovo Laptop" loading="lazy"/></div><div><div class="sname">Lenovo V15 G2 8GB 256GB + Free Accessories</div><div class="sprices"><span class="sold">GH₵4,799</span><span class="snew">GH₵3,899</span></div><span class="sdiscount">SAVE GH₵900</span></div></div>
+      <div class="scard reveal"><div class="sthumb"><img src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=160&q=80" alt="AC" loading="lazy"/></div><div><div class="sname">Sigma Luxe 2.5HP Inverter R32 A/C</div><div class="sprices"><span class="sold">GH₵7,999</span><span class="snew">GH₵6,499</span></div><span class="sdiscount">SAVE GH₵1,500</span></div></div>
+      <div class="scard reveal"><div class="sthumb"><img src="https://images.unsplash.com/photo-1461151304267-38535e780c79?w=160&q=80" alt="LG TV" loading="lazy"/></div><div><div class="sname">LG 55" UHD Smart 4K TV</div><div class="sprices"><span class="sold">GH₵9,599</span><span class="snew">GH₵6,499</span></div><span class="sdiscount">SAVE GH₵3,100</span></div></div>
+      <div class="scard reveal"><div class="sthumb"><img src="https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=160&q=80" alt="HP Laptop" loading="lazy"/></div><div><div class="sname">HP 240R G10 Core5 512GB + Free Accessories</div><div class="sprices"><span class="sold">GH₵11,699</span><span class="snew">GH₵8,999</span></div><span class="sdiscount">SAVE GH₵2,700</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BRANDS -->
+<div class="brands">
+  <div class="brands-lbl">Trusted Brands We Carry</div>
+  <div class="brands-row">
+    <span class="brand">Samsung</span><span class="brand">LG</span><span class="brand">HP</span><span class="brand">Dell</span><span class="brand">Lenovo</span><span class="brand">Hisense</span><span class="brand">Nasco</span><span class="brand">JBL</span><span class="brand">Xiaomi</span><span class="brand">Midea</span><span class="brand">APC</span><span class="brand">Bruhm</span>
+  </div>
+</div>
+
+<!-- RECOMMENDATIONS -->
+<section class="sec" id="reco" style="background:var(--off-white);">
+  <div class="sec-inner">
+    <div class="reveal"><div class="sec-tag">AI Curated</div><h2 class="sec-title">Expert Picks For You</h2><p class="sec-sub">Our AI matches your budget and lifestyle to the best products in our catalogue.</p></div>
+    <div class="reco-grid">
+      <div class="rcard reveal"><div class="rthumb"><img src="https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=160&q=80" alt="S26 Ultra"/></div><div><div class="rlabel">Best Flagship</div><div class="rname">Samsung Galaxy S26 Ultra</div><div class="rreason">Top-tier AI camera, titanium frame, S Pen. Best smartphone available in Ghana right now.</div><div class="rprice">From GH₵15,599</div><div class="rtags"><span class="rtag">Pre-Order</span><span class="rtag">AI Camera</span><span class="rtag">5G</span></div></div></div>
+      <div class="rcard reveal"><div class="rthumb"><img src="https://images.unsplash.com/photo-1461151304267-38535e780c79?w=160&q=80" alt="LG TV"/></div><div><div class="rlabel">Best TV Value</div><div class="rname">LG 55" UHD 4K Smart TV</div><div class="rreason">55" 4K with satellite tuner and smart OS. Down from GH₵9,599 — exceptional savings now.</div><div class="rprice">GH₵6,499</div><div class="rtags"><span class="rtag">4K UHD</span><span class="rtag">Smart TV</span><span class="rtag">Satellite</span></div></div></div>
+      <div class="rcard reveal"><div class="rthumb"><img src="https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=160&q=80" alt="HP Laptop"/></div><div><div class="rlabel">Best Budget Laptop</div><div class="rname">HP 250R G10 Core3 512GB</div><div class="rreason">Comes with free bag, mouse & headset. Handles all everyday tasks perfectly. Great for students.</div><div class="rprice">GH₵6,999</div><div class="rtags"><span class="rtag">Free Accessories</span><span class="rtag">512GB SSD</span></div></div></div>
+      <div class="rcard reveal"><div class="rthumb"><img src="https://images.unsplash.com/photo-1584568694244-14fbdf83bd30?w=160&q=80" alt="Hisense Fridge"/></div><div><div class="rlabel">Best Fridge</div><div class="rname">Hisense 270L Double Door Fridge</div><div class="rreason">Frost-free, water dispenser, energy efficient. Built to handle Ghana's warm climate perfectly.</div><div class="rprice">GH₵5,499</div><div class="rtags"><span class="rtag">Frost-Free</span><span class="rtag">Dispenser</span><span class="rtag">3yr Warranty</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="sec" id="reviews" style="background:var(--white);">
+  <div class="sec-inner">
+    <div class="reveal"><div class="sec-tag">Client Stories</div><h2 class="sec-title">What Our Customers Say</h2></div>
+    <div class="test-grid">
+      <div class="tcard reveal"><div class="tstars">★★★★★</div><p class="ttext">"Ordered the LG 4K TV during the Freedom Sale — arrived in 2 days, perfectly packaged. The AI assistant helped me pick the right size. Amazing service from start to finish!"</p><div class="tauthor"><div class="tavatar">K</div><div><div class="tname">Kofi Mensah</div><div class="tmeta">Accra · Verified Buyer</div></div></div></div>
+      <div class="tcard reveal"><div class="tstars">★★★★★</div><p class="ttext">"Pre-ordered the Samsung S26 Ultra and the process was seamless. Elles kept me informed every step. The phone is absolutely incredible — worth every pesewa!"</p><div class="tauthor"><div class="tavatar">A</div><div><div class="tname">Abena Osei</div><div class="tmeta">Kumasi · Verified Buyer</div></div></div></div>
+      <div class="tcard reveal"><div class="tstars">★★★★★</div><p class="ttext">"Got the HP laptop for my son's university. The AI chatbot answered all my questions at midnight! Fast delivery, genuine product, excellent price. Will be back!"</p><div class="tauthor"><div class="tavatar">E</div><div><div class="tname">Emmanuel Darko</div><div class="tmeta">Tema · Verified Buyer</div></div></div></div>
+      <div class="tcard reveal"><div class="tstars">★★★★★</div><p class="ttext">"Bought a Hisense chest freezer and a Nasco gas cooker. Both delivered the same week. Quality is top-notch and the prices beat everywhere else in Accra!"</p><div class="tauthor"><div class="tavatar">Y</div><div><div class="tname">Yaa Asantewaa</div><div class="tmeta">Takoradi · Verified Buyer</div></div></div></div>
+      <div class="tcard reveal"><div class="tstars">★★★★★</div><p class="ttext">"The Sigma inverter A/C transformed our office. Extremely quiet and efficient — our electricity bill actually dropped! The installation team was professional and on time."</p><div class="tauthor"><div class="tavatar">B</div><div><div class="tname">Bright Asare</div><div class="tmeta">East Legon · Verified Buyer</div></div></div></div>
+      <div class="tcard reveal"><div class="tstars">★★★★☆</div><p class="ttext">"Very happy with the Samsung washing machine. The AI assistant gave clear honest advice when comparing it against LG models. Delivery was on time. Great overall experience."</p><div class="tauthor"><div class="tavatar">F</div><div><div class="tname">Faustina Boateng</div><div class="tmeta">Accra · Verified Buyer</div></div></div></div>
+      <div class="tcard reveal"><div class="tstars">★★★★★</div><p class="ttext">"Bought a JBL PartyBox for my daughter's graduation — phenomenal sound! Elles had the best price in Accra. Quick delivery and a follow-up call to confirm I was satisfied."</p><div class="tauthor"><div class="tavatar">R</div><div><div class="tname">Ransford Quaye</div><div class="tmeta">Madina · Verified Buyer</div></div></div></div>
+      <div class="tcard reveal"><div class="tstars">★★★★★</div><p class="ttext">"The LG home theatre turns my living room into a cinema. Installation was easy, and customer support was brilliant when I had setup questions. Absolutely love it!"</p><div class="tauthor"><div class="tavatar">M</div><div><div class="tname">Maame Akua Dankwa</div><div class="tmeta">Kasoa · Verified Buyer</div></div></div></div>
+      <div class="tcard reveal"><div class="tstars">★★★★★</div><p class="ttext">"Bought a Midea washing machine for my mother. She loves it — huge drum and very quiet! Elles gave a great deal and even helped with installation guidance over the phone."</p><div class="tauthor"><div class="tavatar">D</div><div><div class="tname">Daniel Tetteh</div><div class="tmeta">Spintex · Verified Buyer</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION & CONTACT -->
+<section class="sec" id="location" style="background:var(--off-white);">
+  <div class="sec-inner">
+    <div class="reveal"><div class="sec-tag">Get In Touch</div><h2 class="sec-title">We're Online — Always Here For You</h2><p class="sec-sub">Elles Appliances is a 100% online store. Order from anywhere in Ghana and we deliver to your door. Reach us anytime via WhatsApp, phone or email.</p></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1rem;margin-top:2.2rem;">
+      <a class="ccard" href="https://wa.me/233551668081" target="_blank" style="text-decoration:none;"><div class="cicon" style="background:#25D366;">💬</div><div><div class="clabel">WhatsApp Us</div><div class="cval" style="color:var(--navy);">+233 55 166 8081</div><div class="cnote">Fastest response — chat with us anytime 24/7</div></div></a>
+      <a class="ccard" href="tel:+233551668081"><div class="cicon">📞</div><div><div class="clabel">Call Us</div><div class="cval" style="color:var(--navy);">+233 55 166 8081</div><div class="cnote">Mon–Sat · 8am to 8pm Ghana Time</div></div></a>
+      <a class="ccard" href="mailto:iamellement@gmail.com"><div class="cicon">✉️</div><div><div class="clabel">Email Us</div><div class="cval" style="color:var(--navy);">iamellement@gmail.com</div><div class="cnote">We reply within 24 hours on business days</div></div></a>
+      <div class="ccard"><div class="cicon">🚚</div><div><div class="clabel">Nationwide Delivery</div><div class="cval">All Regions in Ghana</div><div class="cnote">Greater Accra from GH₵30 · Other regions vary</div></div></div>
+      <div class="ccard"><div class="cicon">📦</div><div><div class="clabel">Online Orders</div><div class="cval">Order 24/7 Online</div><div class="cnote">Add to cart, checkout securely with Paystack</div></div></div>
+      <div class="ccard"><div class="cicon">🔒</div><div><div class="clabel">Secure Payments</div><div class="cval">Paystack Secured</div><div class="cnote">MoMo · Visa · Mastercard · Bank Transfer · USSD</div></div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="ft-inner">
+    <div class="ft-grid">
+      <div>
+        <span class="ft-logo">ELLES<span> APPLIANCES</span></span>
+        <span class="ft-sub">Home of Appliances · Accra, Ghana</span>
+        <p class="ft-desc">Your trusted partner for genuine electronics, home appliances, and smart gadgets in Ghana. Quality products, expert advice, and fast delivery nationwide.</p>
+        <div class="ft-social"><button class="sbtn">𝕏</button><button class="sbtn">f</button><button class="sbtn">📷</button><button class="sbtn">▶</button></div>
+      </div>
+      <div class="ft-col"><h4>Products</h4><ul><li><a href="#">Smartphones</a></li><li><a href="#">Laptops & PCs</a></li><li><a href="#">TVs & Audio</a></li><li><a href="#">Fridges & Freezers</a></li><li><a href="#">Air Conditioners</a></li><li><a href="#">Cookers & Ovens</a></li><li><a href="#">Kitchen Appliances</a></li></ul></div>
+      <div class="ft-col"><h4>Services</h4><ul><li><a href="#">Pre-Order</a></li><li><a href="#">Delivery Nationwide</a></li><li><a href="#">Installation</a></li><li><a href="#">Warranty Support</a></li><li><a href="#">Trade-In Program</a></li><li><a href="#">Financing Options</a></li></ul></div>
+      <div class="ft-col"><h4>Contact Us</h4><ul><li><a href="tel:+233551668081">+233 55 166 8081</a></li><li><a href="/cdn-cgi/l/email-protection#afc6cec2cac3c3cac2cac1dbefc8c2cec6c381ccc0c2"><span class="__cf_email__" data-cfemail="4c252d2129202029212922380c2b212d2520622f2321">[email&#160;protected]</span></a></li><li><a href="#">WhatsApp Us</a></li><li><a href="#location">📍 Accra, Ghana</a></li><li><a href="#">Track My Order</a></li><li><a href="#">FAQ & Support</a></li></ul></div>
+    </div>
+    <div class="ft-bottom">
+      <p>© 2025 Elles Appliances — Home of Appliances, Accra, Ghana. All rights reserved.</p>
+      <p>Privacy Policy · Terms of Service · Cookie Settings</p>
+    </div>
+  </div>
+</footer>
+
+<button class="chat-fab" onclick="openChat()" id="chatToggle" title="AI Assistant">🤖<span class="chat-dot"></span></button>
+<div class="chat-win" id="chatWindow">
+  <div class="chat-hdr">
+    <div class="chat-hdr-l"><div class="chat-av">🤖</div><div><div class="chat-nm">Elles AI Assistant</div><div class="chat-st">● Online — Ready to help</div></div></div>
+    <button class="chat-x" onclick="closeChat()">✕</button>
+  </div>
+  <div class="chat-msgs" id="chatMessages">
+    <div class="msg bot"><div class="mbubble">👋 Welcome to Elles Appliances, Accra! I can help you find the perfect product, compare specs, check prices, or answer any questions. What are you looking for today?</div><div class="mtime">Just now</div></div>
+  </div>
+  <div class="chat-suggs">
+    <button class="sugg" onclick="sendSugg(this)">S26 pre-order details</button>
+    <button class="sugg" onclick="sendSugg(this)">Best fridge under GH₵5,000</button>
+    <button class="sugg" onclick="sendSugg(this)">Laptop for student</button>
+    <button class="sugg" onclick="sendSugg(this)">Freedom Sale deals</button>
+  </div>
+  <div class="chat-inp-area">
+    <textarea class="chat-inp" id="chatInput" placeholder="Ask about any product..." rows="1" onkeydown="handleKey(event)" oninput="autoResize(this)"></textarea>
+    <button class="send-btn" id="sendBtn" onclick="sendMessage()">➤</button>
+  </div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+const products=[
+  {id:1,name:'Samsung Galaxy S26 Ultra',cat:'Smartphones',price:15599,oldPrice:null,badge:'preorder',rating:5,reviews:128,
+   desc:'The ultimate Samsung flagship with AI-powered camera system, titanium frame, built-in S Pen, and massive 6.9" QHD+ Dynamic AMOLED display.',
+   imgs:['https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=600&q=85','https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=600&q=85','https://images.unsplash.com/photo-1567581935884-3349723552ca?w=600&q=85','https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&q=85'],
+   specs:{Brand:'Samsung',Model:'SM-S948B/DS',RAM:'12GB',Storage:'256GB',Display:'6.9" QHD+ AMOLED',Camera:'200MP + 50MP + 10MP + 12MP',Battery:'5000mAh',OS:'Android 15',Network:'5G',Color:'Titanium Black'},
+   features:['Built-in S Pen','AI Camera with 200MP','Titanium Frame','7 years OS updates','IP68 Water Resistant'],
+   delivery:'2–4 business days',warranty:'1 Year Samsung Warranty',inStock:true},
+
+  {id:2,name:'Samsung Galaxy S26 Plus',cat:'Smartphones',price:13099,oldPrice:null,badge:'preorder',rating:5,reviews:89,
+   desc:'Larger screen, bigger battery, and the same stunning S26 performance. Perfect for power users who want more without the Ultra price.',
+   imgs:['https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=600&q=85','https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=600&q=85','https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&q=85','https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?w=600&q=85'],
+   specs:{Brand:'Samsung',Model:'SM-S947B/DS',RAM:'12GB',Storage:'256GB',Display:'6.7" FHD+ AMOLED',Camera:'50MP + 12MP + 10MP',Battery:'4900mAh',OS:'Android 15',Network:'5G',Color:'Shadow Silver'},
+   features:['Snapdragon 8 Elite','45W Fast Charging','AI Live Translate','Vapour Cooling System','Gorilla Glass Armor 2'],
+   delivery:'2–4 business days',warranty:'1 Year Samsung Warranty',inStock:true},
+
+  {id:3,name:'Samsung Galaxy S26 256GB',cat:'Smartphones',price:11099,oldPrice:null,badge:'preorder',rating:5,reviews:74,
+   desc:'The entry point to the S26 experience — stunning camera, premium build, and all the AI features that make the S26 series special.',
+   imgs:['https://images.unsplash.com/photo-1567581935884-3349723552ca?w=600&q=85','https://images.unsplash.com/photo-1607936854279-55e8a4c64888?w=600&q=85','https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&q=85','https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=600&q=85'],
+   specs:{Brand:'Samsung',Model:'SM-S942B/DS',RAM:'12GB',Storage:'256GB',Display:'6.2" FHD+ AMOLED',Camera:'50MP + 12MP + 10MP',Battery:'4000mAh',OS:'Android 15',Network:'5G',Color:'Icy Blue'},
+   features:['Snapdragon 8 Elite','25W Fast Charging','AI Circle to Search','IP68 Water Resistant','Compact Design'],
+   delivery:'2–4 business days',warranty:'1 Year Samsung Warranty',inStock:true},
+
+  {id:4,name:'Samsung Galaxy A17 128GB',cat:'Smartphones',price:1899,oldPrice:null,badge:'new',rating:4,reviews:203,
+   desc:'Reliable daily driver with a large display, long-lasting battery and free accessories. Great value Samsung for everyday use.',
+   imgs:['https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&q=85','https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?w=600&q=85','https://images.unsplash.com/photo-1567581935884-3349723552ca?w=600&q=85','https://images.unsplash.com/photo-1607936854279-55e8a4c64888?w=600&q=85'],
+   specs:{Brand:'Samsung',Model:'SM-A175F/DS',RAM:'4GB',Storage:'128GB',Display:'6.8" HD+ TFT LCD',Camera:'50MP + 5MP + 2MP',Battery:'5000mAh',OS:'Android 14',Network:'4G',Color:'Blue Black'},
+   features:['Free Phone Cover + Screen Protector + Earbuds','5000mAh Long Battery','Fingerprint Scanner','Face Unlock','Expandable Storage 1TB'],
+   delivery:'1–3 business days',warranty:'1 Year Samsung Warranty',inStock:true},
+
+  {id:5,name:'Xiaomi Redmi 15C 256GB',cat:'Smartphones',price:1629,oldPrice:null,badge:'new',rating:4,reviews:156,
+   desc:'Massive storage, huge battery, smooth MIUI experience — the best value smartphone under GH₵2,000 in Ghana right now.',
+   imgs:['https://images.unsplash.com/photo-1607936854279-55e8a4c64888?w=600&q=85','https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?w=600&q=85','https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&q=85','https://images.unsplash.com/photo-1567581935884-3349723552ca?w=600&q=85'],
+   specs:{Brand:'Xiaomi',Model:'Redmi 15C',RAM:'8GB',Storage:'256GB',Display:'6.88" HD+ LCD',Camera:'108MP + 2MP',Battery:'5160mAh',OS:'MIUI 14 / Android 13',Network:'4G',Color:'Starlight Blue'},
+   features:['108MP Main Camera','5160mAh Long Battery','8GB RAM + 8GB Virtual RAM','256GB Storage','AI Face Unlock'],
+   delivery:'1–3 business days',warranty:'1 Year Warranty',inStock:true},
+
+  {id:6,name:'Dell Pro 16 Plus Ultra5 vPro',cat:'Laptops',price:20999,oldPrice:23799,badge:'sale',rating:5,reviews:47,
+   desc:'Professional-grade 16" laptop with Intel Core Ultra 5 vPro, 1TB SSD, and Thunderbolt 4. Includes free bag, mouse and BT headset.',
+   imgs:['https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=600&q=85','https://images.unsplash.com/photo-1484788984921-03950022c9ef?w=600&q=85','https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=600&q=85','https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=600&q=85'],
+   specs:{Brand:'Dell',Model:'Pro 16 Plus',Processor:'Intel Core Ultra 5 235U',RAM:'16GB DDR5',Storage:'1TB NVMe SSD',Display:'16" QHD+ IPS',Graphics:'Intel Arc',OS:'Windows 11 Pro',Battery:'86Wh',Ports:'Thunderbolt 4, USB-A, HDMI'},
+   features:['Intel vPro Security','Thunderbolt 4 Port','16" QHD+ Anti-glare Display','Backlit Keyboard','Free Bag + Mouse + BT Headset'],
+   delivery:'2–5 business days',warranty:'1 Year Dell Warranty',inStock:true},
+
+  {id:7,name:'HP 240R G10 Core5 512GB 14"',cat:'Laptops',price:8999,oldPrice:11699,badge:'sale',rating:5,reviews:93,
+   desc:'Slim 14" business laptop with Intel Core 5, 512GB SSD. Comes with free laptop bag, wireless mouse and Bluetooth headset worth GH₵800.',
+   imgs:['https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=600&q=85','https://images.unsplash.com/photo-1484788984921-03950022c9ef?w=600&q=85','https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=600&q=85','https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=600&q=85'],
+   specs:{Brand:'HP',Model:'240R G10',Processor:'Intel Core 5 120U',RAM:'8GB DDR4',Storage:'512GB SSD',Display:'14" FHD IPS Anti-glare',Graphics:'Intel UHD',OS:'Windows 11 Home',Battery:'41Wh',Weight:'1.54kg'},
+   features:['Free Laptop Bag + Mouse + BT Headset','Fast 512GB SSD','HP Fast Charge (50% in 45 min)','HP TrueVision HD Webcam','Spill-resistant Keyboard'],
+   delivery:'1–3 business days',warranty:'1 Year HP Warranty',inStock:true},
+
+  {id:8,name:'HP 250R G10 Core3 512GB 15.6"',cat:'Laptops',price:6999,oldPrice:9299,badge:'sale',rating:4,reviews:118,
+   desc:'Excellent value 15.6" laptop for students and home users. Intel Core 3 processor with 512GB SSD and free accessories bundle.',
+   imgs:['https://images.unsplash.com/photo-1484788984921-03950022c9ef?w=600&q=85','https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=600&q=85','https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=600&q=85','https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=600&q=85'],
+   specs:{Brand:'HP',Model:'250R G10',Processor:'Intel Core 3 100U',RAM:'8GB DDR4',Storage:'512GB SSD',Display:'15.6" FHD Anti-glare',Graphics:'Intel UHD',OS:'Windows 11 Home',Battery:'41Wh',Weight:'1.74kg'},
+   features:['Free Laptop Bag + Mouse + BT Headset','Numeric Keypad','Large 15.6" Display','512GB SSD Speed','Wide Viewing Angle IPS'],
+   delivery:'1–3 business days',warranty:'1 Year HP Warranty',inStock:true},
+
+  {id:9,name:'Lenovo V15 G2 8GB 256GB',cat:'Laptops',price:3899,oldPrice:4799,badge:'sale',rating:4,reviews:205,
+   desc:'Affordable and reliable Lenovo for students and home use. Comes with free laptop bag, wireless mouse and Bluetooth headset included.',
+   imgs:['https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=600&q=85','https://images.unsplash.com/photo-1484788984921-03950022c9ef?w=600&q=85','https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=600&q=85','https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=600&q=85'],
+   specs:{Brand:'Lenovo',Model:'V15 G2',Processor:'Intel Celeron N4500',RAM:'8GB DDR4',Storage:'256GB SSD',Display:'15.6" FHD TN',Graphics:'Intel UHD 600',OS:'Windows 11 Home',Battery:'38Wh',Weight:'1.9kg'},
+   features:['Free Bag + Wireless Mouse + BT Headset','Numeric Keypad','HDMI Output','3x USB Ports','Great Value for Students'],
+   delivery:'1–3 business days',warranty:'1 Year Lenovo Warranty',inStock:true},
+
+  {id:10,name:'LG 55" UHD Smart 4K TV',cat:'TVs',price:6499,oldPrice:9599,badge:'sale',rating:5,reviews:312,
+   desc:'Stunning 55-inch 4K UHD Smart TV with built-in satellite tuner, Wi-Fi, smart streaming apps and crystal-clear HDR picture.',
+   imgs:['https://images.unsplash.com/photo-1461151304267-38535e780c79?w=600&q=85','https://images.unsplash.com/photo-1593359677879-a4bb92f4834a?w=600&q=85','https://images.unsplash.com/photo-1567690187548-f07b1d7bf5a9?w=600&q=85','https://images.unsplash.com/photo-1584438784894-089d6a62b8fa?w=600&q=85'],
+   specs:{Brand:'LG',Model:'55UR73006LA',Resolution:'4K UHD 3840×2160',Display:'55" LED',HDR:'HDR10 / HLG',SmartOS:'webOS',Tuner:'DVB-T2/S2 Satellite',HDMI:'3x HDMI',USB:'2x USB',WiFi:'Built-in'},
+   features:['4K UHD Resolution','Built-in Satellite Tuner','LG ThinQ AI','Magic Remote Included','Al Picture & Sound'],
+   delivery:'3–7 business days',warranty:'1 Year LG Warranty',inStock:true},
+
+  {id:11,name:'LG 50" UHD 4K AI ThinQ TV',cat:'TVs',price:5999,oldPrice:8099,badge:'sale',rating:5,reviews:187,
+   desc:'50" smart 4K TV with LG ThinQ AI, voice control, and a gorgeous DLED panel. Perfect for medium to large living rooms.',
+   imgs:['https://images.unsplash.com/photo-1593359677879-a4bb92f4834a?w=600&q=85','https://images.unsplash.com/photo-1461151304267-38535e780c79?w=600&q=85','https://images.unsplash.com/photo-1567690187548-f07b1d7bf5a9?w=600&q=85','https://images.unsplash.com/photo-1509281373149-e957c6296406?w=600&q=85'],
+   specs:{Brand:'LG',Model:'50UA85006LA',Resolution:'4K UHD 3840×2160',Display:'50" LED',HDR:'HDR10 Pro / Dolby Vision',SmartOS:'webOS 23',Tuner:'DVB-T2/S2 Satellite',HDMI:'3x HDMI 2.1',USB:'2x USB',WiFi:'Wi-Fi 5'},
+   features:['AI ThinQ Voice Control','Dolby Vision & Dolby Atmos','Active HDR','Filmmaker Mode','LG Magic Remote'],
+   delivery:'3–7 business days',warranty:'1 Year LG Warranty',inStock:true},
+
+  {id:12,name:'LG 43" UHD Smart 4K TV',cat:'TVs',price:4599,oldPrice:7099,badge:'sale',rating:5,reviews:241,
+   desc:'Compact 43" 4K smart TV ideal for bedrooms, home offices or smaller living rooms. Full smart features, satellite tuner built-in.',
+   imgs:['https://images.unsplash.com/photo-1567690187548-f07b1d7bf5a9?w=600&q=85','https://images.unsplash.com/photo-1461151304267-38535e780c79?w=600&q=85','https://images.unsplash.com/photo-1584438784894-089d6a62b8fa?w=600&q=85','https://images.unsplash.com/photo-1593359677879-a4bb92f4834a?w=600&q=85'],
+   specs:{Brand:'LG',Model:'43UR73006LA',Resolution:'4K UHD 3840×2160',Display:'43" LED',HDR:'HDR10 / HLG',SmartOS:'webOS',Tuner:'Built-in Satellite',HDMI:'3x HDMI',USB:'2x USB',WiFi:'Built-in'},
+   features:['4K UHD Clarity','Smart TV with Streaming Apps','Built-in Satellite','Slim Bezel Design','Energy-Saving Mode'],
+   delivery:'3–7 business days',warranty:'1 Year LG Warranty',inStock:true},
+
+  {id:13,name:'Hisense 40" Full HD Smart TV',cat:'TVs',price:2199,oldPrice:null,badge:'new',rating:4,reviews:89,
+   desc:'Affordable 40" Full HD Smart TV with VIDAA OS, Netflix, YouTube, and satellite tuner. Great choice for bedrooms and guest rooms.',
+   imgs:['https://images.unsplash.com/photo-1593642634524-b40b5baae6bb?w=600&q=85','https://images.unsplash.com/photo-1584438784894-089d6a62b8fa?w=600&q=85','https://images.unsplash.com/photo-1567690187548-f07b1d7bf5a9?w=600&q=85','https://images.unsplash.com/photo-1509281373149-e957c6296406?w=600&q=85'],
+   specs:{Brand:'Hisense',Resolution:'1920×1080 FHD',Display:'40" DLED',SmartOS:'VIDAA U6',Tuner:'DVB-T2/S2',HDMI:'2x HDMI',USB:'2x USB',WiFi:'Built-in Wi-Fi',Bluetooth:'Bluetooth 5.0',HDR:'HDR10'},
+   features:['VIDAA Smart OS','Netflix & YouTube Built-in','Built-in Satellite Tuner','Wi-Fi & Ethernet','Dolby Audio'],
+   delivery:'2–5 business days',warranty:'1 Year Hisense Warranty',inStock:true},
+
+  {id:14,name:'Nasco 32" LED Television',cat:'TVs',price:1499,oldPrice:null,badge:'',rating:4,reviews:167,
+   desc:'Reliable, affordable 32" HD TV from the trusted Ghanaian brand Nasco. Perfect for bedrooms, kitchens, and secondary rooms.',
+   imgs:['https://images.unsplash.com/photo-1584438784894-089d6a62b8fa?w=600&q=85','https://images.unsplash.com/photo-1593642634524-b40b5baae6bb?w=600&q=85','https://images.unsplash.com/photo-1509281373149-e957c6296406?w=600&q=85','https://images.unsplash.com/photo-1567690187548-f07b1d7bf5a9?w=600&q=85'],
+   specs:{Brand:'Nasco',Resolution:'HD Ready 1366×768',Display:'32" LED',Tuner:'Analogue + Digital DVB-T2',HDMI:'2x HDMI',USB:'1x USB',VGA:'VGA Input',Audio:'2x8W Stereo',Energy:'Energy Class A'},
+   features:['HD Ready Display','DVB-T2 Digital Tuner','USB Media Playback','Built-in Speakers','Affordable & Durable'],
+   delivery:'2–4 business days',warranty:'1 Year Nasco Warranty',inStock:true},
+
+  {id:15,name:'LG 187L Top Freezer Fridge',cat:'Fridges',price:4399,oldPrice:6599,badge:'sale',rating:4,reviews:143,
+   desc:'Compact and efficient single-door top-freezer fridge with LG Smart Inverter compressor. Silver finish, quiet operation.',
+   imgs:['https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?w=600&q=85','https://images.unsplash.com/photo-1584568694244-14fbdf83bd30?w=600&q=85','https://images.unsplash.com/photo-1615648236397-8c13a50e8e2d?w=600&q=85','https://images.unsplash.com/photo-1553456558-aff63285bdd1?w=600&q=85'],
+   specs:{Brand:'LG',Model:'GN-B202SQBB',Capacity:'187 Litres',Type:'Top Freezer',Finish:'Silver',Compressor:'Smart Inverter',Defrost:'Manual Freezer',Climate:'ST / T Class',Doors:1,Energy:'A+'},
+   features:['Smart Inverter Compressor','10 Year Compressor Warranty','Moist Balance Crisper','Door Cooling+','Quiet Operation'],
+   delivery:'3–7 business days',warranty:'2 Years Product / 10 Years Compressor',inStock:true},
+
+  {id:16,name:'Hisense 270L Double Door Fridge',cat:'Fridges',price:5499,oldPrice:null,badge:'new',rating:5,reviews:67,
+   desc:'Spacious 270L frost-free fridge with water dispenser, ideal for large families. Built to handle Ghana\'s warm climate with efficiency.',
+   imgs:['https://images.unsplash.com/photo-1584568694244-14fbdf83bd30?w=600&q=85','https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?w=600&q=85','https://images.unsplash.com/photo-1615648236397-8c13a50e8e2d?w=600&q=85','https://images.unsplash.com/photo-1600585152220-90363fe7e115?w=600&q=85'],
+   specs:{Brand:'Hisense',Model:'RD-27DR',Capacity:'270 Litres',Type:'Double Door',Defrost:'Frost-Free',Dispenser:'Water Dispenser',Finish:'Silver',Compressor:'Inverter',Climate:'T Class (Tropical)',Energy:'A+'},
+   features:['Frost-Free Technology','Built-in Water Dispenser','Multi-Flow Air System','3 Year Warranty','Tropical T-Class Rated'],
+   delivery:'3–7 business days',warranty:'3 Years Product Warranty',inStock:true},
+
+  {id:17,name:'Nasco 200L Double Door Fridge',cat:'Fridges',price:3799,oldPrice:null,badge:'',rating:4,reviews:98,
+   desc:'Medium-capacity double-door fridge from trusted Ghanaian brand Nasco. Energy-efficient and reliable for everyday family use.',
+   imgs:['https://images.unsplash.com/photo-1615648236397-8c13a50e8e2d?w=600&q=85','https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?w=600&q=85','https://images.unsplash.com/photo-1584568694244-14fbdf83bd30?w=600&q=85','https://images.unsplash.com/photo-1553456558-aff63285bdd1?w=600&q=85'],
+   specs:{Brand:'Nasco',Capacity:'200 Litres',Type:'Double Door Top Freezer',Defrost:'Manual',Finish:'Silver',Climate:'T Class',Energy:'A',Shelves:'Glass Shelves',VegeBox:'Full Width'},
+   features:['Top Freezer Design','Glass Shelves','Vegetable Box','Door Compartments','Energy Efficient'],
+   delivery:'3–7 business days',warranty:'1 Year Nasco Warranty',inStock:true},
+
+  {id:18,name:'Hisense 144L Chest Freezer',cat:'Fridges',price:2499,oldPrice:null,badge:'new',rating:4,reviews:55,
+   desc:'Large chest freezer for bulk food storage. Lockable lid, power indicator and adjustable thermostat. Great for homes and small businesses.',
+   imgs:['https://images.unsplash.com/photo-1600585152220-90363fe7e115?w=600&q=85','https://images.unsplash.com/photo-1615648236397-8c13a50e8e2d?w=600&q=85','https://images.unsplash.com/photo-1584568694244-14fbdf83bd30?w=600&q=85','https://images.unsplash.com/photo-1553456558-aff63285bdd1?w=600&q=85'],
+   specs:{Brand:'Hisense',Model:'180SH',Capacity:'144 Litres',Type:'Chest Freezer',Finish:'Silver',Lock:'Key Lock',Thermostat:'Adjustable',PowerIndicator:'Yes',Interior:'White',Baskets:'Wire Baskets'},
+   features:['Lockable Lid','Adjustable Thermostat','Wire Baskets Inside','Power On Indicator','Tropical Class Rated'],
+   delivery:'3–7 business days',warranty:'1 Year Hisense Warranty',inStock:true},
+
+  {id:19,name:'Samsung 8kg Front Load Washer',cat:'Washing',price:4299,oldPrice:null,badge:'new',rating:5,reviews:76,
+   desc:'AI-powered front load washing machine with Bubble Soak technology. Cleans a full 8kg load in just 30 minutes with TurboWash 360°.',
+   imgs:['https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?w=600&q=85','https://images.unsplash.com/photo-1582735689369-4fe89db7114c?w=600&q=85','https://images.unsplash.com/photo-1631299759636-21f7bd7fe44e?w=600&q=85','https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=85'],
+   specs:{Brand:'Samsung',Capacity:'8kg',Type:'Front Load',Motor:'AI Direct Drive',Programs:'16 Programs',Temperature:'20°C–95°C',SpinSpeed:'1400 RPM',EnergyRating:'A+++',WaterRating:'A',Color:'White'},
+   features:['AI Direct Drive Motor','TurboWash 360° (30min)','Bubble Soak Technology','Self Clean+','Child Lock & Delay Start'],
+   delivery:'3–7 business days',warranty:'2 Years Product / 10 Years Motor',inStock:true},
+
+  {id:20,name:'LG 7kg Top Load Washer',cat:'Washing',price:3499,oldPrice:null,badge:'',rating:5,reviews:134,
+   desc:'6-Motion Direct Drive top-loader with TurboDrum technology. Gentle on fabrics, powerful on stains, quiet motor with 10-year warranty.',
+   imgs:['https://images.unsplash.com/photo-1582735689369-4fe89db7114c?w=600&q=85','https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?w=600&q=85','https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=85','https://images.unsplash.com/photo-1631299759636-21f7bd7fe44e?w=600&q=85'],
+   specs:{Brand:'LG',Capacity:'7kg',Type:'Top Load',Motor:'Smart Inverter',Programs:'12 Programs',Temperature:'Cold–90°C',SpinSpeed:'700 RPM',EnergyRating:'A++',Color:'White',WaterLevel:'6 Levels'},
+   features:['6 Motion Direct Drive','TurboDrum Wash Action','Smart Inverter Motor','10 Year Motor Warranty','Fuzzy Logic Auto-Sensing'],
+   delivery:'3–7 business days',warranty:'2 Years Product / 10 Years Motor',inStock:true},
+
+  {id:21,name:'Nasco 7kg Twin Tub Washer',cat:'Washing',price:1799,oldPrice:null,badge:'',rating:4,reviews:188,
+   desc:'Classic semi-automatic twin tub washing machine. Easy to use, budget-friendly, and proven durable for everyday Ghana laundry.',
+   imgs:['https://images.unsplash.com/photo-1631299759636-21f7bd7fe44e?w=600&q=85','https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=85','https://images.unsplash.com/photo-1582735689369-4fe89db7114c?w=600&q=85','https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?w=600&q=85'],
+   specs:{Brand:'Nasco',Capacity:'7kg Wash / 5kg Spin',Type:'Semi-Automatic Twin Tub',Timer:'Manual Timer',Spin:'High-Speed Spin Dryer',Color:'White',Programs:'Manual Control',WaterInlet:'Manual Fill'},
+   features:['Separate Wash & Spin Tubs','Timer Control','Easy Manual Operation','High-Speed Spin Dryer','Affordable & Durable'],
+   delivery:'2–5 business days',warranty:'1 Year Nasco Warranty',inStock:true},
+
+  {id:22,name:'Sigma Luxe 2.5HP Inverter A/C',cat:'Air Conditioners',price:6499,oldPrice:7999,badge:'sale',rating:5,reviews:89,
+   desc:'Energy-saving R32 inverter split air conditioner. Ultra-quiet, Wi-Fi ready, with self-cleaning filter. Perfect for Ghanaian homes and offices.',
+   imgs:['https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=600&q=85','https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=600&q=85','https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=600&q=85','https://images.unsplash.com/photo-1631729371254-42c2892f0e6e?w=600&q=85'],
+   specs:{Brand:'Sigma',Model:'SAC-T24LXIV',Capacity:'2.5HP (24000 BTU)',Type:'Inverter Split',Refrigerant:'R32 Eco-Friendly',EnergyRating:'A++',Noise:'19dB (Ultra Quiet)',WiFi:'Yes',Timer:'24-Hour',CoverageSqm:'Up to 35m²'},
+   features:['R32 Eco Refrigerant','Inverter Energy Saving','Ultra-Quiet 19dB','Self-Cleaning Filter','Wi-Fi Smart Control'],
+   delivery:'5–10 business days (incl. delivery, excl. installation)',warranty:'1 Year Product / 5 Year Compressor',inStock:true},
+
+  {id:23,name:'Hisense 1.5HP Split A/C',cat:'Air Conditioners',price:3499,oldPrice:null,badge:'new',rating:4,reviews:52,
+   desc:'Energy-efficient 1.5HP inverter split AC with auto-clean filter. Ideal for bedrooms and home offices up to 22m² in Ghana.',
+   imgs:['https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=600&q=85','https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=600&q=85','https://images.unsplash.com/photo-1631729371254-42c2892f0e6e?w=600&q=85','https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=600&q=85'],
+   specs:{Brand:'Hisense',Model:'AS12TG1',Capacity:'1.5HP (12000 BTU)',Type:'Inverter Split',Refrigerant:'R410A',EnergyRating:'A+',Modes:'Cool/Heat/Fan/Dry/Auto',Timer:'12-Hour',Remote:'Yes',Coverage:'Up to 22m²'},
+   features:['Auto-Clean Filter','Sleep Mode','Turbo Cool','Anti-Bacterial Filter','24-Hour Timer'],
+   delivery:'5–10 business days',warranty:'1 Year Product Warranty',inStock:true},
+
+  {id:24,name:'Nasco 4-Burner Gas Cooker',cat:'Cookers',price:1599,oldPrice:null,badge:'',rating:4,reviews:234,
+   desc:'4-burner gas cooker with electric oven from Ghana\'s most trusted appliance brand. Stainless steel finish, auto-ignition for safety.',
+   imgs:['https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=85','https://images.unsplash.com/photo-1565183928294-7063f23ce0f8?w=600&q=85','https://images.unsplash.com/photo-1556910096-6f5e72db6803?w=600&q=85','https://images.unsplash.com/photo-1565299545430-bcc5b77a5ad4?w=600&q=85'],
+   specs:{Brand:'Nasco',Burners:'4 Gas Burners',Oven:'Electric Oven',Ignition:'Auto Ignition',Size:'50×50cm',Finish:'Stainless Steel',Hob:'Tempered Glass',Grill:'Yes',SafetyValve:'Yes',LPGCompatible:'Yes'},
+   features:['Auto-Ignition Safety','Tempered Glass Hob','Electric Oven with Grill','Stainless Steel Finish','LPG & Natural Gas Compatible'],
+   delivery:'2–5 business days',warranty:'1 Year Nasco Warranty',inStock:true},
+
+  {id:25,name:'Bruhm 3-Gas + 1 Electric Cooker',cat:'Cookers',price:1999,oldPrice:null,badge:'new',rating:4,reviews:78,
+   desc:'50×50cm cooker with 3 gas burners and 1 electric hotplate. Black glass finish, electric oven with grill. Made in Turkey, 2yr warranty.',
+   imgs:['https://images.unsplash.com/photo-1565183928294-7063f23ce0f8?w=600&q=85','https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=85','https://images.unsplash.com/photo-1565299545430-bcc5b77a5ad4?w=600&q=85','https://images.unsplash.com/photo-1556910096-6f5e72db6803?w=600&q=85'],
+   specs:{Brand:'Bruhm',Burners:'3 Gas + 1 Electric',Oven:'Electric Oven',Size:'50×50cm',Finish:'Black Glass',Ignition:'Auto Ignition',Grill:'Yes',Origin:'Turkey',Hob:'Black Glass Hob'},
+   features:['3 Gas + 1 Electric Plate','Black Tempered Glass Hob','Electric Oven & Grill','Auto Flame Safety','2 Year Warranty'],
+   delivery:'2–5 business days',warranty:'2 Years Warranty',inStock:true},
+
+  {id:26,name:'Nine 8.5L Digital Air Fryer',cat:'Kitchen',price:899,oldPrice:null,badge:'new',rating:5,reviews:143,
+   desc:'XL 8.5-litre digital air fryer with 8 preset programmes, touchscreen display, and 360° rapid air technology for oil-free cooking.',
+   imgs:['https://images.unsplash.com/photo-1623428187969-5da2dcea5ebf?w=600&q=85','https://images.unsplash.com/photo-1574269909862-7e1d70bb8078?w=600&q=85','https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=85','https://images.unsplash.com/photo-1570222094114-d054a817e56b?w=600&q=85'],
+   specs:{Brand:'Nine',Capacity:'8.5 Litres',Power:'1800W',Temp:'80°C–200°C',Timer:'0–60 Minutes',Presets:'8 Presets',Display:'Digital Touch',Basket:'Non-stick',Color:'Black',Cord:'1.2m'},
+   features:['8.5L XL Family Size','8 Preset Cook Programs','Digital Touchscreen','360° Rapid Air','Dishwasher Safe Basket'],
+   delivery:'1–3 business days',warranty:'1 Year Warranty',inStock:true},
+
+  {id:27,name:'Nasco 20L Digital Microwave',cat:'Kitchen',price:799,oldPrice:null,badge:'',rating:4,reviews:112,
+   desc:'800W digital microwave with 5 power levels, grill function, and easy-clean interior. Compact 20L capacity for everyday cooking.',
+   imgs:['https://images.unsplash.com/photo-1574269909862-7e1d70bb8078?w=600&q=85','https://images.unsplash.com/photo-1623428187969-5da2dcea5ebf?w=600&q=85','https://images.unsplash.com/photo-1570222094114-d054a817e56b?w=600&q=85','https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=85'],
+   specs:{Brand:'Nasco',Capacity:'20 Litres',Power:'800W',Grill:'800W Grill',PowerLevels:'5 Levels',Timer:'35-Minute',Display:'Digital LED',Interior:'Easy Clean',Color:'Silver/Black'},
+   features:['5 Power Levels','Built-in Grill Function','Digital Timer Display','Child Lock Safety','Easy-Clean Interior Coating'],
+   delivery:'1–3 business days',warranty:'1 Year Nasco Warranty',inStock:true},
+
+  {id:28,name:'LG LHD655BT 5.1 Home Theatre',cat:'Audio',price:3499,oldPrice:4699,badge:'sale',rating:5,reviews:94,
+   desc:'1000W 5.1-channel surround sound home theatre system with DVD player, Bluetooth streaming and FM radio. Fill your room with cinema sound.',
+   imgs:['https://images.unsplash.com/photo-1545454675-3531b543be5d?w=600&q=85','https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=600&q=85','https://images.unsplash.com/photo-1589003077984-894e133dabab?w=600&q=85','https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=85'],
+   specs:{Brand:'LG',Model:'LHD655BT',Power:'1000W RMS',Channels:'5.1 Surround',DVD:'Yes (DVD/VCD/CD)',Bluetooth:'Yes',FM:'FM Radio',USB:'USB Playback',HDMI:'ARC',Karaoke:'Mic Input'},
+   features:['1000W Total Power','5.1 Channel Surround Sound','DVD & Blu-ray Compatible','Bluetooth Streaming','Karaoke Microphone Input'],
+   delivery:'2–5 business days',warranty:'1 Year LG Warranty',inStock:true},
+
+  {id:29,name:'JBL PartyBox Encore2 + 2 Mics',cat:'Audio',price:5099,oldPrice:5599,badge:'sale',rating:5,reviews:67,
+   desc:'Massive portable party speaker with 2 wireless microphones, dynamic LED light show, and JBL Signature Sound. 100W of pure party power.',
+   imgs:['https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=600&q=85','https://images.unsplash.com/photo-1545454675-3531b543be5d?w=600&q=85','https://images.unsplash.com/photo-1589003077984-894e133dabab?w=600&q=85','https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=85'],
+   specs:{Brand:'JBL',Power:'100W',Mics:'2x Wireless Mic Included',Bluetooth:'Bluetooth 5.1',Battery:'6 Hours Playback',USB:'USB-A Charging',LightShow:'Yes (LED)',IPX:'IPX4 Splash Proof',Weight:'7.5kg',Guitar:'Guitar Input'},
+   features:['2 Wireless Mics Included','Dynamic LED Light Show','100W JBL Pro Sound','IPX4 Splash Proof','Guitar/Mic Input Jack'],
+   delivery:'2–5 business days',warranty:'1 Year JBL Warranty',inStock:true},
+
+  {id:30,name:'Samsung 27" Essential FHD Monitor',cat:'Monitors',price:1499,oldPrice:1999,badge:'sale',rating:4,reviews:178,
+   desc:'75Hz FHD monitor with ultra-slim bezels and Eye Saver Mode. Ideal for home offices, students and gaming. HDMI and VGA inputs.',
+   imgs:['https://images.unsplash.com/photo-1593640408182-31c228f8d6bb?w=600&q=85','https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=600&q=85','https://images.unsplash.com/photo-1484788984921-03950022c9ef?w=600&q=85','https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=600&q=85'],
+   specs:{Brand:'Samsung',Size:'27"',Resolution:'1920×1080 FHD',Panel:'IPS',RefreshRate:'75Hz',ResponseTime:'5ms',HDMI:'1x HDMI',VGA:'1x VGA',EyeCare:'Eye Saver Mode',VESA:'Yes'},
+   features:['75Hz Smooth Display','Eye Saver Flicker-Free','Ultra-Slim Bezel','HDMI & VGA Inputs','VESA Wall-Mountable'],
+   delivery:'1–3 business days',warranty:'3 Years Samsung Warranty',inStock:true},
+
+  {id:31,name:'APC 3000VA SRV3KI UPS',cat:'UPS',price:13299,oldPrice:null,badge:'new',rating:5,reviews:23,
+   desc:'Pure sine wave 3000VA UPS for servers, network equipment and critical devices. LCD display, hot-swappable batteries, USB/RS-232 management.',
+   imgs:['https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=85','https://images.unsplash.com/photo-1563770660941-10a63df8e898?w=600&q=85','https://images.unsplash.com/photo-1484788984921-03950022c9ef?w=600&q=85','https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=600&q=85'],
+   specs:{Brand:'APC',Model:'SRV3KI',Capacity:'3000VA / 2700W',Output:'Pure Sine Wave',Voltage:'230V',Frequency:'50/60Hz',Battery:'Hot-Swappable',Interface:'USB + RS-232',Display:'LCD',Form:'Tower'},
+   features:['Pure Sine Wave Output','Hot-Swappable Batteries','LCD Status Display','USB & RS-232 Management','Network Manageable'],
+   delivery:'3–7 business days',warranty:'2 Years APC Warranty',inStock:true},
+
+  {id:32,name:'APC 750VA SMV750I-MS UPS',cat:'UPS',price:3299,oldPrice:null,badge:'new',rating:5,reviews:44,
+   desc:'Compact 750VA UPS for workstations, routers and home networking. Automatic shutdown software included. AVR voltage regulation.',
+   imgs:['https://images.unsplash.com/photo-1563770660941-10a63df8e898?w=600&q=85','https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=85','https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=600&q=85','https://images.unsplash.com/photo-1593640408182-31c228f8d6bb?w=600&q=85'],
+   specs:{Brand:'APC',Model:'SMV750I-MS',Capacity:'750VA / 525W',Output:'Pure Sine Wave',Voltage:'230V',AVR:'Yes',Outlets:'4 IEC C13',Interface:'USB',Display:'LED Indicators',Form:'Tower'},
+   features:['AVR Voltage Regulation','4x IEC C13 Outlets','Shutdown Software Included','USB Management Port','Compact Tower Form'],
+   delivery:'2–5 business days',warranty:'2 Years APC Warranty',inStock:true},
+
+  {id:33,name:'Century 16" Rechargeable Fan',cat:'Fans',price:599,oldPrice:null,badge:'new',rating:5,reviews:203,
+   desc:'Rechargeable 5-blade fan that keeps working during power cuts. Up to 8 hours on a single charge. Perfect for Ghana\'s power situation.',
+   imgs:['https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=600&q=85','https://images.unsplash.com/photo-1631299759636-21f7bd7fe44e?w=600&q=85','https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=600&q=85','https://images.unsplash.com/photo-1584568694244-14fbdf83bd30?w=600&q=85'],
+   specs:{Brand:'Century',Model:'FRC-40-D',Blades:'5 Blades',Battery:'Built-in Rechargeable',Runtime:'Up to 8 Hours',Speeds:'3 Speed Settings',Oscillation:'Yes',Size:'16 Inch',Color:'White',Charge:'AC Adapter'},
+   features:['Works During Power Cuts','8 Hours Battery Life','3 Speed Settings','Oscillating Head','Adjustable Height'],
+   delivery:'1–3 business days',warranty:'1 Year Warranty',inStock:true},
+];
+
+
+const badgeMap={preorder:'pill-blue',new:'pill-green',sale:'pill-red',hot:'pill-hot'};
+const badgeLabel={preorder:'Pre-Order',new:'New',sale:'Sale',hot:'Hot'};
+
+function renderProducts(filter){
+  const grid=document.getElementById('products-grid');
+  const list=filter==='All'?products:products.filter(p=>p.cat===filter);
+  grid.innerHTML=list.map(p=>`
+    <div class="pcard">
+      <div class="pimg">
+        ${p.badge?`<span class="pbadge ${badgeMap[p.badge]||''}">${badgeLabel[p.badge]||p.badge}</span>`:''}
+        <img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.parentNode.style.background='#EEF1F7'"/>
+      </div>
+      <div class="pbody">
+        <div class="pcat">${p.cat}</div>
+        <div class="pname">${p.name}</div>
+        <div class="pdesc">${p.desc}</div>
+        <div class="pfooter">
+          <div>${p.oldPrice?`<span class="pold">${p.oldPrice}</span>`:''}<span class="pnow">${p.price}</span></div>
+          <div class="prating">${p.rating}</div>
+        </div>
+        <br/>
+        <button class="padd" onclick="addToCart('${p.name.replace(/'/g,"\\'")}','${p.price}','${p.img}')">Add to Cart</button>
+      </div>
+    </div>`).join('');
+}
+
+function filterTab(el,f){document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));el.classList.add('active');renderProducts(f);}
+function filterProducts(cat){document.getElementById('featured').scrollIntoView({behavior:'smooth'});setTimeout(()=>{document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));renderProducts(cat);},600);}
+function addToCart(name,price){sendBotMsg(`🛒 **${name}** (${price}) added to your cart!\n\nNeed help with delivery, warranty, or accessories?`);openChat();}
+
+document.querySelectorAll('.reveal').forEach(r=>{new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:.08}).observe(r);});
+
+function openChat(){document.getElementById('chatWindow').classList.add('open');document.getElementById('chatToggle').style.display='none';}
+function closeChat(){document.getElementById('chatWindow').classList.remove('open');document.getElementById('chatToggle').style.display='flex';}
+function autoResize(el){el.style.height='auto';el.style.height=Math.min(el.scrollHeight,100)+'px';}
+function handleKey(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMessage();}}
+function sendSugg(btn){document.getElementById('chatInput').value=btn.textContent;sendMessage();}
+function getTime(){return new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});}
+function appendMsg(text,role){const c=document.getElementById('chatMessages'),d=document.createElement('div');d.className=`msg ${role}`;d.innerHTML=`<div class="mbubble">${text.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/\n/g,'<br>')}</div><div class="mtime">${getTime()}</div>`;c.appendChild(d);c.scrollTop=c.scrollHeight;}
+function showTyping(){const c=document.getElementById('chatMessages'),d=document.createElement('div');d.className='msg bot';d.id='typ';d.innerHTML='<div class="typing"><span></span><span></span><span></span></div>';c.appendChild(d);c.scrollTop=c.scrollHeight;}
+function hideTyping(){const t=document.getElementById('typ');if(t)t.remove();}
+
+async function sendBotMsg(userMsg){
+  showTyping();document.getElementById('sendBtn').disabled=true;
+  const sys=`You are the AI shopping assistant for Elles Appliances, a premium home appliance and electronics store in Accra, Ghana. Prices in GH₵.
+
+Contact: Phone/WhatsApp +233 55 166 8081 | Email iamellement@gmail.com | Location Accra, Ghana | Hours Mon-Fri 8am-7pm, Sat 9am-6pm
+
+Products:
+PHONES: S26 Ultra GH₵15,599 | S26 Plus GH₵13,099 | S26 256GB GH₵11,099 | S26 Ultra 1TB GH₵21,999 (pre-order 26 Feb–15 Mar) | Samsung A17 GH₵1,899 | A07 GH₵1,159 | Xiaomi Redmi 15C GH₵1,629
+LAPTOPS: Dell Pro 16 GH₵20,999 | HP 240R Core5 GH₵8,999 | HP 250R Core3 GH₵6,999 | Lenovo V15 GH₵3,899 (free bag+mouse+headset)
+TVs: LG 55" 4K GH₵6,499 | LG 50" ThinQ GH₵5,999 | LG 43" 4K GH₵4,599 | LG 43" HD GH₵3,999 | Hisense 40" GH₵2,199 | Nasco 32" GH₵1,499
+FRIDGES: LG 187L GH₵4,399 | Hisense 270L GH₵5,499 | Nasco 200L GH₵3,799 | Roch 160L GH₵2,999 | Hisense Chest Freezer GH₵2,499
+WASHING: Samsung 8kg GH₵4,299 | LG 7kg GH₵3,499 | Midea 8kg GH₵2,999 | Nasco twin tub GH₵1,799
+AIR CON: Sigma 2.5HP GH₵6,499 | Hisense 1.5HP GH₵3,499 | Midea 1HP GH₵2,799 | Nasco 2HP GH₵4,199
+COOKERS: Nasco 4-burner GH₵1,599 | Bruhm 3G+1E GH₵1,999 | Volcano 4-burner GH₵1,399 | Sigma 60cm GH₵2,499
+KITCHEN: Microwave GH₵799 | Blender GH₵349 | Kettle GH₵249 | Air Fryer GH₵899 | Pressure Cooker GH₵599
+AUDIO: LG 5.1 Theatre GH₵3,499 | JBL PartyBox Encore2 GH₵5,099 | JBL Essential2 GH₵4,199
+MONITORS: Samsung 27" GH₵1,499 | Samsung 24" GH₵1,299
+UPS: APC 3000VA GH₵13,299 | APC 750VA GH₵3,299
+
+Freedom Sale ongoing — big savings. Be warm, concise, helpful. Suggest next steps.`;
+  try{
+    const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:sys,messages:[{role:'user',content:userMsg}]})});
+    const d=await r.json();
+    hideTyping();appendMsg(d.content?.map(i=>i.text||'').join('\n')||'Try again please!','bot');
+  }catch{hideTyping();appendMsg('Trouble connecting. Call us: **+233 55 166 8081** 📞','bot');}
+  document.getElementById('sendBtn').disabled=false;
+}
+async function sendMessage(){const i=document.getElementById('chatInput');const t=i.value.trim();if(!t)return;appendMsg(t,'user');i.value='';i.style.height='auto';await sendBotMsg(t);}
+
+renderProducts('All');
+
+
+// ========== CART SYSTEM ==========
+let cart = [];
+let selectedPayment = 'momo';
+
+const DELIVERY_FEES = {
+  'Greater Accra': 30,
+  'Ashanti': 80,
+  'Western': 100,
+  'Central': 80,
+  'Eastern': 70,
+  'Volta': 100,
+  'Northern': 150,
+  'Upper East': 180,
+  'Upper West': 180,
+  'Brong-Ahafo': 120,
+};
+
+function openCart() {
+  document.getElementById('cartOverlay').classList.add('open');
+  document.getElementById('cartDrawer').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  renderCart();
+}
+function closeCart() {
+  document.getElementById('cartOverlay').classList.remove('open');
+  document.getElementById('cartDrawer').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function switchTab(tab) {
+  document.getElementById('tabCart').classList.toggle('active', tab === 'cart');
+  document.getElementById('tabCheckout').classList.toggle('active', tab === 'checkout');
+  document.getElementById('cartView').style.display = tab === 'cart' ? 'flex' : 'none';
+  document.getElementById('checkoutView').style.display = tab === 'checkout' ? 'flex' : 'none';
+  if (tab === 'checkout') renderCheckoutSummary();
+}
+
+function addToCart(name, price, img) { if (typeof price === 'string') price = parseInt(price.replace(/[^\d]/g, ''));
+  const existing = cart.find(i => i.name === name);
+  const priceNum = parseInt(price.replace(/[^\d]/g, ''));
+  if (existing) {
+    existing.qty++;
+  } else {
+    cart.push({ name, price: priceNum, img: img || '', qty: 1 });
+  }
+  updateCartBadge();
+  renderCart();
+  openCart();
+}
+
+function removeFromCart(idx) {
+  cart.splice(idx, 1);
+  updateCartBadge();
+  renderCart();
+}
+
+function changeQty(idx, delta) {
+  cart[idx].qty = Math.max(1, cart[idx].qty + delta);
+  updateCartBadge();
+  renderCart();
+}
+
+function updateCartBadge() {
+  const total = cart.reduce((s, i) => s + i.qty, 0);
+  document.getElementById('cartCountBadge').textContent = total;
+  document.getElementById('cartCountBadge').style.background = total > 0 ? 'var(--blue)' : 'var(--border)';
+}
+
+function getCartTotal() {
+  return cart.reduce((s, i) => s + i.price * i.qty, 0);
+}
+
+function getDeliveryFee() {
+  const method = document.getElementById('deliveryMethod')?.value;
+  if (method === 'pickup') return 0;
+  const region = document.getElementById('region')?.value;
+  return DELIVERY_FEES[region] || 0;
+}
+
+function fmt(n) {
+  return 'GH₵' + n.toLocaleString();
+}
+
+function renderCart() {
+  const container = document.getElementById('cartItemsContainer');
+  const footer = document.getElementById('cartFooter');
+  if (cart.length === 0) {
+    container.innerHTML = '<div class="cart-empty"><span class="cart-empty-icon">🛒</span><p style="font-weight:600;color:var(--navy);margin-bottom:.4rem;">Your cart is empty</p><p style="font-size:.82rem;">Browse products and add items.</p></div>';
+    footer.style.display = 'none';
+    return;
+  }
+  container.innerHTML = cart.map((item, idx) => `
+    <div class="cart-item">
+      <div class="cart-item-img"><img src="${item.img}" alt="${item.name}" onerror="this.style.display='none'"/></div>
+      <div class="cart-item-info">
+        <div class="cart-item-name">${item.name}</div>
+        <div class="cart-item-price">${fmt(item.price)}</div>
+        <div class="cart-item-qty">
+          <button class="qty-btn" onclick="changeQty(${idx},-1)">−</button>
+          <span class="qty-num">${item.qty}</span>
+          <button class="qty-btn" onclick="changeQty(${idx},1)">+</button>
+          <button class="cart-item-remove" onclick="removeFromCart(${idx})" title="Remove">🗑 Remove</button>
+        </div>
+      </div>
+      <div style="font-family:'Space Mono',monospace;font-size:.82rem;font-weight:700;color:var(--navy);white-space:nowrap;">${fmt(item.price * item.qty)}</div>
+    </div>`).join('');
+  const subtotal = getCartTotal();
+  document.getElementById('cartSubtotal').textContent = fmt(subtotal);
+  document.getElementById('cartItemCount').textContent = cart.reduce((s, i) => s + i.qty, 0);
+  document.getElementById('cartTotal').textContent = fmt(subtotal);
+  footer.style.display = 'block';
+}
+
+function renderCheckoutSummary() {
+  const subtotal = getCartTotal();
+  const delivery = getDeliveryFee();
+  const grand = subtotal + delivery;
+  const el = document.getElementById('orderSummaryMini');
+  if (el) {
+    el.innerHTML = `<div style="font-size:.72rem;font-weight:700;color:var(--navy);margin-bottom:.7rem;text-transform:uppercase;letter-spacing:.08em;">Order Summary (${cart.reduce((s,i)=>s+i.qty,0)} items)</div>` +
+      cart.map(i => `<div class="osm-row"><span>${i.name.substring(0,28)}${i.name.length>28?'...':''} ×${i.qty}</span><span>${fmt(i.price*i.qty)}</span></div>`).join('') +
+      `<div class="osm-row" style="border-top:1px solid var(--border);padding-top:.4rem;"><span>Total</span><span style="color:var(--blue);font-family:'Space Mono',monospace;">${fmt(subtotal)}</span></div>`;
+  }
+  document.getElementById('checkoutSubtotal').textContent = fmt(subtotal);
+  document.getElementById('checkoutDelivery').textContent = delivery === 0 ? 'Free' : fmt(delivery);
+  document.getElementById('checkoutGrandTotal').textContent = fmt(subtotal + delivery);
+}
+
+function updateDelivery() {
+  const method = document.getElementById('deliveryMethod').value;
+  const region = document.getElementById('region').value;
+  const addrWrap = document.getElementById('deliveryAddressWrap');
+  const costRow = document.getElementById('deliveryCostRow');
+  addrWrap.style.display = method === 'pickup' ? 'none' : 'block';
+  if (method === 'pickup') {
+    costRow.style.display = 'block';
+    document.getElementById('deliveryCostLabel').textContent = 'Free (Store Pickup)';
+  } else if (region) {
+    costRow.style.display = 'block';
+    document.getElementById('deliveryCostLabel').textContent = fmt(DELIVERY_FEES[region] || 0);
+  } else {
+    costRow.style.display = 'none';
+  }
+  renderCheckoutSummary();
+}
+
+function selectPayment(method) {
+  selectedPayment = method;
+  ['momo','card','bank','ussd'].forEach(m => {
+    document.getElementById('pm-' + m)?.classList.toggle('selected', m === method);
+  });
+}
+
+function validateForm() {
+  const fields = ['firstName','lastName','emailAddr','phoneNum'];
+  const method = document.getElementById('deliveryMethod')?.value;
+  if (method === 'delivery') { fields.push('streetAddr','cityTown','region'); }
+  for (const f of fields) {
+    const el = document.getElementById(f);
+    if (!el) continue;
+    if (!el.value.trim()) {
+      el.style.borderColor = 'var(--red)';
+      el.focus();
+      el.style.borderColor = '';
+      return false;
+    }
+  }
+  const email = document.getElementById('emailAddr').value;
+  if (!/^[^@]+@[^@]+\.[^@]+$/.test(email)) {
+    alert('Please enter a valid email address.');
+    return false;
+  }
+  return true;
+}
+
+function initPaystack() {
+  if (cart.length === 0) { alert('Your cart is empty!'); return; }
+  if (!validateForm()) { alert('Please fill in all required fields.'); return; }
+
+  const email = document.getElementById('emailAddr').value.trim();
+  const firstName = document.getElementById('firstName').value.trim();
+  const lastName = document.getElementById('lastName').value.trim();
+  const phone = document.getElementById('phoneNum').value.trim();
+  const subtotal = getCartTotal();
+  const delivery = getDeliveryFee();
+  const grandTotal = subtotal + delivery;
+  const amountKobo = grandTotal * 100; // Paystack uses smallest currency unit
+
+  const handler = PaystackPop.setup({
+    key: 'pk_live_YOUR_PAYSTACK_PUBLIC_KEY', // Replace with your Paystack public key
+    email: email,
+    amount: amountKobo,
+    currency: 'GHS',
+    ref: 'ELLES-' + Date.now(),
+    firstname: firstName,
+    lastname: lastName,
+    phone: phone,
+    channels: getPaystackChannels(),
+    metadata: {
+      custom_fields: [
+        { display_name: 'Customer Name', variable_name: 'customer_name', value: firstName + ' ' + lastName },
+        { display_name: 'Phone', variable_name: 'phone', value: phone },
+        { display_name: 'Delivery Method', variable_name: 'delivery', value: document.getElementById('deliveryMethod')?.value || '' },
+        { display_name: 'Address', variable_name: 'address', value: (document.getElementById('streetAddr')?.value || '') + ', ' + (document.getElementById('cityTown')?.value || '') },
+        { display_name: 'Region', variable_name: 'region', value: document.getElementById('region')?.value || '' },
+        { display_name: 'Notes', variable_name: 'notes', value: document.getElementById('deliveryNotes')?.value || '' },
+      ]
+    },
+    callback: function(response) {
+      document.getElementById('checkoutFormWrap').style.display = 'none';
+      document.getElementById('successScreen').style.display = 'block';
+      document.getElementById('successRef').textContent = 'Reference: ' + response.reference;
+      cart = [];
+      updateCartBadge();
+    },
+    onClose: function() {
+      // user closed the payment popup - do nothing
+    }
+  });
+  handler.openIframe();
+}
+
+function getPaystackChannels() {
+  const map = { momo: ['mobile_money'], card: ['card'], bank: ['bank'], ussd: ['ussd'] };
+  return map[selectedPayment] || ['mobile_money', 'card'];
+}
+
+function finishOrder() {
+  document.getElementById('successScreen').style.display = 'none';
+  document.getElementById('checkoutFormWrap').style.display = 'block';
+  switchTab('cart');
+  closeCart();
+}
+
+</script>
+
+<!-- CART OVERLAY -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+
+<!-- CART DRAWER -->
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-drawer-hdr">
+    <h2>🛒 Your Cart</h2>
+    <button class="cart-close-btn" onclick="closeCart()">✕</button>
+  </div>
+  <div class="cart-tabs">
+    <button class="cart-tab active" id="tabCart" onclick="switchTab('cart')">Cart Items</button>
+    <button class="cart-tab" id="tabCheckout" onclick="switchTab('checkout')" id="tabCheckout">Checkout</button>
+  </div>
+
+  <!-- CART ITEMS VIEW -->
+  <div id="cartView" style="display:flex;flex-direction:column;flex:1;overflow:hidden;">
+    <div class="cart-body" id="cartItemsContainer">
+      <div class="cart-empty">
+        <span class="cart-empty-icon">🛒</span>
+        <p style="font-weight:600;color:var(--navy);margin-bottom:.4rem;">Your cart is empty</p>
+        <p style="font-size:.82rem;">Browse our products and add items to your cart.</p>
+      </div>
+    </div>
+    <div class="cart-footer" id="cartFooter" style="display:none;">
+      <div class="cart-subtotal">
+        <span class="cart-subtotal-label">Subtotal (<span id="cartItemCount">0</span> items)</span>
+        <span class="cart-subtotal-val" id="cartSubtotal">GH₵0</span>
+      </div>
+      <div class="cart-subtotal">
+        <span class="cart-subtotal-label">Delivery</span>
+        <span class="cart-subtotal-val" style="color:var(--green);font-size:.82rem;">Calculated at checkout</span>
+      </div>
+      <div class="cart-total-row">
+        <span class="cart-total-label">Total</span>
+        <span class="cart-total-val" id="cartTotal">GH₵0</span>
+      </div>
+      <button class="checkout-btn" onclick="switchTab('checkout')">Proceed to Checkout →</button>
+      <button class="continue-btn" onclick="closeCart()">← Continue Shopping</button>
+    </div>
+  </div>
+
+  <!-- CHECKOUT VIEW -->
+  <div id="checkoutView" style="display:none;flex-direction:column;flex:1;overflow:hidden;">
+    <div class="cart-body">
+      <button class="back-to-cart-btn" onclick="switchTab('cart')">← Back to Cart</button>
+
+      <!-- SUCCESS SCREEN -->
+      <div id="successScreen" style="display:none;">
+        <div class="success-screen">
+          <span class="success-icon">🎉</span>
+          <div class="success-title">Order Placed Successfully!</div>
+          <p class="success-sub">Thank you for shopping with Elles Appliances! Your order has been received and our team will contact you shortly to confirm delivery details.</p>
+          <div class="success-ref" id="successRef">Reference: —</div>
+          <p style="font-size:.78rem;color:var(--text-muted);margin-bottom:1.2rem;">Questions? Call us: <strong>+233 55 166 8081</strong><br/>or email: <strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="244d45494148484149414a50644349454d480a474b49">[email&#160;protected]</a></strong></p>
+          <button class="checkout-btn" onclick="finishOrder()">Continue Shopping</button>
+        </div>
+      </div>
+
+      <!-- FORM -->
+      <div id="checkoutFormWrap">
+        <!-- ORDER SUMMARY MINI -->
+        <div class="order-summary-mini" id="orderSummaryMini"></div>
+
+        <div class="checkout-form">
+          <!-- PERSONAL DETAILS -->
+          <div class="checkout-section">
+            <div class="checkout-section-title">👤 Personal Details</div>
+            <div class="form-row">
+              <div class="form-group"><label>First Name *</label><input type="text" id="firstName" placeholder="e.g. Kofi" required/></div>
+              <div class="form-group"><label>Last Name *</label><input type="text" id="lastName" placeholder="e.g. Mensah" required/></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label>Email Address *</label><input type="email" id="emailAddr" placeholder="yourname@email.com" required/></div>
+              <div class="form-group"><label>Phone Number *</label><input type="tel" id="phoneNum" placeholder="+233 XX XXX XXXX" required/></div>
+            </div>
+          </div>
+
+          <!-- DELIVERY DETAILS -->
+          <div class="checkout-section">
+            <div class="checkout-section-title">🚚 Delivery Details</div>
+            <div class="form-row">
+              <div class="form-group"><label>Delivery Method *</label>
+                <select id="deliveryMethod" onchange="updateDelivery()">
+                  <option value="delivery">Home / Office Delivery</option>
+                  <option value="pickup">Store Pickup (Free)</option>
+                </select>
+              </div>
+              <div class="form-group"><label>Region *</label>
+                <select id="region" onchange="updateDelivery()">
+                  <option value="">-- Select Region --</option>
+                  <option value="Greater Accra">Greater Accra</option>
+                  <option value="Ashanti">Ashanti</option>
+                  <option value="Western">Western</option>
+                  <option value="Central">Central</option>
+                  <option value="Eastern">Eastern</option>
+                  <option value="Volta">Volta</option>
+                  <option value="Northern">Northern</option>
+                  <option value="Upper East">Upper East</option>
+                  <option value="Upper West">Upper West</option>
+                  <option value="Brong-Ahafo">Brong-Ahafo</option>
+                </select>
+              </div>
+            </div>
+            <div id="deliveryAddressWrap">
+              <div class="form-row full">
+                <div class="form-group"><label>Street Address *</label><input type="text" id="streetAddr" placeholder="House No., Street Name"/></div>
+              </div>
+              <div class="form-row">
+                <div class="form-group"><label>City / Town *</label><input type="text" id="cityTown" placeholder="e.g. Accra"/></div>
+                <div class="form-group"><label>Landmark (optional)</label><input type="text" id="landmark" placeholder="Near..."/></div>
+              </div>
+            </div>
+            <div class="form-row full">
+              <div class="form-group"><label>Delivery Notes (optional)</label><textarea id="deliveryNotes" placeholder="Any special instructions for delivery..."></textarea></div>
+            </div>
+            <div id="deliveryCostRow" style="background:var(--blue-pale);border:1px solid #c0d4f7;border-radius:6px;padding:.7rem 1rem;font-size:.78rem;color:var(--blue);margin-top:.3rem;display:none;">
+              🚚 Delivery fee: <strong id="deliveryCostLabel">—</strong>
+            </div>
+          </div>
+
+          <!-- PAYMENT -->
+          <div class="checkout-section">
+            <div class="checkout-section-title">💳 Payment Method</div>
+            <div class="payment-methods">
+              <div class="pay-method selected" id="pm-momo" onclick="selectPayment('momo')">
+                <span class="pay-icon">📱</span>
+                <div class="pay-label">Mobile Money</div>
+                <div class="pay-sub">MTN, Vodafone, AirtelTigo</div>
+              </div>
+              <div class="pay-method" id="pm-card" onclick="selectPayment('card')">
+                <span class="pay-icon">💳</span>
+                <div class="pay-label">Debit / Credit Card</div>
+                <div class="pay-sub">Visa, Mastercard</div>
+              </div>
+              <div class="pay-method" id="pm-bank" onclick="selectPayment('bank')">
+                <span class="pay-icon">🏦</span>
+                <div class="pay-label">Bank Transfer</div>
+                <div class="pay-sub">Ghana Banks</div>
+              </div>
+              <div class="pay-method" id="pm-ussd" onclick="selectPayment('ussd')">
+                <span class="pay-icon">📲</span>
+                <div class="pay-label">USSD</div>
+                <div class="pay-sub">Pay via code</div>
+              </div>
+            </div>
+            <div style="background:var(--off-white);border-radius:8px;padding:.9rem 1rem;border:1px solid var(--border);">
+              <div class="osm-row"><span>Subtotal</span><span id="checkoutSubtotal">GH₵0</span></div>
+              <div class="osm-row"><span>
+
+// ========== PRODUCT MODAL ==========
+let currentModalProduct = null;
+let currentGalleryIdx = 0;
+let modalQty = 1;
+
+function openModal(productId) {
+  const p = products.find(x => x.id === productId);
+  if (!p) return;
+  currentModalProduct = p;
+  currentGalleryIdx = 0;
+  modalQty = 1;
+  document.getElementById('modalHeaderTitle').textContent = p.name;
+  renderGallery(p);
+  renderModalDetails(p);
+  document.getElementById('productModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('productModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function closeModalOutside(e) {
+  if (e.target === document.getElementById('productModal')) closeModal();
+}
+
+function renderGallery(p) {
+  const mainImg = document.getElementById('galleryMainImg');
+  mainImg.src = p.imgs[currentGalleryIdx];
+  mainImg.alt = p.name;
+
+  const thumbs = document.getElementById('galleryThumbs');
+  thumbs.innerHTML = p.imgs.map((img, i) =>
+    `<div class="gallery-thumb${i===0?' active':''}" onclick="setGalleryImg(${i})">
+      <img src="${img}" alt="View ${i+1}" loading="lazy"/>
+    </div>`).join('');
+
+  const badgeMap2 = {preorder:'pill-blue',new:'pill-green',sale:'pill-red',hot:'pill-hot'};
+  const badgeLabel2 = {preorder:'Pre-Order',new:'New In',sale:'On Sale',hot:'Hot'};
+  const br = document.getElementById('galleryBadgeRow');
+  br.innerHTML = p.badge ? `<span class="pill ${badgeMap2[p.badge]||''}">${badgeLabel2[p.badge]||p.badge}</span>` : '';
+  if(p.inStock) br.innerHTML += `<span class="pill pill-green">✓ In Stock</span>`;
+}
+
+function setGalleryImg(idx) {
+  currentGalleryIdx = idx;
+  document.getElementById('galleryMainImg').src = currentModalProduct.imgs[idx];
+  document.querySelectorAll('.gallery-thumb').forEach((t, i) => {
+    t.classList.toggle('active', i === idx);
+  });
+}
+
+function galleryPrev() {
+  const n = currentModalProduct.imgs.length;
+  setGalleryImg((currentGalleryIdx - 1 + n) % n);
+}
+
+function galleryNext() {
+  setGalleryImg((currentGalleryIdx + 1) % currentModalProduct.imgs.length);
+}
+
+function renderModalDetails(p) {
+  const saveAmt = p.oldPrice ? (p.oldPrice - p.price) : 0;
+  const savePct = p.oldPrice ? Math.round(saveAmt / p.oldPrice * 100) : 0;
+  const starsStr = '★'.repeat(Math.floor(p.rating)) + (p.rating % 1 ? '½' : '') + '☆'.repeat(5 - Math.ceil(p.rating));
+  const specsRows = Object.entries(p.specs).map(([k,v]) => `<tr><td>${k}</td><td>${v}</td></tr>`).join('');
+  const featureItems = p.features.map(f => `<li>${f}</li>`).join('');
+
+  document.getElementById('modalDetails').innerHTML = `
+    <div class="modal-cat">${p.cat}</div>
+    <div class="modal-name">${p.name}</div>
+    <div class="modal-rating-row">
+      <span class="modal-stars">${starsStr}</span>
+      <span class="modal-rev-count">${p.reviews} verified reviews</span>
+    </div>
+    <div class="modal-price-row">
+      ${p.oldPrice ? `<span class="modal-old-price">GH₵${p.oldPrice.toLocaleString()}</span>` : ''}
+      <span class="modal-new-price">GH₵${p.price.toLocaleString()}</span>
+      ${saveAmt ? `<span class="modal-save">SAVE ${savePct}%</span>` : ''}
+    </div>
+    <div class="modal-stock ${p.inStock ? 'in' : 'out'}">${p.inStock ? '✓ In Stock — Ready to Ship' : '✗ Out of Stock'}</div>
+    <p class="modal-desc">${p.desc}</p>
+    <div class="modal-features">
+      <h4>Key Features</h4>
+      <ul>${featureItems}</ul>
+    </div>
+    <div class="modal-specs">
+      <h4>Specifications</h4>
+      <table class="specs-table">${specsRows}</table>
+    </div>
+    <div class="modal-delivery">
+      <strong>🚚 Delivery Info</strong>
+      ${p.delivery} · <span style="color:var(--green);font-weight:600;">Free delivery on orders over GH₵500</span>
+      <div style="margin-top:.3rem;">Warranty: ${p.warranty}</div>
+    </div>
+    <div class="modal-qty-row">
+      <span class="modal-qty-label">Qty:</span>
+      <div class="modal-qty-ctrl">
+        <button class="modal-qty-btn" onclick="changeModalQty(-1)">−</button>
+        <span class="modal-qty-num" id="modalQtyNum">1</span>
+        <button class="modal-qty-btn" onclick="changeModalQty(1)">+</button>
+      </div>
+    </div>
+    <div class="modal-cta-row">
+      <button class="modal-add-cart" onclick="addFromModal()">🛒 Add to Cart</button>
+      <button class="modal-buy-now" onclick="buyNowModal()">⚡ Buy Now</button>
+    </div>
+  `;
+}
+
+function changeModalQty(d) {
+  modalQty = Math.max(1, modalQty + d);
+  document.getElementById('modalQtyNum').textContent = modalQty;
+}
+
+function addFromModal() {
+  const p = currentModalProduct;
+  const existing = cart.find(i => i.name === p.name);
+  if (existing) { existing.qty += modalQty; }
+  else { cart.push({ name: p.name, price: p.price, img: p.imgs[0], qty: modalQty }); }
+  updateCartBadge();
+  closeModal();
+  openCart();
+}
+
+function buyNowModal() {
+  addFromModal();
+  setTimeout(() => switchTab('checkout'), 200);
+}
+
+// ─── UPDATED renderProducts with "View Details" button ───
+function renderProducts(filter) {
+  const grid = document.getElementById('products-grid');
+  const list = filter === 'All' ? products : products.filter(p => p.cat === filter);
+  const badgeMap = {preorder:'pill-blue',new:'pill-green',sale:'pill-red',hot:'pill-hot'};
+  const badgeLabel = {preorder:'Pre-Order',new:'New',sale:'Sale',hot:'Hot'};
+  grid.innerHTML = list.map(p => {
+    const fmtP = 'GH₵' + p.price.toLocaleString();
+    const fmtO = p.oldPrice ? 'GH₵' + p.oldPrice.toLocaleString() : '';
+    const stars = '★'.repeat(Math.floor(p.rating)) + '☆'.repeat(5 - Math.floor(p.rating));
+    return `
+    <div class="pcard">
+      <div class="pimg" onclick="openModal(${p.id})" style="cursor:pointer;">
+        ${p.badge ? `<span class="pbadge ${badgeMap[p.badge]||''}">${badgeLabel[p.badge]||p.badge}</span>` : ''}
+        <img src="${p.imgs[0]}" alt="${p.name}" loading="lazy" onerror="this.parentNode.style.background='#EEF1F7'"/>
+        <div style="position:absolute;bottom:0;left:0;right:0;background:rgba(11,29,58,.65);color:#fff;font-size:.65rem;font-weight:600;padding:.35rem;text-align:center;opacity:0;transition:opacity .2s;" class="img-overlay">🔍 ${p.imgs.length} Photos · View Details</div>
+      </div>
+      <div class="pbody">
+        <div class="pcat">${p.cat}</div>
+        <div class="pname" onclick="openModal(${p.id})" style="cursor:pointer;">${p.name}</div>
+        <div style="font-size:.68rem;color:var(--orange);margin-bottom:.5rem;">${stars} <span style="color:var(--text-muted);">(${p.reviews})</span></div>
+        <div class="pdesc">${p.desc.substring(0,85)}${p.desc.length>85?'...':''}</div>
+        <div class="pfooter">
+          <div>${fmtO ? `<span class="pold">${fmtO}</span>` : ''}<span class="pnow">${fmtP}</span></div>
+          <span style="font-size:.62rem;color:var(--green);font-weight:600;">${p.inStock?'In Stock':'Out of Stock'}</span>
+        </div>
+        <div style="display:flex;gap:.4rem;margin-top:.8rem;">
+          <button class="padd" style="flex:1;" onclick="addToCart('${p.name.replace(/'/g,"\\'")}',${p.price},'${p.imgs[0]}')">🛒 Add to Cart</button>
+          <button class="padd" style="background:var(--navy);flex:0 0 auto;" onclick="openModal(${p.id})">👁 View</button>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+
+  // Add hover effect for image overlay
+  document.querySelectorAll('.pimg').forEach(el => {
+    const overlay = el.querySelector('.img-overlay');
+    if (overlay) {
+      el.addEventListener('mouseenter', () => overlay.style.opacity = '1');
+      el.addEventListener('mouseleave', () => overlay.style.opacity = '0');
+    }
+  });
+}
+
+
+renderProducts('All');
+
+
+// ========== CART SYSTEM ==========
+let cart = [];
+let selectedPayment = 'momo';
+
+const DELIVERY_FEES = {
+  'Greater Accra': 30,
+  'Ashanti': 80,
+  'Western': 100,
+  'Central': 80,
+  'Eastern': 70,
+  'Volta': 100,
+  'Northern': 150,
+  'Upper East': 180,
+  'Upper West': 180,
+  'Brong-Ahafo': 120,
+};
+
+function openCart() {
+  document.getElementById('cartOverlay').classList.add('open');
+  document.getElementById('cartDrawer').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  renderCart();
+}
+function closeCart() {
+  document.getElementById('cartOverlay').classList.remove('open');
+  document.getElementById('cartDrawer').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function switchTab(tab) {
+  document.getElementById('tabCart').classList.toggle('active', tab === 'cart');
+  document.getElementById('tabCheckout').classList.toggle('active', tab === 'checkout');
+  document.getElementById('cartView').style.display = tab === 'cart' ? 'flex' : 'none';
+  document.getElementById('checkoutView').style.display = tab === 'checkout' ? 'flex' : 'none';
+  if (tab === 'checkout') renderCheckoutSummary();
+}
+
+function addToCart(name, price, img) { if (typeof price === 'string') price = parseInt(price.replace(/[^\d]/g, ''));
+  const existing = cart.find(i => i.name === name);
+  const priceNum = parseInt(price.replace(/[^\d]/g, ''));
+  if (existing) {
+    existing.qty++;
+  } else {
+    cart.push({ name, price: priceNum, img: img || '', qty: 1 });
+  }
+  updateCartBadge();
+  renderCart();
+  openCart();
+}
+
+function removeFromCart(idx) {
+  cart.splice(idx, 1);
+  updateCartBadge();
+  renderCart();
+}
+
+function changeQty(idx, delta) {
+  cart[idx].qty = Math.max(1, cart[idx].qty + delta);
+  updateCartBadge();
+  renderCart();
+}
+
+function updateCartBadge() {
+  const total = cart.reduce((s, i) => s + i.qty, 0);
+  document.getElementById('cartCountBadge').textContent = total;
+  document.getElementById('cartCountBadge').style.background = total > 0 ? 'var(--blue)' : 'var(--border)';
+}
+
+function getCartTotal() {
+  return cart.reduce((s, i) => s + i.price * i.qty, 0);
+}
+
+function getDeliveryFee() {
+  const method = document.getElementById('deliveryMethod')?.value;
+  if (method === 'pickup') return 0;
+  const region = document.getElementById('region')?.value;
+  return DELIVERY_FEES[region] || 0;
+}
+
+function fmt(n) {
+  return 'GH₵' + n.toLocaleString();
+}
+
+function renderCart() {
+  const container = document.getElementById('cartItemsContainer');
+  const footer = document.getElementById('cartFooter');
+  if (cart.length === 0) {
+    container.innerHTML = '<div class="cart-empty"><span class="cart-empty-icon">🛒</span><p style="font-weight:600;color:var(--navy);margin-bottom:.4rem;">Your cart is empty</p><p style="font-size:.82rem;">Browse products and add items.</p></div>';
+    footer.style.display = 'none';
+    return;
+  }
+  container.innerHTML = cart.map((item, idx) => `
+    <div class="cart-item">
+      <div class="cart-item-img"><img src="${item.img}" alt="${item.name}" onerror="this.style.display='none'"/></div>
+      <div class="cart-item-info">
+        <div class="cart-item-name">${item.name}</div>
+        <div class="cart-item-price">${fmt(item.price)}</div>
+        <div class="cart-item-qty">
+          <button class="qty-btn" onclick="changeQty(${idx},-1)">−</button>
+          <span class="qty-num">${item.qty}</span>
+          <button class="qty-btn" onclick="changeQty(${idx},1)">+</button>
+          <button class="cart-item-remove" onclick="removeFromCart(${idx})" title="Remove">🗑 Remove</button>
+        </div>
+      </div>
+      <div style="font-family:'Space Mono',monospace;font-size:.82rem;font-weight:700;color:var(--navy);white-space:nowrap;">${fmt(item.price * item.qty)}</div>
+    </div>`).join('');
+  const subtotal = getCartTotal();
+  document.getElementById('cartSubtotal').textContent = fmt(subtotal);
+  document.getElementById('cartItemCount').textContent = cart.reduce((s, i) => s + i.qty, 0);
+  document.getElementById('cartTotal').textContent = fmt(subtotal);
+  footer.style.display = 'block';
+}
+
+function renderCheckoutSummary() {
+  const subtotal = getCartTotal();
+  const delivery = getDeliveryFee();
+  const grand = subtotal + delivery;
+  const el = document.getElementById('orderSummaryMini');
+  if (el) {
+    el.innerHTML = `<div style="font-size:.72rem;font-weight:700;color:var(--navy);margin-bottom:.7rem;text-transform:uppercase;letter-spacing:.08em;">Order Summary (${cart.reduce((s,i)=>s+i.qty,0)} items)</div>` +
+      cart.map(i => `<div class="osm-row"><span>${i.name.substring(0,28)}${i.name.length>28?'...':''} ×${i.qty}</span><span>${fmt(i.price*i.qty)}</span></div>`).join('') +
+      `<div class="osm-row" style="border-top:1px solid var(--border);padding-top:.4rem;"><span>Total</span><span style="color:var(--blue);font-family:'Space Mono',monospace;">${fmt(subtotal)}</span></div>`;
+  }
+  document.getElementById('checkoutSubtotal').textContent = fmt(subtotal);
+  document.getElementById('checkoutDelivery').textContent = delivery === 0 ? 'Free' : fmt(delivery);
+  document.getElementById('checkoutGrandTotal').textContent = fmt(subtotal + delivery);
+}
+
+function updateDelivery() {
+  const method = document.getElementById('deliveryMethod').value;
+  const region = document.getElementById('region').value;
+  const addrWrap = document.getElementById('deliveryAddressWrap');
+  const costRow = document.getElementById('deliveryCostRow');
+  addrWrap.style.display = method === 'pickup' ? 'none' : 'block';
+  if (method === 'pickup') {
+    costRow.style.display = 'block';
+    document.getElementById('deliveryCostLabel').textContent = 'Free (Store Pickup)';
+  } else if (region) {
+    costRow.style.display = 'block';
+    document.getElementById('deliveryCostLabel').textContent = fmt(DELIVERY_FEES[region] || 0);
+  } else {
+    costRow.style.display = 'none';
+  }
+  renderCheckoutSummary();
+}
+
+function selectPayment(method) {
+  selectedPayment = method;
+  ['momo','card','bank','ussd'].forEach(m => {
+    document.getElementById('pm-' + m)?.classList.toggle('selected', m === method);
+  });
+}
+
+function validateForm() {
+  const fields = ['firstName','lastName','emailAddr','phoneNum'];
+  const method = document.getElementById('deliveryMethod')?.value;
+  if (method === 'delivery') { fields.push('streetAddr','cityTown','region'); }
+  for (const f of fields) {
+    const el = document.getElementById(f);
+    if (!el) continue;
+    if (!el.value.trim()) {
+      el.style.borderColor = 'var(--red)';
+      el.focus();
+      el.style.borderColor = '';
+      return false;
+    }
+  }
+  const email = document.getElementById('emailAddr').value;
+  if (!/^[^@]+@[^@]+\.[^@]+$/.test(email)) {
+    alert('Please enter a valid email address.');
+    return false;
+  }
+  return true;
+}
+
+function initPaystack() {
+  if (cart.length === 0) { alert('Your cart is empty!'); return; }
+  if (!validateForm()) { alert('Please fill in all required fields.'); return; }
+
+  const email = document.getElementById('emailAddr').value.trim();
+  const firstName = document.getElementById('firstName').value.trim();
+  const lastName = document.getElementById('lastName').value.trim();
+  const phone = document.getElementById('phoneNum').value.trim();
+  const subtotal = getCartTotal();
+  const delivery = getDeliveryFee();
+  const grandTotal = subtotal + delivery;
+  const amountKobo = grandTotal * 100; // Paystack uses smallest currency unit
+
+  const handler = PaystackPop.setup({
+    key: 'pk_live_YOUR_PAYSTACK_PUBLIC_KEY', // Replace with your Paystack public key
+    email: email,
+    amount: amountKobo,
+    currency: 'GHS',
+    ref: 'ELLES-' + Date.now(),
+    firstname: firstName,
+    lastname: lastName,
+    phone: phone,
+    channels: getPaystackChannels(),
+    metadata: {
+      custom_fields: [
+        { display_name: 'Customer Name', variable_name: 'customer_name', value: firstName + ' ' + lastName },
+        { display_name: 'Phone', variable_name: 'phone', value: phone },
+        { display_name: 'Delivery Method', variable_name: 'delivery', value: document.getElementById('deliveryMethod')?.value || '' },
+        { display_name: 'Address', variable_name: 'address', value: (document.getElementById('streetAddr')?.value || '') + ', ' + (document.getElementById('cityTown')?.value || '') },
+        { display_name: 'Region', variable_name: 'region', value: document.getElementById('region')?.value || '' },
+        { display_name: 'Notes', variable_name: 'notes', value: document.getElementById('deliveryNotes')?.value || '' },
+      ]
+    },
+    callback: function(response) {
+      document.getElementById('checkoutFormWrap').style.display = 'none';
+      document.getElementById('successScreen').style.display = 'block';
+      document.getElementById('successRef').textContent = 'Reference: ' + response.reference;
+      cart = [];
+      updateCartBadge();
+    },
+    onClose: function() {
+      // user closed the payment popup - do nothing
+    }
+  });
+  handler.openIframe();
+}
+
+function getPaystackChannels() {
+  const map = { momo: ['mobile_money'], card: ['card'], bank: ['bank'], ussd: ['ussd'] };
+  return map[selectedPayment] || ['mobile_money', 'card'];
+}
+
+function finishOrder() {
+  document.getElementById('successScreen').style.display = 'none';
+  document.getElementById('checkoutFormWrap').style.display = 'block';
+  switchTab('cart');
+  closeCart();
+}
+
+</script>
+
+<!-- CART OVERLAY -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+
+<!-- CART DRAWER -->
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-drawer-hdr">
+    <h2>🛒 Your Cart</h2>
+    <button class="cart-close-btn" onclick="closeCart()">✕</button>
+  </div>
+  <div class="cart-tabs">
+    <button class="cart-tab active" id="tabCart" onclick="switchTab('cart')">Cart Items</button>
+    <button class="cart-tab" id="tabCheckout" onclick="switchTab('checkout')" id="tabCheckout">Checkout</button>
+  </div>
+
+  <!-- CART ITEMS VIEW -->
+  <div id="cartView" style="display:flex;flex-direction:column;flex:1;overflow:hidden;">
+    <div class="cart-body" id="cartItemsContainer">
+      <div class="cart-empty">
+        <span class="cart-empty-icon">🛒</span>
+        <p style="font-weight:600;color:var(--navy);margin-bottom:.4rem;">Your cart is empty</p>
+        <p style="font-size:.82rem;">Browse our products and add items to your cart.</p>
+      </div>
+    </div>
+    <div class="cart-footer" id="cartFooter" style="display:none;">
+      <div class="cart-subtotal">
+        <span class="cart-subtotal-label">Subtotal (<span id="cartItemCount">0</span> items)</span>
+        <span class="cart-subtotal-val" id="cartSubtotal">GH₵0</span>
+      </div>
+      <div class="cart-subtotal">
+        <span class="cart-subtotal-label">Delivery</span>
+        <span class="cart-subtotal-val" style="color:var(--green);font-size:.82rem;">Calculated at checkout</span>
+      </div>
+      <div class="cart-total-row">
+        <span class="cart-total-label">Total</span>
+        <span class="cart-total-val" id="cartTotal">GH₵0</span>
+      </div>
+      <button class="checkout-btn" onclick="switchTab('checkout')">Proceed to Checkout →</button>
+      <button class="continue-btn" onclick="closeCart()">← Continue Shopping</button>
+    </div>
+  </div>
+
+  <!-- CHECKOUT VIEW -->
+  <div id="checkoutView" style="display:none;flex-direction:column;flex:1;overflow:hidden;">
+    <div class="cart-body">
+      <button class="back-to-cart-btn" onclick="switchTab('cart')">← Back to Cart</button>
+
+      <!-- SUCCESS SCREEN -->
+      <div id="successScreen" style="display:none;">
+        <div class="success-screen">
+          <span class="success-icon">🎉</span>
+          <div class="success-title">Order Placed Successfully!</div>
+          <p class="success-sub">Thank you for shopping with Elles Appliances! Your order has been received and our team will contact you shortly to confirm delivery details.</p>
+          <div class="success-ref" id="successRef">Reference: —</div>
+          <p style="font-size:.78rem;color:var(--text-muted);margin-bottom:1.2rem;">Questions? Call us: <strong>+233 55 166 8081</strong><br/>or email: <strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="244d45494148484149414a50644349454d480a474b49">[email&#160;protected]</a></strong></p>
+          <button class="checkout-btn" onclick="finishOrder()">Continue Shopping</button>
+        </div>
+      </div>
+
+      <!-- FORM -->
+      <div id="checkoutFormWrap">
+        <!-- ORDER SUMMARY MINI -->
+        <div class="order-summary-mini" id="orderSummaryMini"></div>
+
+        <div class="checkout-form">
+          <!-- PERSONAL DETAILS -->
+          <div class="checkout-section">
+            <div class="checkout-section-title">👤 Personal Details</div>
+            <div class="form-row">
+              <div class="form-group"><label>First Name *</label><input type="text" id="firstName" placeholder="e.g. Kofi" required/></div>
+              <div class="form-group"><label>Last Name *</label><input type="text" id="lastName" placeholder="e.g. Mensah" required/></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label>Email Address *</label><input type="email" id="emailAddr" placeholder="yourname@email.com" required/></div>
+              <div class="form-group"><label>Phone Number *</label><input type="tel" id="phoneNum" placeholder="+233 XX XXX XXXX" required/></div>
+            </div>
+          </div>
+
+          <!-- DELIVERY DETAILS -->
+          <div class="checkout-section">
+            <div class="checkout-section-title">🚚 Delivery Details</div>
+            <div class="form-row">
+              <div class="form-group"><label>Delivery Method *</label>
+                <select id="deliveryMethod" onchange="updateDelivery()">
+                  <option value="delivery">Home / Office Delivery</option>
+                  <option value="pickup">Store Pickup (Free)</option>
+                </select>
+              </div>
+              <div class="form-group"><label>Region *</label>
+                <select id="region" onchange="updateDelivery()">
+                  <option value="">-- Select Region --</option>
+                  <option value="Greater Accra">Greater Accra</option>
+                  <option value="Ashanti">Ashanti</option>
+                  <option value="Western">Western</option>
+                  <option value="Central">Central</option>
+                  <option value="Eastern">Eastern</option>
+                  <option value="Volta">Volta</option>
+                  <option value="Northern">Northern</option>
+                  <option value="Upper East">Upper East</option>
+                  <option value="Upper West">Upper West</option>
+                  <option value="Brong-Ahafo">Brong-Ahafo</option>
+                </select>
+              </div>
+            </div>
+            <div id="deliveryAddressWrap">
+              <div class="form-row full">
+                <div class="form-group"><label>Street Address *</label><input type="text" id="streetAddr" placeholder="House No., Street Name"/></div>
+              </div>
+              <div class="form-row">
+                <div class="form-group"><label>City / Town *</label><input type="text" id="cityTown" placeholder="e.g. Accra"/></div>
+                <div class="form-group"><label>Landmark (optional)</label><input type="text" id="landmark" placeholder="Near..."/></div>
+              </div>
+            </div>
+            <div class="form-row full">
+              <div class="form-group"><label>Delivery Notes (optional)</label><textarea id="deliveryNotes" placeholder="Any special instructions for delivery..."></textarea></div>
+            </div>
+            <div id="deliveryCostRow" style="background:var(--blue-pale);border:1px solid #c0d4f7;border-radius:6px;padding:.7rem 1rem;font-size:.78rem;color:var(--blue);margin-top:.3rem;display:none;">
+              🚚 Delivery fee: <strong id="deliveryCostLabel">—</strong>
+            </div>
+          </div>
+
+          <!-- PAYMENT -->
+          <div class="checkout-section">
+            <div class="checkout-section-title">💳 Payment Method</div>
+            <div class="payment-methods">
+              <div class="pay-method selected" id="pm-momo" onclick="selectPayment('momo')">
+                <span class="pay-icon">📱</span>
+                <div class="pay-label">Mobile Money</div>
+                <div class="pay-sub">MTN, Vodafone, AirtelTigo</div>
+              </div>
+              <div class="pay-method" id="pm-card" onclick="selectPayment('card')">
+                <span class="pay-icon">💳</span>
+                <div class="pay-label">Debit / Credit Card</div>
+                <div class="pay-sub">Visa, Mastercard</div>
+              </div>
+              <div class="pay-method" id="pm-bank" onclick="selectPayment('bank')">
+                <span class="pay-icon">🏦</span>
+                <div class="pay-label">Bank Transfer</div>
+                <div class="pay-sub">Ghana Banks</div>
+              </div>
+              <div class="pay-method" id="pm-ussd" onclick="selectPayment('ussd')">
+                <span class="pay-icon">📲</span>
+                <div class="pay-label">USSD</div>
+                <div class="pay-sub">Pay via code</div>
+              </div>
+            </div>
+            <div style="background:var(--off-white);border-radius:8px;padding:.9rem 1rem;border:1px solid var(--border);">
+              <div class="osm-row"><span>Subtotal</span><span id="checkoutSubtotal">GH₵0</span></div>
+              <div class="osm-row"><span>D
